@@ -48,8 +48,8 @@ end usb;
 
 architecture Behavioral of usb is
 
-	SIGNAL rd_count		:	STD_LOGIC_VECTOR(1 DOWNTO 0)	:= (OTHERS => '0');
-	SIGNAL wr_count		:	STD_LOGIC_VECTOR(1 DOWNTO 0)	:= (OTHERS => '0');
+	SIGNAL rd_count		:	STD_LOGIC_VECTOR(2 DOWNTO 0)	:= (OTHERS => '0');
+	SIGNAL wr_count		:	STD_LOGIC_VECTOR(2 DOWNTO 0)	:= (OTHERS => '0');
 	SIGNAL txe_l_tmp		:	STD_LOGIC;
 	SIGNAL txe_l_sync		:	STD_LOGIC;
 	SIGNAL rxf_l_tmp		:	STD_LOGIC;
@@ -74,9 +74,9 @@ begin
 	BEGIN
 		IF(clk='1' AND clk'EVENT)THEN
 			IF(txe_oe_l = '0')THEN
-				d_bus(0 DOWNTO 0) <= "" & txe_l_sync;
+				d_bus <= "0000000" & txe_l_sync;
 			ELSE
-				d_bus(0 DOWNTO 0) <= (OTHERS => 'Z');
+				d_bus <= (OTHERS => 'Z');
 			END IF;
 		END IF;
 	END PROCESS poll_txe;
@@ -85,9 +85,9 @@ begin
 	BEGIN
 		IF(clk='1' AND clk'EVENT)THEN
 			IF(rxf_oe_l = '0')THEN
-				d_bus(0 DOWNTO 0) <= "" & rxf_l_sync;
+				d_bus <= "0000000" & rxf_l_sync;
 			ELSE
-				d_bus(0 DOWNTO 0) <= (OTHERS => 'Z');
+				d_bus <= (OTHERS => 'Z');
 			END IF;
 		END IF;
 	END PROCESS poll_rxf;
@@ -98,20 +98,24 @@ begin
 	BEGIN
 		IF(clk='1' AND clk'EVENT)THEN
 			IF(usb_rd_h='1')THEN
-				IF(rd_count > 1)THEN
-					rd_count <= "00";
+				IF(rd_count > 3)THEN
+					rd_count <= "000";
 					rd_l <= '1';
 					rd_done <= '1';
 					d_bus <= d_usb;
 				ELSE
 					rd_count <= rd_count + '1';
-					rd_l <= '0';
 					d_bus <= (OTHERS => 'Z');
+					IF(rd_count > 0)THEN
+						rd_l <= '0';
+					ELSE
+						rd_l <= '1';
+					END IF;
 				END IF;
 			ELSE
 				rd_l <= '1';
 				d_bus <= (OTHERS => 'Z');
-				rd_count <= "00";
+				rd_count <= "000";
 			END IF;
 			IF(rd_done='1')THEN
 				rd_done <= '0';
@@ -126,22 +130,26 @@ begin
 	BEGIN
 		IF(clk='1' AND clk'EVENT)THEN
 			IF(usb_wr_h='1')THEN
-				IF(wr_count > 2)THEN
-					wr_count <= "00";
+				IF(wr_count > 3)THEN
+					wr_count <= "000";
 					wr_h <= '0';
 					d_usb <= (OTHERS => 'Z');
 					wr_done <= '1';
-				ELSIF(wr_count > 0)THEN
+				ELSIF(wr_count > 1)THEN
 					wr_count <= wr_count + 1;
 					wr_h <= '1';
 					d_usb <= d_bus;
-				ELSE
+				ELSIF(wr_count > 0)THEN
 					wr_count <= wr_count + 1;
 					wr_h <= '1';
 					d_usb <= (OTHERS => 'Z');
+				ELSE
+					wr_count <= wr_count + 1;
+					wr_h <= '0';
+					d_usb <= (OTHERS => 'Z');
 				END IF;
 			ELSE
-				wr_count <= "00";
+				wr_count <= "000";
 				wr_h <= '0';
 				d_usb <= (OTHERS => 'Z');
 			END IF;

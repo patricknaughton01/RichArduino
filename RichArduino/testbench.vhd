@@ -18,7 +18,7 @@ ENTITY testbench IS
         b         : OUT STD_LOGIC_VECTOR(1 DOWNTO 0) ;
         hs        : OUT STD_LOGIC ;
         vs        : OUT STD_LOGIC ;
-		  usb_bus	: OUT	STD_LOGIC_VECTOR(7 DOWNTO 0) ;
+		  usb_bus	: INOUT	STD_LOGIC_VECTOR(7 DOWNTO 0) ;
 		  usb_rd		: OUT	STD_LOGIC ;
 		  usb_wr		: OUT STD_LOGIC);
 END testbench ;
@@ -27,6 +27,7 @@ ARCHITECTURE structure OF testbench IS
 
    COMPONENT mydcm
    PORT (clk_out1 : OUT STD_LOGIC;
+			clk_out2 : OUT	STD_LOGIC;
          clk_in1  : IN  STD_LOGIC);
    END COMPONENT;
 
@@ -86,7 +87,8 @@ ARCHITECTURE structure OF testbench IS
 
    SIGNAL reset_l_temp : STD_LOGIC ;
    SIGNAL reset_l_sync : STD_LOGIC ;
-   SIGNAL clk_out      : STD_LOGIC ;
+   SIGNAL clk_out1     : STD_LOGIC ;
+	SIGNAL clk_out2	  : STD_LOGIC ;
    SIGNAL d            : STD_LOGIC_VECTOR(31 DOWNTO 0):= "00000000000000000000000000000000" ;
    SIGNAL address      : STD_LOGIC_VECTOR(31 DOWNTO 0):= "00000000000000000000000000000000" ;
    SIGNAL read         : STD_LOGIC;
@@ -108,12 +110,13 @@ ARCHITECTURE structure OF testbench IS
 BEGIN
 
    mydcm1:mydcm
-   PORT MAP(clk_out1 => clk_out ,
+   PORT MAP(clk_out1 => clk_out1 ,
+				clk_out2 => clk_out2 ,
             clk_in1  => clk) ;
 
-   syncprocess:PROCESS(clk_out)
+   syncprocess:PROCESS(clk_out2)
    begin
-      IF (clk_out = '1' AND clk_out'event) THEN
+      IF (clk_out2 = '1' AND clk_out2'event) THEN
          reset_l_temp <= reset_l ;
          reset_l_sync <= reset_l_temp ;
       END IF;
@@ -127,11 +130,21 @@ BEGIN
 
    sram_we_l  <= '0' WHEN write = '1' ELSE '1' ;
 
+	usb_oe_h <= '1' WHEN (address = "11111111111111111111111111110000" AND read = '1') ELSE '0';
+	usb_we_h <= '1' WHEN (address = "11111111111111111111111111110000" AND write = '1') ELSE '0';
+	usb_txe_oe_l <= '0' WHEN(address = "11111111111111111111111111101110" AND read = '1') ELSE '1';
+	usb_rxf_oe_l <= '0' WHEN(address = "11111111111111111111111111101111" AND read = '1') ELSE '1';
+
 --   done <= '1' WHEN (eprom_ce_l = '0' OR sram_ce_l = '0' OR vga_ena = '1') ELSE '0' ;
-   done <= '1' WHEN (eprom_ce_l = '0' OR sram_ce_l = '0' OR usb_done = '1') ELSE '0' ;
+   done <= '1' WHEN 
+		(eprom_ce_l = '0' 
+			OR sram_ce_l = '0' 
+			OR usb_done = '1'
+			OR usb_txe_oe_l = '0'
+			OR usb_rxf_oe_l = '0') ELSE '0' ;
 	
    rsrc1:rsrc      
-   PORT MAP(clk       => clk_out,
+   PORT MAP(clk       => clk_out2,
             reset_l   => reset_l_sync,
             d         => d,
             address   => address,
@@ -151,7 +164,7 @@ BEGIN
                ce_l      => sram_ce_l,
                oe_l      => sram_oe_l,
                we_l      => sram_we_l,
-               clk       => clk_out);
+               clk       => clk_out2);
 
 --   vga_ena <= '1' WHEN address(31 DOWNTO 14) = "000000000000000001" ELSE '0' ;
 --   vga_wea <= CONV_STD_LOGIC_VECTOR(write,1) ;
@@ -170,7 +183,7 @@ BEGIN
 		usb1:usb
 		PORT MAP(  d_bus		=> d(7 DOWNTO 0),
 					  d_usb		=> usb_bus,
-					  clk			=> clk_out,
+					  clk			=> clk_out2,
 					  usb_rd_h	=> usb_oe_h,
 					  usb_wr_h	=> usb_we_h,
 					  txe_oe_l	=> usb_txe_oe_l,
