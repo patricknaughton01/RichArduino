@@ -19,8 +19,8 @@
 ----------------------------------------------------------------------------------
 library IEEE;
 USE IEEE.STD_LOGIC_1164.ALL ;
-use IEEE.STD_LOGIC_UNSIGNED.ALL ;
-use IEEE.STD_LOGIC_ARITH.ALL ;
+USE IEEE.STD_LOGIC_ARITH.ALL ;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -43,19 +43,19 @@ entity usb is
 			  rxf_l		:	IN		STD_LOGIC;
 			  rd_l		:	OUT	STD_LOGIC;
 			  wr_h		:	OUT	STD_LOGIC;
-			  done		:	OUT	STD_LOGIC);
+			  usb_done	:	INOUT	STD_LOGIC);
 end usb;
 
 architecture Behavioral of usb is
 
-	SIGNAL rd_count	:	STD_LOGIC_VECTOR(1 DOWNTO 0)	:= "00";
-	SIGNAL wr_count	:	STD_LOGIC_VECTOR(1 DOWNTO 0)	:= "00";
-	SIGNAL txe_l_tmp	:	STD_LOGIC;
-	SIGNAL txe_l_sync	:	STD_LOGIC;
-	SIGNAL rxf_l_tmp	:	STD_LOGIC;
-	SIGNAL rxf_l_sync	:	STD_LOGIC;
-	SIGNAL d_tmp2		:	STD_LOGIC;
-	SIGNAL d_wait		:	STD_LOGIC;
+	SIGNAL rd_count		:	STD_LOGIC_VECTOR(1 DOWNTO 0)	:= (OTHERS => '0');
+	SIGNAL wr_count		:	STD_LOGIC_VECTOR(1 DOWNTO 0)	:= (OTHERS => '0');
+	SIGNAL txe_l_tmp		:	STD_LOGIC;
+	SIGNAL txe_l_sync		:	STD_LOGIC;
+	SIGNAL rxf_l_tmp		:	STD_LOGIC;
+	SIGNAL rxf_l_sync		:	STD_LOGIC;
+	SIGNAL rd_done			:	STD_LOGIC;
+	SIGNAL wr_done			:	STD_LOGIC;
 	
 
 begin
@@ -96,16 +96,25 @@ begin
 	-- This should be good for a 100 MHz or 50 MHz clock.
 	read_usb:PROCESS(clk)
 	BEGIN
-		IF(clk='1' AND clk'EVENT AND usb_rd_h='1')THEN
-			IF(rd_count > 1)THEN
-				rd_count <= "00";
-				rd_l <= '1';
-				d_tmp2 <= '1';
-				d_bus <= d_usb;
+		IF(clk='1' AND clk'EVENT)THEN
+			IF(usb_rd_h='1')THEN
+				IF(rd_count > 1)THEN
+					rd_count <= "00";
+					rd_l <= '1';
+					rd_done <= '1';
+					d_bus <= d_usb;
+				ELSE
+					rd_count <= rd_count + '1';
+					rd_l <= '0';
+					d_bus <= (OTHERS => 'Z');
+				END IF;
 			ELSE
-				rd_count <= rd_count + '1';
-				rd_l <= '0';
+				rd_l <= '1';
 				d_bus <= (OTHERS => 'Z');
+				rd_count <= "00";
+			END IF;
+			IF(rd_done='1')THEN
+				rd_done <= '0';
 			END IF;
 		END IF;
 	END PROCESS read_usb;
@@ -115,26 +124,37 @@ begin
 	-- Assumes a 50 MHz clock
 	write_usb:PROCESS(clk)
 	BEGIN
-		IF(clk='1' AND clk'EVENT AND usb_wr_h='1')THEN
-			IF(wr_count > 2)THEN
+		IF(clk='1' AND clk'EVENT)THEN
+			IF(usb_wr_h='1')THEN
+				IF(wr_count > 2)THEN
+					wr_count <= "00";
+					wr_h <= '0';
+					d_usb <= (OTHERS => 'Z');
+					wr_done <= '1';
+				ELSIF(wr_count > 0)THEN
+					wr_count <= wr_count + 1;
+					wr_h <= '1';
+					d_usb <= d_bus;
+				ELSE
+					wr_count <= wr_count + 1;
+					wr_h <= '1';
+					d_usb <= (OTHERS => 'Z');
+				END IF;
+			ELSE
 				wr_count <= "00";
 				wr_h <= '0';
 				d_usb <= (OTHERS => 'Z');
-				d_tmp2 <= '1';
-			ELSIF(wr_count > 0)THEN
-				wr_count <= wr_count + 1;
-				wr_h <= '1';
-				d_usb <= d_bus;
-			ELSE
-				wr_count <= wr_count + 1;
-				wr_h <= '1';
-				d_usb <= (OTHERS => 'Z');
+			END IF;
+			IF(wr_done='1')THEN
+				wr_done <= '0';
 			END IF;
 		END IF;
 	END PROCESS write_usb;
-	
-	-- Reset done after it's been asserted for 1 tick
 
+	done_output:PROCESS(rd_done, wr_done)
+	BEGIN
+		usb_done <= rd_done OR wr_done;
+	END PROCESS done_output;
 
 end Behavioral;
 

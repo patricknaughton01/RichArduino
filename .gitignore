@@ -2,3 +2,7 @@ RichArduino/_xmsgs
 RichArduino/iseconfig
 RichArduino/RichArduino.xise
 RichArduino/RichArduino.gise
+*.exe
+*.wdb
+*.log
+*.cmd
