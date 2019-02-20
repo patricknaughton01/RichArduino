@@ -1,0 +1,44 @@
+
+#Created by Constraints Editor (xc6slx45-csg324-3) - 2018/12/13
+NET "clk" TNM_NET = "clk";
+TIMESPEC TS_CLK = PERIOD "clk" 10 ns HIGH 50 %;
+
+# PlanAhead Generated physical constraints 
+
+NET "clk" LOC = XX;
+NET "hs" LOC = XX;
+NET "reset_l" LOC = XX;
+NET "vs" LOC = XX;
+
+# PlanAhead Generated IO constraints 
+
+NET "clk" IOSTANDARD = LVCMOS33;
+NET "hs" IOSTANDARD = LVCMOS33;
+NET "vs" IOSTANDARD = LVCMOS33;
+NET "reset_l" IOSTANDARD = LVCMOS33;
+NET "b[1]" SLEW = FAST;
+NET "b[0]" SLEW = FAST;
+NET "g[1]" SLEW = FAST;
+NET "g[0]" SLEW = FAST;
+NET "r[1]" SLEW = FAST;
+NET "r[0]" SLEW = FAST;
+NET "hs" SLEW = FAST;
+NET "vs" SLEW = FAST;
+
+# PlanAhead Generated physical constraints 
+
+NET "b[1]" LOC = XX;
+NET "b[0]" LOC = XX;
+NET "r[1]" LOC = XX;
+NET "r[0]" LOC = XX;
+NET "g[1]" LOC = XX;
+NET "g[0]" LOC = XX;
+
+# PlanAhead Generated IO constraints 
+
+NET "b[1]" IOSTANDARD = LVCMOS33;
+NET "b[0]" IOSTANDARD = LVCMOS33;
+NET "g[1]" IOSTANDARD = LVCMOS33;
+NET "g[0]" IOSTANDARD = LVCMOS33;
+NET "r[1]" IOSTANDARD = LVCMOS33;
+NET "r[0]" IOSTANDARD = LVCMOS33;
