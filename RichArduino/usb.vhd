@@ -1,11 +1,11 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
+-- Company: CSE 462
+-- Engineer: Patrick Naughton
 -- 
 -- Create Date:    18:36:49 02/19/2019 
 -- Design Name: 
 -- Module Name:    usb - Behavioral 
--- Project Name: 
+-- Project Name: RichArduino
 -- Target Devices: 
 -- Tool versions: 
 -- Description: 
