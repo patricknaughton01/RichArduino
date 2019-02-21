@@ -130,10 +130,10 @@ BEGIN
 
    sram_we_l  <= '0' WHEN write = '1' ELSE '1' ;
 
-	usb_oe_h <= '1' WHEN (address = "11111111111111111111111111110000" AND read = '1') ELSE '0';
-	usb_we_h <= '1' WHEN (address = "11111111111111111111111111110000" AND write = '1') ELSE '0';
-	usb_txe_oe_l <= '0' WHEN(address = "11111111111111111111111111101110" AND read = '1') ELSE '1';
-	usb_rxf_oe_l <= '0' WHEN(address = "11111111111111111111111111101111" AND read = '1') ELSE '1';
+	usb_oe_h <= '1' WHEN (address = "11111111111111111111111111101001" AND read = '1') ELSE '0';
+	usb_we_h <= '1' WHEN (address = "11111111111111111111111111101001" AND write = '1') ELSE '0';
+	usb_txe_oe_l <= '0' WHEN(address = "11111111111111111111111111100111" AND read = '1') ELSE '1';
+	usb_rxf_oe_l <= '0' WHEN(address = "11111111111111111111111111101000" AND read = '1') ELSE '1';
 
 --   done <= '1' WHEN (eprom_ce_l = '0' OR sram_ce_l = '0' OR vga_ena = '1') ELSE '0' ;
    done <= '1' WHEN 

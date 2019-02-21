@@ -19,10 +19,10 @@ BEGIN
    data <=
 	  X"2f81ffff" WHEN "0000000000", --- la r30, -1
      X"2880000a" WHEN "0000000001", --- la r2, 10
-	  X"087dfff1" WHEN "0000000010", --- ld r1, -15(r30)
-	  X"18bdfff1" WHEN "0000000011", --- st r2, -15(r30)
-	  X"08fdfff0" WHEN "0000000100", --- ld r3, -16(r30)
-	  X"093dffef" WHEN "0000000101", --- ld r4, -17(r30)
+	  X"087dffea" WHEN "0000000010", --- ld r1, -22(r30) Read USB
+	  X"18bdffea" WHEN "0000000011", --- st r2, -22(r30) Write r2
+	  X"08fdffe9" WHEN "0000000100", --- ld r3, -23(r30) Poll RXF
+	  X"093dffe8" WHEN "0000000101", --- ld r4, -24(r30) Poll TXE
 	  X"f8000000" WHEN "0000000110", --- stop
      X"00000000" WHEN OTHERS ;
 
