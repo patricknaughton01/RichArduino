@@ -72,28 +72,23 @@ begin
 	
 	poll_txe:PROCESS(clk)
 	BEGIN
-		IF(clk='1' AND clk'EVENT)THEN
-			IF(txe_oe_l = '0')THEN
-				d_bus <= "0000000" & txe_l_sync;
-			ELSE
-				d_bus <= (OTHERS => 'Z');
-			END IF;
+		IF(txe_oe_l = '0')THEN
+			d_bus <= "0000000" & txe_l_sync;
+		ELSE
+			d_bus <= (OTHERS => 'Z');
 		END IF;
 	END PROCESS poll_txe;
 	
 	poll_rxf:PROCESS(clk)
 	BEGIN
-		IF(clk='1' AND clk'EVENT)THEN
-			IF(rxf_oe_l = '0')THEN
-				d_bus <= "0000000" & rxf_l_sync;
-			ELSE
-				d_bus <= (OTHERS => 'Z');
-			END IF;
+		IF(rxf_oe_l = '0')THEN
+			d_bus <= "0000000" & rxf_l_sync;
+		ELSE
+			d_bus <= (OTHERS => 'Z');
 		END IF;
 	END PROCESS poll_rxf;
 	
-	-- Assert rd_l for two clock ticks before we read in the data
-	-- This should be good for a 100 MHz or 50 MHz clock.
+	-- Assert rd_l for two clock ticks before we read in the data.
 	read_usb:PROCESS(clk)
 	BEGIN
 		IF(clk='1' AND clk'EVENT)THEN
