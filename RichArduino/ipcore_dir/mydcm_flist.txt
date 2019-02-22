@@ -1,4 +1,5 @@
 # Output products list for <mydcm>
+_xmsgs/pn_parser.xmsgs
 mydcm/clk_wiz_v3_6_readme.txt
 mydcm/doc/clk_wiz_v3_6_readme.txt
 mydcm/doc/clk_wiz_v3_6_vinfo.html

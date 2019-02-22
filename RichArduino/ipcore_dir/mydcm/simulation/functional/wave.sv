@@ -90,7 +90,7 @@ group clear 0 end
 
 group insert \
     {mydcm_tb.dut.clk[1]} \
-    {mydcm_tb.dut.clk[2]} 
+    {mydcm_tb.dut.clk[2]}  \     {mydcm_tb.dut.clk[3]} 
 group using {Counters}
 group set -overlay 0
 group set -comment {}
@@ -98,7 +98,7 @@ group clear 0 end
 
 group insert \
     {mydcm_tb.dut.counter[1]} \
-    {mydcm_tb.dut.counter[2]} 
+    {mydcm_tb.dut.counter[2]}  \     {mydcm_tb.dut.counter[3]} 
 
 set id [waveform add -signals [list {nc::mydcm_tb.COUNT} ]]
 

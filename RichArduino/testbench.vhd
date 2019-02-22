@@ -32,6 +32,7 @@ ARCHITECTURE structure OF testbench IS
    COMPONENT mydcm
    PORT (clk_out1 : OUT STD_LOGIC;
 			clk_out2 : OUT	STD_LOGIC;
+			clk_out3 : OUT STD_LOGIC;
          clk_in1  : IN  STD_LOGIC);
    END COMPONENT;
 
@@ -62,7 +63,8 @@ ARCHITECTURE structure OF testbench IS
    END COMPONENT ;
    
 	COMPONENT myhdmi
-	PORT( clk : IN STD_LOGIC ;
+	PORT( clka : IN STD_LOGIC ;
+			clkb : IN STD_LOGIC ;
 			ena : IN	STD_LOGIC ;
 			wea : IN	STD_LOGIC_VECTOR(0 DOWNTO 0) ;
 			addra : IN	STD_LOGIC_VECTOR(11 DOWNTO 0);
@@ -104,6 +106,7 @@ ARCHITECTURE structure OF testbench IS
    SIGNAL reset_l_sync : STD_LOGIC ;
    SIGNAL clk_out1     : STD_LOGIC ;
 	SIGNAL clk_out2	  : STD_LOGIC ;
+	SIGNAL clk_out3	  : STD_LOGIC ;
    SIGNAL d            : STD_LOGIC_VECTOR(31 DOWNTO 0):= "00000000000000000000000000000000" ;
    SIGNAL address      : STD_LOGIC_VECTOR(31 DOWNTO 0):= "00000000000000000000000000000000" ;
    SIGNAL read         : STD_LOGIC;
@@ -127,6 +130,7 @@ BEGIN
    mydcm1:mydcm
    PORT MAP(clk_out1 => clk_out1 ,
 				clk_out2 => clk_out2 ,
+				clk_out3 => clk_out3,
             clk_in1  => clk) ;
 
    syncprocess:PROCESS(clk_out2)
@@ -196,7 +200,8 @@ BEGIN
 --            hs        => hs,
 --            vs        => vs);
 	hdmi1:myhdmi
-	PORT MAP(clk			=> clk_out1,
+	PORT MAP(clka			=> clk_out1,
+				clkb			=> clk_out3,
 				ena			=> hdmi_ena,
 				wea			=> hdmi_wea,
 				addra			=> address(13 DOWNTO 2),

@@ -25,7 +25,8 @@ LIBRARY UNISIM ;
 USE UNISIM.VCOMPONENTS.ALL ;
 
 ENTITY myhdmi IS
-	PORT( clk : IN STD_LOGIC ;
+	PORT( clka : IN STD_LOGIC ;
+			clkb : IN STD_LOGIC ;
 			ena : IN	STD_LOGIC ;
 			wea : IN	STD_LOGIC_VECTOR(0 DOWNTO 0);
 			addra : IN	STD_LOGIC_VECTOR(11 DOWNTO 0);
@@ -38,11 +39,11 @@ END myhdmi ;
 
 ARCHITECTURE structure OF myhdmi IS
 
-	COMPONENT myhdmidcm
-	PORT (clk_out1 : OUT STD_LOGIC ; --- 25 MHz
-			clk_out2 : OUT STD_LOGIC ; --- 250 MHz
-			clk_in1 : IN STD_LOGIC);
-	END COMPONENT;
+--	COMPONENT myhdmidcm
+--	PORT (clk_out1 : OUT STD_LOGIC ; --- 25 MHz
+--			clk_out2 : OUT STD_LOGIC ; --- 250 MHz
+--			clk_in1 : IN STD_LOGIC);
+--	END COMPONENT;
 	
 	COMPONENT TMDS_encoder
 	PORT( clk : IN STD_LOGIC ;
@@ -111,10 +112,12 @@ BEGIN
 				addrb	=> addrb ,
 				doutb	=> doutb);
 	
-	myhdmidcm1:myhdmidcm
-	PORT MAP(clk_out1 => pixclk ,
-				clk_out2 => clk_TMDS ,
-				clk_in1 => clk) ;
+--	myhdmidcm1:myhdmidcm
+--	PORT MAP(clk_out1 => pixclk ,
+--				clk_out2 => clk_TMDS ,
+--				clk_in1 => clk) ;
+	pixclk <= clka;
+	clk_TMDS <= clkb;
 	
 	makesync:PROCESS(pixclk)
 	begin

@@ -54,8 +54,9 @@
 -- "Output    Output      Phase     Duty      Pk-to-Pk        Phase"
 -- "Clock    Freq (MHz) (degrees) Cycle (%) Jitter (ps)  Error (ps)"
 ------------------------------------------------------------------------------
--- CLK_OUT1____25.000______0.000______50.0______600.000____150.000
--- CLK_OUT2____50.000______0.000______50.0______200.000____150.000
+-- CLK_OUT1____25.000______0.000______50.0______241.564____215.375
+-- CLK_OUT2____50.000______0.000______50.0______210.065____215.375
+-- CLK_OUT3___250.000______0.000______50.0______152.849____215.375
 --
 ------------------------------------------------------------------------------
 -- "Input Clock   Freq (MHz)    Input Jitter (UI)"
@@ -71,7 +72,8 @@ port
   CLK_IN1           : in     std_logic;
   -- Clock out ports
   CLK_OUT1          : out    std_logic;
-  CLK_OUT2          : out    std_logic
+  CLK_OUT2          : out    std_logic;
+  CLK_OUT3          : out    std_logic
  );
 end component;
 
@@ -85,5 +87,6 @@ your_instance_name : mydcm
     CLK_IN1 => CLK_IN1,
     -- Clock out ports
     CLK_OUT1 => CLK_OUT1,
-    CLK_OUT2 => CLK_OUT2);
+    CLK_OUT2 => CLK_OUT2,
+    CLK_OUT3 => CLK_OUT3);
 -- INST_TAG_END ------ End INSTANTIATION Template ------------
