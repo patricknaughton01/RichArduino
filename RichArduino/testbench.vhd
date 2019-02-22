@@ -13,14 +13,18 @@ ENTITY testbench IS
         reset_l   : IN  STD_LOGIC;
 		  txe_l		: IN  STD_LOGIC;
 		  rxf_l		: IN	STD_LOGIC;
-        r         : OUT STD_LOGIC_VECTOR(1 DOWNTO 0) ;
-        g         : OUT STD_LOGIC_VECTOR(1 DOWNTO 0) ;
-        b         : OUT STD_LOGIC_VECTOR(1 DOWNTO 0) ;
-        hs        : OUT STD_LOGIC ;
-        vs        : OUT STD_LOGIC ;
+--        r         : OUT STD_LOGIC_VECTOR(1 DOWNTO 0) ;
+--        g         : OUT STD_LOGIC_VECTOR(1 DOWNTO 0) ;
+--        b         : OUT STD_LOGIC_VECTOR(1 DOWNTO 0) ;
+--        hs        : OUT STD_LOGIC ;
+--        vs        : OUT STD_LOGIC ;
 		  usb_bus	: INOUT	STD_LOGIC_VECTOR(7 DOWNTO 0) ;
 		  usb_rd		: OUT	STD_LOGIC ;
-		  usb_wr		: OUT STD_LOGIC);
+		  usb_wr		: OUT STD_LOGIC ;
+		  TMDSp 		: OUT STD_LOGIC_VECTOR(2 DOWNTO 0) ;
+		  TMDSn 		: OUT STD_LOGIC_VECTOR(2 DOWNTO 0) ;
+		  TMDSp_clock : OUT STD_LOGIC ;
+		  TMDSn_clock : OUT STD_LOGIC);
 END testbench ;
 
 ARCHITECTURE structure OF testbench IS
@@ -57,6 +61,17 @@ ARCHITECTURE structure OF testbench IS
             clk      : IN    STD_LOGIC) ;
    END COMPONENT ;
    
+	COMPONENT myhdmi
+	PORT( clk : IN STD_LOGIC ;
+			ena : IN	STD_LOGIC ;
+			wea : IN	STD_LOGIC_VECTOR(0 DOWNTO 0) ;
+			addra : IN	STD_LOGIC_VECTOR(11 DOWNTO 0);
+			dina	: IN	STD_LOGIC_VECTOR(7 DOWNTO 0) ;
+			TMDSp : OUT STD_LOGIC_VECTOR(2 DOWNTO 0) ;
+			TMDSn : OUT STD_LOGIC_VECTOR(2 DOWNTO 0) ;
+			TMDSp_clock : OUT STD_LOGIC ;
+			TMDSn_clock : OUT STD_LOGIC) ;
+	END COMPONENT;
 --   COMPONENT vga
 --   PORT(clk      : IN  STD_LOGIC ;
 --        ena      : IN  STD_LOGIC ;
@@ -99,8 +114,8 @@ ARCHITECTURE structure OF testbench IS
    SIGNAL sram_ce_l    :  STD_LOGIC ;
    SIGNAL sram_oe_l    :  STD_LOGIC ;
    SIGNAL sram_we_l    :  STD_LOGIC ;
-   SIGNAL vga_ena      : STD_LOGIC;
-   SIGNAL vga_wea      : STD_LOGIC_VECTOR(0 DOWNTO 0) ;
+   SIGNAL hdmi_ena	  : STD_LOGIC;
+   SIGNAL hdmi_wea     : STD_LOGIC_VECTOR(0 DOWNTO 0) ;
 	SIGNAL usb_done	  : STD_LOGIC ;
 	SIGNAL usb_oe_h	  : STD_LOGIC ;
 	SIGNAL usb_we_h	  : STD_LOGIC ;
@@ -166,8 +181,8 @@ BEGIN
                we_l      => sram_we_l,
                clk       => clk_out2);
 
---   vga_ena <= '1' WHEN address(31 DOWNTO 14) = "000000000000000001" ELSE '0' ;
---   vga_wea <= CONV_STD_LOGIC_VECTOR(write,1) ;
+   hdmi_ena <= '1' WHEN address(31 DOWNTO 14) = "000000000000000001" ELSE '0' ;
+   hdmi_wea <= CONV_STD_LOGIC_VECTOR(write,1) ;
 
 --   vga1:vga
 --   PORT MAP(clk       => clk_out,
@@ -180,6 +195,17 @@ BEGIN
 --            b         => b,
 --            hs        => hs,
 --            vs        => vs);
+	hdmi1:myhdmi
+	PORT MAP(clk			=> clk_out1,
+				ena			=> hdmi_ena,
+				wea			=> hdmi_wea,
+				addra			=> address(13 DOWNTO 2),
+				dina 			=> d(7 DOWNTO 0),
+				TMDSp 		=>	TMDSp,
+				TMDSn 		=> TMDSn,
+				TMDSp_clock => TMDSp_clock,
+				TMDSn_clock	=> TMDSn_clock);
+
 		usb1:usb
 		PORT MAP(  d_bus		=> d(7 DOWNTO 0),
 					  d_usb		=> usb_bus,

@@ -70,7 +70,7 @@ begin
 		END IF;
 	END PROCESS sync;
 	
-	poll_txe:PROCESS(clk)
+	poll_txe:PROCESS(txe_oe_l, txe_l_sync)
 	BEGIN
 		IF(txe_oe_l = '0')THEN
 			d_bus <= "0000000" & txe_l_sync;
@@ -79,7 +79,7 @@ begin
 		END IF;
 	END PROCESS poll_txe;
 	
-	poll_rxf:PROCESS(clk)
+	poll_rxf:PROCESS(rxf_oe_l, rxf_l_sync)
 	BEGIN
 		IF(rxf_oe_l = '0')THEN
 			d_bus <= "0000000" & rxf_l_sync;

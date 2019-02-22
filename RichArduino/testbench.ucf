@@ -1,44 +1,21 @@
-
-#Created by Constraints Editor (xc6slx45-csg324-3) - 2018/12/13
 NET "clk" TNM_NET = "clk";
 TIMESPEC TS_CLK = PERIOD "clk" 10 ns HIGH 50 %;
-
-# PlanAhead Generated physical constraints 
-
-NET "clk" LOC = XX;
-NET "hs" LOC = XX;
-NET "reset_l" LOC = XX;
-NET "vs" LOC = XX;
-
-# PlanAhead Generated IO constraints 
-
+NET "clk" LOC = L15;
 NET "clk" IOSTANDARD = LVCMOS33;
-NET "hs" IOSTANDARD = LVCMOS33;
-NET "vs" IOSTANDARD = LVCMOS33;
-NET "reset_l" IOSTANDARD = LVCMOS33;
-NET "b[1]" SLEW = FAST;
-NET "b[0]" SLEW = FAST;
-NET "g[1]" SLEW = FAST;
-NET "g[0]" SLEW = FAST;
-NET "r[1]" SLEW = FAST;
-NET "r[0]" SLEW = FAST;
-NET "hs" SLEW = FAST;
-NET "vs" SLEW = FAST;
-
-# PlanAhead Generated physical constraints 
-
-NET "b[1]" LOC = XX;
-NET "b[0]" LOC = XX;
-NET "r[1]" LOC = XX;
-NET "r[0]" LOC = XX;
-NET "g[1]" LOC = XX;
-NET "g[0]" LOC = XX;
-
-# PlanAhead Generated IO constraints 
-
-NET "b[1]" IOSTANDARD = LVCMOS33;
-NET "b[0]" IOSTANDARD = LVCMOS33;
-NET "g[1]" IOSTANDARD = LVCMOS33;
-NET "g[0]" IOSTANDARD = LVCMOS33;
-NET "r[1]" IOSTANDARD = LVCMOS33;
-NET "r[0]" IOSTANDARD = LVCMOS33;
+PIN "myhdmidcm1/clkout1_buf.O" CLOCK_DEDICATED_ROUTE = FALSE;
+NET "TMDSp[2]" LOC = B8;
+NET "TMDSn[2]" LOC = A8;
+NET "TMDSp[1]" LOC = C7;
+NET "TMDSn[1]" LOC = A7;
+NET "TMDSp[0]" LOC = D8;
+NET "TMDSn[0]" LOC = C8;
+NET "TMDSp_clock" LOC = B6;
+NET "TMDSn_clock" LOC = A6;
+NET "TMDSp[2]" IOSTANDARD = TMDS_33;
+NET "TMDSn[2]" IOSTANDARD = TMDS_33;
+NET "TMDSp[1]" IOSTANDARD = TMDS_33;
+NET "TMDSn[1]" IOSTANDARD = TMDS_33;
+NET "TMDSp[0]" IOSTANDARD = TMDS_33;
+NET "TMDSn[0]" IOSTANDARD = TMDS_33;
+NET "TMDSp_clock" IOSTANDARD = TMDS_33;
+NET "TMDSn_clock" IOSTANDARD = TMDS_33;
