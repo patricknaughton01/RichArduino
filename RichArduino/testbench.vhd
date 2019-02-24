@@ -158,6 +158,7 @@ BEGIN
    done <= '1' WHEN 
 		(eprom_ce_l = '0' 
 			OR sram_ce_l = '0' 
+			OR hdmi_ena = '1'
 			OR usb_done = '1'
 			OR usb_txe_oe_l = '0'
 			OR usb_rxf_oe_l = '0') ELSE '0' ;
