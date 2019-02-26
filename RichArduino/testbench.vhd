@@ -24,7 +24,8 @@ ENTITY testbench IS
 		  TMDSp 		: OUT STD_LOGIC_VECTOR(2 DOWNTO 0) ;
 		  TMDSn 		: OUT STD_LOGIC_VECTOR(2 DOWNTO 0) ;
 		  TMDSp_clock : OUT STD_LOGIC ;
-		  TMDSn_clock : OUT STD_LOGIC);
+		  TMDSn_clock : OUT STD_LOGIC ;
+		  pins		: INOUT STD_LOGIC_VECTOR(21 DOWNTO 0));
 END testbench ;
 
 ARCHITECTURE structure OF testbench IS
@@ -101,6 +102,16 @@ ARCHITECTURE structure OF testbench IS
 			  wr_h		:	OUT	STD_LOGIC;
 			  usb_done	:	INOUT	STD_LOGIC);
 	END COMPONENT;
+	
+	COMPONENT io
+	PORT(	clk	: IN		STD_LOGIC;
+			d		: INOUT	STD_LOGIC_VECTOR(1 DOWNTO 0);
+			addr	: IN		STD_LOGIC_VECTOR(4 DOWNTO 0);
+			ce_l	: IN		STD_LOGIC;
+			we_l	: IN		STD_LOGIC;
+			oe_l	: IN		STD_LOGIC;
+			pins	: INOUT	STD_LOGIC_VECTOR(21 DOWNTO 0));
+	END COMPONENT;
 
    SIGNAL reset_l_temp : STD_LOGIC ;
    SIGNAL reset_l_sync : STD_LOGIC ;
@@ -124,6 +135,9 @@ ARCHITECTURE structure OF testbench IS
 	SIGNAL usb_we_h	  : STD_LOGIC ;
 	SIGNAL usb_txe_oe_l : STD_LOGIC ;
 	SIGNAL usb_rxf_oe_l : STD_LOGIC ;
+	SIGNAL io_ce_l		  : STD_LOGIC ;
+	SIGNAL io_we_l		  : STD_LOGIC ;
+	SIGNAL io_oe_l		  : STD_LOGIC ;
 
 BEGIN
 
@@ -154,6 +168,10 @@ BEGIN
 	usb_txe_oe_l <= '0' WHEN(address = "11111111111111111111111111100111" AND read = '1') ELSE '1';
 	usb_rxf_oe_l <= '0' WHEN(address = "11111111111111111111111111101000" AND read = '1') ELSE '1';
 
+	io_ce_l <= '0' WHEN(address >= "11111111111111111111111111101010" AND (read = '1' OR write = '1')) ELSE '1';
+	io_we_l <= '0' WHEN write = '1' ELSE '1';
+	io_oe_l <= '0' WHEN read = '1' ELSE '1';
+
 --   done <= '1' WHEN (eprom_ce_l = '0' OR sram_ce_l = '0' OR vga_ena = '1') ELSE '0' ;
    done <= '1' WHEN 
 		(eprom_ce_l = '0' 
@@ -161,7 +179,8 @@ BEGIN
 			OR hdmi_ena = '1'
 			OR usb_done = '1'
 			OR usb_txe_oe_l = '0'
-			OR usb_rxf_oe_l = '0') ELSE '0' ;
+			OR usb_rxf_oe_l = '0'
+			OR io_ce_l = '0') ELSE '0' ;
 	
    rsrc1:rsrc      
    PORT MAP(clk       => clk_out2,
@@ -211,6 +230,15 @@ BEGIN
 				TMDSn 		=> TMDSn,
 				TMDSp_clock => TMDSp_clock,
 				TMDSn_clock	=> TMDSn_clock);
+
+	io1:io
+	PORT MAP(clk	=> clk_out2,
+				d		=> d(1 DOWNTO 0),
+				addr	=> address(4 DOWNTO 0),
+				ce_l	=> io_ce_l,
+				we_l	=> io_we_l,
+				oe_l	=> io_oe_l,
+				pins	=> pins);
 
 		usb1:usb
 		PORT MAP(  d_bus		=> d(7 DOWNTO 0),

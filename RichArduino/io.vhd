@@ -78,39 +78,76 @@ begin
 		END IF;
 	END PROCESS sync;
 	
-	read_pin:PROCESS(clk)
+	read_pin:PROCESS(ce_l, oe_l, addr)
 	BEGIN
-		IF(clk='1' AND clk'EVENT)THEN
-			IF(ce_l = '0' AND oe_l = '0')THEN
-				CASE(addr) IS
-					WHEN("01010") => d <= reg0(1)	& pins_sync(0);
-					WHEN("01011") => d <= reg1(1)	& pins_sync(0);
-					WHEN("01100") => d <= reg2(1)	& pins_sync(0);
-					WHEN("01101") => d <= reg3(1)	& pins_sync(0);
-					WHEN("01110") => d <= reg4(1)	& pins_sync(0);
-					WHEN("01111") => d <= reg5(1)	& pins_sync(0);
-					WHEN("10000") => d <= reg6(1)	& pins_sync(0);
-					WHEN("10001") => d <= reg7(1)	& pins_sync(0);
-					WHEN("10010") => d <= reg8(1)	& pins_sync(0);
-					WHEN("10011") => d <= reg9(1)	& pins_sync(0);
-					WHEN("10100") => d <= reg10(1)& pins_sync(0);
-					WHEN("10101") => d <= reg11(1)& pins_sync(0);
-					WHEN("10110") => d <= reg12(1)& pins_sync(0);
-					WHEN("10111") => d <= reg13(1)& pins_sync(0);
-					WHEN("11000") => d <= reg14(1)& pins_sync(0);
-					WHEN("11001") => d <= reg15(1)& pins_sync(0);
-					WHEN("11010") => d <= reg16(1)& pins_sync(0);
-					WHEN("11011") => d <= reg17(1)& pins_sync(0);
-					WHEN("11100") => d <= reg18(1)& pins_sync(0);
-					WHEN("11101") => d <= reg19(1)& pins_sync(0);
-					WHEN("11110") => d <= reg20(1)& pins_sync(0);
-					WHEN("11111") => d <= reg21(1)& pins_sync(0);
-				END CASE;
-			ELSE
-				d <= (OTHERS => 'Z');
-			END IF;
+		IF(ce_l = '0' AND oe_l = '0')THEN
+			CASE(addr) IS
+				WHEN("01010") => d <= reg0(1)	& pins_sync(0);
+				WHEN("01011") => d <= reg1(1)	& pins_sync(0);
+				WHEN("01100") => d <= reg2(1)	& pins_sync(0);
+				WHEN("01101") => d <= reg3(1)	& pins_sync(0);
+				WHEN("01110") => d <= reg4(1)	& pins_sync(0);
+				WHEN("01111") => d <= reg5(1)	& pins_sync(0);
+				WHEN("10000") => d <= reg6(1)	& pins_sync(0);
+				WHEN("10001") => d <= reg7(1)	& pins_sync(0);
+				WHEN("10010") => d <= reg8(1)	& pins_sync(0);
+				WHEN("10011") => d <= reg9(1)	& pins_sync(0);
+				WHEN("10100") => d <= reg10(1)& pins_sync(0);
+				WHEN("10101") => d <= reg11(1)& pins_sync(0);
+				WHEN("10110") => d <= reg12(1)& pins_sync(0);
+				WHEN("10111") => d <= reg13(1)& pins_sync(0);
+				WHEN("11000") => d <= reg14(1)& pins_sync(0);
+				WHEN("11001") => d <= reg15(1)& pins_sync(0);
+				WHEN("11010") => d <= reg16(1)& pins_sync(0);
+				WHEN("11011") => d <= reg17(1)& pins_sync(0);
+				WHEN("11100") => d <= reg18(1)& pins_sync(0);
+				WHEN("11101") => d <= reg19(1)& pins_sync(0);
+				WHEN("11110") => d <= reg20(1)& pins_sync(0);
+				WHEN OTHERS   => d <= reg21(1)& pins_sync(0);
+			END CASE;
+		ELSE
+			d <= (OTHERS => 'Z');
 		END IF;
 	END PROCESS read_pin;
+	
+	write_pin:PROCESS(clk)
+	BEGIN
+		IF(clk'EVENT AND clk='1')THEN
+			IF(ce_l = '0' AND we_l = '0')THEN
+				CASE(addr) IS
+					WHEN("01010") => reg0 	<= d(1 DOWNTO 0);
+					WHEN("01011") => reg1 	<= d(1 DOWNTO 0);
+					WHEN("01100") => reg2 	<= d(1 DOWNTO 0);
+					WHEN("01101") => reg3 	<= d(1 DOWNTO 0);
+					WHEN("01110") => reg4 	<= d(1 DOWNTO 0);
+					WHEN("01111") => reg5 	<= d(1 DOWNTO 0);
+					WHEN("10000") => reg6 	<= d(1 DOWNTO 0);
+					WHEN("10001") => reg7 	<= d(1 DOWNTO 0);
+					WHEN("10010") => reg8 	<= d(1 DOWNTO 0);
+					WHEN("10011") => reg9 	<= d(1 DOWNTO 0);
+					WHEN("10100") => reg10 	<= d(1 DOWNTO 0);
+					WHEN("10101") => reg11 	<= d(1 DOWNTO 0);
+					WHEN("10110") => reg12 	<= d(1 DOWNTO 0);
+					WHEN("10111") => reg13 	<= d(1 DOWNTO 0);
+					WHEN("11000") => reg14 	<= d(1 DOWNTO 0);
+					WHEN("11001") => reg15 	<= d(1 DOWNTO 0);
+					WHEN("11010") => reg16 	<= d(1 DOWNTO 0);
+					WHEN("11011") => reg17 	<= d(1 DOWNTO 0);
+					WHEN("11100") => reg18 	<= d(1 DOWNTO 0);
+					WHEN("11101") => reg19 	<= d(1 DOWNTO 0);
+					WHEN("11110") => reg20 	<= d(1 DOWNTO 0);
+					WHEN OTHERS   => reg21 	<= d(1 DOWNTO 0);
+				END CASE;
+			END IF;
+		END IF;
+	END PROCESS write_pin;
+	
+	pins <= reg21(0) & reg20(0) & reg19(0) & reg18(0)
+			& reg17(0) & reg16(0) & reg15(0) & reg14(0)
+			& reg13(0) & reg12(0) & reg11(0) & reg10(0)
+			& reg9(0) & reg8(0) & reg7(0) & reg6(0)
+			& reg5(0) & reg4(0) & reg3(0) & reg2(0)
+			& reg1(0) & reg0(0);
 
 end Behavioral;
 
