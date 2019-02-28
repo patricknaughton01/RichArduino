@@ -33,7 +33,7 @@ use IEEE.STD_LOGIC_ARITH.ALL ;
 
 entity io is
 	PORT(	clk	: IN		STD_LOGIC ;
-			d		: INOUT	STD_LOGIC_VECTOR(1 DOWNTO 0);
+			d		: INOUT	STD_LOGIC_VECTOR(31 DOWNTO 0);
 			addr	: IN		STD_LOGIC_VECTOR(4 DOWNTO 0);
 			ce_l	: IN		STD_LOGIC;
 			we_l	: IN		STD_LOGIC;
@@ -82,28 +82,28 @@ begin
 	BEGIN
 		IF(ce_l = '0' AND oe_l = '0')THEN
 			CASE(addr) IS
-				WHEN("01010") => d <= reg0(1)	& pins_sync(0);
-				WHEN("01011") => d <= reg1(1)	& pins_sync(0);
-				WHEN("01100") => d <= reg2(1)	& pins_sync(0);
-				WHEN("01101") => d <= reg3(1)	& pins_sync(0);
-				WHEN("01110") => d <= reg4(1)	& pins_sync(0);
-				WHEN("01111") => d <= reg5(1)	& pins_sync(0);
-				WHEN("10000") => d <= reg6(1)	& pins_sync(0);
-				WHEN("10001") => d <= reg7(1)	& pins_sync(0);
-				WHEN("10010") => d <= reg8(1)	& pins_sync(0);
-				WHEN("10011") => d <= reg9(1)	& pins_sync(0);
-				WHEN("10100") => d <= reg10(1)& pins_sync(0);
-				WHEN("10101") => d <= reg11(1)& pins_sync(0);
-				WHEN("10110") => d <= reg12(1)& pins_sync(0);
-				WHEN("10111") => d <= reg13(1)& pins_sync(0);
-				WHEN("11000") => d <= reg14(1)& pins_sync(0);
-				WHEN("11001") => d <= reg15(1)& pins_sync(0);
-				WHEN("11010") => d <= reg16(1)& pins_sync(0);
-				WHEN("11011") => d <= reg17(1)& pins_sync(0);
-				WHEN("11100") => d <= reg18(1)& pins_sync(0);
-				WHEN("11101") => d <= reg19(1)& pins_sync(0);
-				WHEN("11110") => d <= reg20(1)& pins_sync(0);
-				WHEN OTHERS   => d <= reg21(1)& pins_sync(0);
+				WHEN("01010") => d <= "000000000000000000000000000000" & reg0(1)	& pins_sync(0);
+				WHEN("01011") => d <= "000000000000000000000000000000" & reg1(1)	& pins_sync(0);
+				WHEN("01100") => d <= "000000000000000000000000000000" & reg2(1)	& pins_sync(0);
+				WHEN("01101") => d <= "000000000000000000000000000000" & reg3(1)	& pins_sync(0);
+				WHEN("01110") => d <= "000000000000000000000000000000" & reg4(1)	& pins_sync(0);
+				WHEN("01111") => d <= "000000000000000000000000000000" & reg5(1)	& pins_sync(0);
+				WHEN("10000") => d <= "000000000000000000000000000000" & reg6(1)	& pins_sync(0);
+				WHEN("10001") => d <= "000000000000000000000000000000" & reg7(1)	& pins_sync(0);
+				WHEN("10010") => d <= "000000000000000000000000000000" & reg8(1)	& pins_sync(0);
+				WHEN("10011") => d <= "000000000000000000000000000000" & reg9(1)	& pins_sync(0);
+				WHEN("10100") => d <= "000000000000000000000000000000" & reg10(1)& pins_sync(0);
+				WHEN("10101") => d <= "000000000000000000000000000000" & reg11(1)& pins_sync(0);
+				WHEN("10110") => d <= "000000000000000000000000000000" & reg12(1)& pins_sync(0);
+				WHEN("10111") => d <= "000000000000000000000000000000" & reg13(1)& pins_sync(0);
+				WHEN("11000") => d <= "000000000000000000000000000000" & reg14(1)& pins_sync(0);
+				WHEN("11001") => d <= "000000000000000000000000000000" & reg15(1)& pins_sync(0);
+				WHEN("11010") => d <= "000000000000000000000000000000" & reg16(1)& pins_sync(0);
+				WHEN("11011") => d <= "000000000000000000000000000000" & reg17(1)& pins_sync(0);
+				WHEN("11100") => d <= "000000000000000000000000000000" & reg18(1)& pins_sync(0);
+				WHEN("11101") => d <= "000000000000000000000000000000" & reg19(1)& pins_sync(0);
+				WHEN("11110") => d <= "000000000000000000000000000000" & reg20(1)& pins_sync(0);
+				WHEN OTHERS   => d <= "000000000000000000000000000000" & reg21(1)& pins_sync(0);
 			END CASE;
 		ELSE
 			d <= (OTHERS => 'Z');

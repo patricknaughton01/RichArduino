@@ -105,7 +105,7 @@ ARCHITECTURE structure OF testbench IS
 	
 	COMPONENT io
 	PORT(	clk	: IN		STD_LOGIC;
-			d		: INOUT	STD_LOGIC_VECTOR(1 DOWNTO 0);
+			d		: INOUT	STD_LOGIC_VECTOR(31 DOWNTO 0);
 			addr	: IN		STD_LOGIC_VECTOR(4 DOWNTO 0);
 			ce_l	: IN		STD_LOGIC;
 			we_l	: IN		STD_LOGIC;
@@ -233,7 +233,7 @@ BEGIN
 
 	io1:io
 	PORT MAP(clk	=> clk_out2,
-				d		=> d(1 DOWNTO 0),
+				d		=> d,
 				addr	=> address(4 DOWNTO 0),
 				ce_l	=> io_ce_l,
 				we_l	=> io_we_l,
