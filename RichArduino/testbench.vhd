@@ -89,7 +89,7 @@ ARCHITECTURE structure OF testbench IS
 --   END COMPONENT ;   
 		
 	COMPONENT usb
-	PORT (  d_bus		:	INOUT	STD_LOGIC_VECTOR(7 DOWNTO 0);
+	PORT (  d_bus		:	INOUT	STD_LOGIC_VECTOR(31 DOWNTO 0);
 			  d_usb		:	INOUT STD_LOGIC_VECTOR(7 DOWNTO 0);
 			  clk			:	IN		STD_LOGIC;
 			  usb_rd_h	:	IN		STD_LOGIC;
@@ -241,7 +241,7 @@ BEGIN
 				pins	=> pins);
 
 		usb1:usb
-		PORT MAP(  d_bus		=> d(7 DOWNTO 0),
+		PORT MAP(  d_bus		=> d(31 DOWNTO 0),
 					  d_usb		=> usb_bus,
 					  clk			=> clk_out2,
 					  usb_rd_h	=> usb_oe_h,

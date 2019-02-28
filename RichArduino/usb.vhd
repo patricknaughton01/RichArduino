@@ -32,7 +32,7 @@ USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 --use UNISIM.VComponents.all;
 
 entity usb is
-    Port ( d_bus		:	INOUT	STD_LOGIC_VECTOR(7 DOWNTO 0);
+    Port ( d_bus		:	INOUT	STD_LOGIC_VECTOR(31 DOWNTO 0);
 			  d_usb		:	INOUT STD_LOGIC_VECTOR(7 DOWNTO 0);
 			  clk			:	IN		STD_LOGIC;
 			  usb_rd_h	:	IN		STD_LOGIC;
@@ -54,8 +54,8 @@ architecture Behavioral of usb is
 	SIGNAL txe_l_sync		:	STD_LOGIC;
 	SIGNAL rxf_l_tmp		:	STD_LOGIC;
 	SIGNAL rxf_l_sync		:	STD_LOGIC;
-	SIGNAL rd_done			:	STD_LOGIC;
-	SIGNAL wr_done			:	STD_LOGIC;
+	SIGNAL rd_done			:	STD_LOGIC := '0';
+	SIGNAL wr_done			:	STD_LOGIC := '0';
 	
 
 begin
@@ -73,7 +73,7 @@ begin
 	poll_txe:PROCESS(txe_oe_l, txe_l_sync)
 	BEGIN
 		IF(txe_oe_l = '0')THEN
-			d_bus <= "0000000" & txe_l_sync;
+			d_bus <= "0000000000000000000000000000000" & txe_l_sync;
 		ELSE
 			d_bus <= (OTHERS => 'Z');
 		END IF;
@@ -82,7 +82,7 @@ begin
 	poll_rxf:PROCESS(rxf_oe_l, rxf_l_sync)
 	BEGIN
 		IF(rxf_oe_l = '0')THEN
-			d_bus <= "0000000" & rxf_l_sync;
+			d_bus <= "0000000000000000000000000000000" & rxf_l_sync;
 		ELSE
 			d_bus <= (OTHERS => 'Z');
 		END IF;
@@ -97,7 +97,7 @@ begin
 					rd_count <= "000";
 					rd_l <= '1';
 					rd_done <= '1';
-					d_bus <= d_usb;
+					d_bus <= "000000000000000000000000" & d_usb;
 				ELSE
 					rd_count <= rd_count + '1';
 					d_bus <= (OTHERS => 'Z');
@@ -133,7 +133,7 @@ begin
 				ELSIF(wr_count > 1)THEN
 					wr_count <= wr_count + 1;
 					wr_h <= '1';
-					d_usb <= d_bus;
+					d_usb <= d_bus(7 DOWNTO 0);
 				ELSIF(wr_count > 0)THEN
 					wr_count <= wr_count + 1;
 					wr_h <= '1';
