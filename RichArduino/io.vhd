@@ -142,12 +142,27 @@ begin
 		END IF;
 	END PROCESS write_pin;
 	
-	pins <= reg21(0) & reg20(0) & reg19(0) & reg18(0)
-			& reg17(0) & reg16(0) & reg15(0) & reg14(0)
-			& reg13(0) & reg12(0) & reg11(0) & reg10(0)
-			& reg9(0) & reg8(0) & reg7(0) & reg6(0)
-			& reg5(0) & reg4(0) & reg3(0) & reg2(0)
-			& reg1(0) & reg0(0);
+	pins(0) <= reg0(0) WHEN (reg0(1) = '1') ELSE 'Z';
+	pins(1) <= reg1(0) WHEN (reg1(1) = '1') ELSE 'Z';
+	pins(2) <= reg2(0) WHEN (reg2(1) = '1') ELSE 'Z';
+	pins(3) <= reg3(0) WHEN (reg3(1) = '1') ELSE 'Z';
+	pins(4) <= reg4(0) WHEN (reg4(1) = '1') ELSE 'Z';
+	pins(5) <= reg5(0) WHEN (reg5(1) = '1') ELSE 'Z';
+	pins(6) <= reg6(0) WHEN (reg6(1) = '1') ELSE 'Z';
+	pins(7) <= reg7(0) WHEN (reg7(1) = '1') ELSE 'Z';
+	pins(8) <= reg8(0) WHEN (reg8(1) = '1') ELSE 'Z';
+	pins(9) <= reg9(0) WHEN (reg9(1) = '1') ELSE 'Z';
+	pins(11) <= reg11(0) WHEN (reg11(1) = '1') ELSE 'Z';
+	pins(12) <= reg12(0) WHEN (reg12(1) = '1') ELSE 'Z';
+	pins(13) <= reg13(0) WHEN (reg13(1) = '1') ELSE 'Z';
+	pins(14) <= reg14(0) WHEN (reg14(1) = '1') ELSE 'Z';
+	pins(15) <= reg15(0) WHEN (reg15(1) = '1') ELSE 'Z';
+	pins(16) <= reg16(0) WHEN (reg16(1) = '1') ELSE 'Z';
+	pins(17) <= reg17(0) WHEN (reg17(1) = '1') ELSE 'Z';
+	pins(18) <= reg18(0) WHEN (reg18(1) = '1') ELSE 'Z';
+	pins(19) <= reg19(0) WHEN (reg19(1) = '1') ELSE 'Z';
+	pins(20) <= reg20(0) WHEN (reg20(1) = '1') ELSE 'Z';
+	pins(21) <= reg21(0) WHEN (reg21(1) = '1') ELSE 'Z';
 
 end Behavioral;
 
