@@ -152,6 +152,7 @@ begin
 	pins(7) <= reg7(0) WHEN (reg7(1) = '1') ELSE 'Z';
 	pins(8) <= reg8(0) WHEN (reg8(1) = '1') ELSE 'Z';
 	pins(9) <= reg9(0) WHEN (reg9(1) = '1') ELSE 'Z';
+	pins(10) <= reg10(0) WHEN (reg10(1) = '1') ELSE 'Z';
 	pins(11) <= reg11(0) WHEN (reg11(1) = '1') ELSE 'Z';
 	pins(12) <= reg12(0) WHEN (reg12(1) = '1') ELSE 'Z';
 	pins(13) <= reg13(0) WHEN (reg13(1) = '1') ELSE 'Z';
