@@ -58,3 +58,6 @@ RichArduino/usage_statistics_webtalk.html
 RichArduino/xlnx_auto_0_xdb/
 RichArduino/my_char_rom.mif
 RichArduino/my_text_ram.mif
+RichArduino/testbench.pwr
+RichArduino/webtalk_power.xml
+

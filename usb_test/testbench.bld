@@ -1,0 +1,45 @@
+Release 14.7 ngdbuild P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+Command Line: /opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/ngdbuild -intstyle
+ise -dd _ngo -sd usb_test/ipcore_dir -nt timestamp -uc usb_test/artix7.ucf -p
+xc7a100t-csg324-3 testbench.ngc testbench.ngd
+
+Reading NGO file
+"/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/
+usb_test/testbench.ngc" ...
+Gathering constraint information from source properties...
+Done.
+
+Annotating constraints to design from ucf file "usb_test/artix7.ucf" ...
+Resolving constraint associations...
+Checking Constraint Associations...
+INFO:ConstraintSystem:178 - TNM 'clk', used in period specification 'TS_CLK',
+   was traced into MMCME2_ADV instance mydcm1/mmcm_adv_inst. The following new
+   TNM groups and period specifications were generated at the MMCME2_ADV
+   output(s): 
+   CLKOUT1: <TIMESPEC TS_mydcm1_clkout1 = PERIOD "mydcm1_clkout1" TS_CLK / 0.5
+   HIGH 50%>
+
+Done...
+
+Checking expanded design ...
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+NGDBUILD Design Results Summary:
+  Number of errors:     0
+  Number of warnings:   0
+
+Total memory usage is 467980 kilobytes
+
+Writing NGD file "testbench.ngd" ...
+Total REAL time to NGDBUILD completion:  6 sec
+Total CPU time to NGDBUILD completion:   6 sec
+
+Writing NGDBUILD log file "testbench.bld"...

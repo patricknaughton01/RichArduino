@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/testbench.ncd
+OUTFILE=/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/testbench.bit
+FAMILY=Artix7
+PART=xc7a100t-3csg324
+WORKINGDIR=/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test
+LICENSE=WebPack
+USER_INFO=211476497_0_0_215

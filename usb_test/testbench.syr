@@ -1,0 +1,1185 @@
+Release 14.7 - xst P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.04 secs
+ 
+--> 
+Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.05 secs
+ 
+--> 
+Reading design: testbench.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "testbench.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "testbench"
+Output Format                      : NGC
+Target Device                      : xc7a100t-3-csg324
+
+---- Source Options
+Top Module Name                    : testbench
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 32
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+---- Other Options
+Cores Search Directories           : {"usb_test/ipcore_dir"  }
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Parsing VHDL file "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/ipcore_dir/mydcm.vhd" into library work
+Parsing entity <mydcm>.
+Parsing architecture <xilinx> of entity <mydcm>.
+Parsing VHDL file "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/shiftcounter.vhd" into library work
+Parsing entity <shiftcounter>.
+Parsing architecture <behavioral> of entity <shiftcounter>.
+Parsing VHDL file "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/regfile.vhd" into library work
+Parsing entity <regfile>.
+Parsing architecture <behavioral> of entity <regfile>.
+Parsing VHDL file "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/pc.vhd" into library work
+Parsing entity <pc>.
+Parsing architecture <behavioral> of entity <pc>.
+Parsing VHDL file "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/md.vhd" into library work
+Parsing entity <md>.
+Parsing architecture <behavioral> of entity <md>.
+Parsing VHDL file "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/ma.vhd" into library work
+Parsing entity <ma>.
+Parsing architecture <behavioral> of entity <ma>.
+Parsing VHDL file "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/ir.vhd" into library work
+Parsing entity <ir>.
+Parsing architecture <behavioral> of entity <ir>.
+Parsing VHDL file "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/control.vhd" into library work
+Parsing entity <control>.
+Parsing architecture <behavioral> of entity <control>.
+Parsing VHDL file "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/conbit.vhd" into library work
+Parsing entity <conbit>.
+Parsing architecture <behavioral> of entity <conbit>.
+Parsing VHDL file "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/c.vhd" into library work
+Parsing entity <c>.
+Parsing architecture <behavioral> of entity <c>.
+Parsing VHDL file "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/alu.vhd" into library work
+Parsing entity <alu>.
+Parsing architecture <behavioral> of entity <alu>.
+Parsing VHDL file "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/a.vhd" into library work
+Parsing entity <a>.
+Parsing architecture <behavioral> of entity <a>.
+Parsing VHDL file "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/usb.vhd" into library work
+Parsing entity <usb>.
+Parsing architecture <Behavioral> of entity <usb>.
+Parsing VHDL file "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/sram.vhd" into library work
+Parsing entity <sram>.
+Parsing architecture <behavioral> of entity <sram>.
+Parsing VHDL file "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/rsrc.vhd" into library work
+Parsing entity <rsrc>.
+Parsing architecture <structure> of entity <rsrc>.
+Parsing VHDL file "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/eprom.vhd" into library work
+Parsing entity <eprom>.
+Parsing architecture <behavioral> of entity <eprom>.
+Parsing VHDL file "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/testbench.vhd" into library work
+Parsing entity <testbench>.
+Parsing architecture <structure> of entity <testbench>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating entity <testbench> (architecture <structure>) from library <work>.
+
+Elaborating entity <mydcm> (architecture <xilinx>) from library <work>.
+WARNING:HDLCompiler:1127 - "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/testbench.vhd" Line 127: Assignment to io_we_l ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/testbench.vhd" Line 128: Assignment to io_oe_l ignored, since the identifier is never used
+
+Elaborating entity <rsrc> (architecture <structure>) from library <work>.
+
+Elaborating entity <pc> (architecture <behavioral>) from library <work>.
+
+Elaborating entity <a> (architecture <behavioral>) from library <work>.
+
+Elaborating entity <c> (architecture <behavioral>) from library <work>.
+
+Elaborating entity <alu> (architecture <behavioral>) from library <work>.
+
+Elaborating entity <shiftcounter> (architecture <behavioral>) from library <work>.
+
+Elaborating entity <regfile> (architecture <behavioral>) from library <work>.
+
+Elaborating entity <ma> (architecture <behavioral>) from library <work>.
+
+Elaborating entity <md> (architecture <behavioral>) from library <work>.
+
+Elaborating entity <ir> (architecture <behavioral>) from library <work>.
+
+Elaborating entity <conbit> (architecture <behavioral>) from library <work>.
+
+Elaborating entity <control> (architecture <behavioral>) from library <work>.
+
+Elaborating entity <eprom> (architecture <behavioral>) from library <work>.
+
+Elaborating entity <sram> (architecture <behavioral>) from library <work>.
+WARNING:HDLCompiler:1127 - "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/testbench.vhd" Line 164: Assignment to hdmi_wea ignored, since the identifier is never used
+
+Elaborating entity <usb> (architecture <Behavioral>) from library <work>.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <testbench>.
+    Related source file is "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/testbench.vhd".
+INFO:Xst:3210 - "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/testbench.vhd" line 99: Output port <CLK_OUT1> of the instance <mydcm1> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/testbench.vhd" line 99: Output port <CLK_OUT3> of the instance <mydcm1> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/testbench.vhd" line 149: Output port <d> of the instance <erpom1> is unconnected or connected to loadless signal.
+    Found 1-bit register for signal <reset_l_sync>.
+    Found 1-bit register for signal <reset_l_temp>.
+    Found 32-bit comparator lessequal for signal <n0019> created at line 126
+    Summary:
+	inferred   2 D-type flip-flop(s).
+	inferred   1 Comparator(s).
+Unit <testbench> synthesized.
+
+Synthesizing Unit <mydcm>.
+    Related source file is "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/ipcore_dir/mydcm.vhd".
+    Summary:
+	no macro.
+Unit <mydcm> synthesized.
+
+Synthesizing Unit <rsrc>.
+    Related source file is "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/rsrc.vhd".
+    Summary:
+	no macro.
+Unit <rsrc> synthesized.
+
+Synthesizing Unit <pc>.
+    Related source file is "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/pc.vhd".
+    Found 32-bit register for signal <pc>.
+    Found 1-bit tristate buffer for signal <bus_out<31>> created at line 37
+    Found 1-bit tristate buffer for signal <bus_out<30>> created at line 37
+    Found 1-bit tristate buffer for signal <bus_out<29>> created at line 37
+    Found 1-bit tristate buffer for signal <bus_out<28>> created at line 37
+    Found 1-bit tristate buffer for signal <bus_out<27>> created at line 37
+    Found 1-bit tristate buffer for signal <bus_out<26>> created at line 37
+    Found 1-bit tristate buffer for signal <bus_out<25>> created at line 37
+    Found 1-bit tristate buffer for signal <bus_out<24>> created at line 37
+    Found 1-bit tristate buffer for signal <bus_out<23>> created at line 37
+    Found 1-bit tristate buffer for signal <bus_out<22>> created at line 37
+    Found 1-bit tristate buffer for signal <bus_out<21>> created at line 37
+    Found 1-bit tristate buffer for signal <bus_out<20>> created at line 37
+    Found 1-bit tristate buffer for signal <bus_out<19>> created at line 37
+    Found 1-bit tristate buffer for signal <bus_out<18>> created at line 37
+    Found 1-bit tristate buffer for signal <bus_out<17>> created at line 37
+    Found 1-bit tristate buffer for signal <bus_out<16>> created at line 37
+    Found 1-bit tristate buffer for signal <bus_out<15>> created at line 37
+    Found 1-bit tristate buffer for signal <bus_out<14>> created at line 37
+    Found 1-bit tristate buffer for signal <bus_out<13>> created at line 37
+    Found 1-bit tristate buffer for signal <bus_out<12>> created at line 37
+    Found 1-bit tristate buffer for signal <bus_out<11>> created at line 37
+    Found 1-bit tristate buffer for signal <bus_out<10>> created at line 37
+    Found 1-bit tristate buffer for signal <bus_out<9>> created at line 37
+    Found 1-bit tristate buffer for signal <bus_out<8>> created at line 37
+    Found 1-bit tristate buffer for signal <bus_out<7>> created at line 37
+    Found 1-bit tristate buffer for signal <bus_out<6>> created at line 37
+    Found 1-bit tristate buffer for signal <bus_out<5>> created at line 37
+    Found 1-bit tristate buffer for signal <bus_out<4>> created at line 37
+    Found 1-bit tristate buffer for signal <bus_out<3>> created at line 37
+    Found 1-bit tristate buffer for signal <bus_out<2>> created at line 37
+    Found 1-bit tristate buffer for signal <bus_out<1>> created at line 37
+    Found 1-bit tristate buffer for signal <bus_out<0>> created at line 37
+    Summary:
+	inferred  32 D-type flip-flop(s).
+	inferred  32 Tristate(s).
+Unit <pc> synthesized.
+
+Synthesizing Unit <a>.
+    Related source file is "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/a.vhd".
+    Found 32-bit register for signal <a>.
+    Summary:
+	inferred  32 D-type flip-flop(s).
+Unit <a> synthesized.
+
+Synthesizing Unit <c>.
+    Related source file is "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/c.vhd".
+    Found 32-bit register for signal <c>.
+    Found 1-bit tristate buffer for signal <bus_out<31>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<30>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<29>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<28>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<27>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<26>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<25>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<24>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<23>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<22>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<21>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<20>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<19>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<18>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<17>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<16>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<15>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<14>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<13>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<12>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<11>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<10>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<9>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<8>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<7>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<6>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<5>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<4>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<3>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<2>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<1>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<0>> created at line 33
+    Summary:
+	inferred  32 D-type flip-flop(s).
+	inferred  32 Tristate(s).
+Unit <c> synthesized.
+
+Synthesizing Unit <alu>.
+    Related source file is "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/alu.vhd".
+    Found 32-bit adder for signal <a[31]_b[31]_add_1_OUT> created at line 44.
+    Found 32-bit adder for signal <b[31]_GND_109_o_add_4_OUT> created at line 48.
+    Found 32-bit subtractor for signal <GND_109_o_GND_109_o_sub_3_OUT<31:0>> created at line 45.
+    Found 32-bit subtractor for signal <GND_109_o_GND_109_o_sub_6_OUT<31:0>> created at line 49.
+    Found 32-bit 32-to-1 multiplexer for signal <bshr> created at line 60.
+    Found 32-bit 32-to-1 multiplexer for signal <bshl> created at line 98.
+    Found 32-bit 32-to-1 multiplexer for signal <bshc> created at line 136.
+    Found 32-bit 32-to-1 multiplexer for signal <n[4]_PWR_14_o_wide_mux_26_OUT> created at line 210.
+    Summary:
+	inferred   4 Adder/Subtractor(s).
+	inferred   5 Multiplexer(s).
+Unit <alu> synthesized.
+
+Synthesizing Unit <shiftcounter>.
+    Related source file is "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/shiftcounter.vhd".
+WARNING:Xst:647 - Input <rrc<31:5>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <ir<31:5>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Summary:
+	inferred   1 Multiplexer(s).
+Unit <shiftcounter> synthesized.
+
+Synthesizing Unit <regfile>.
+    Related source file is "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/regfile.vhd".
+WARNING:Xst:647 - Input <ir<11:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <ir<31:27>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 32-bit register for signal <reg1>.
+    Found 32-bit register for signal <reg2>.
+    Found 32-bit register for signal <reg3>.
+    Found 32-bit register for signal <reg4>.
+    Found 32-bit register for signal <reg5>.
+    Found 32-bit register for signal <reg6>.
+    Found 32-bit register for signal <reg7>.
+    Found 32-bit register for signal <reg8>.
+    Found 32-bit register for signal <reg9>.
+    Found 32-bit register for signal <reg10>.
+    Found 32-bit register for signal <reg11>.
+    Found 32-bit register for signal <reg12>.
+    Found 32-bit register for signal <reg13>.
+    Found 32-bit register for signal <reg14>.
+    Found 32-bit register for signal <reg15>.
+    Found 32-bit register for signal <reg16>.
+    Found 32-bit register for signal <reg17>.
+    Found 32-bit register for signal <reg18>.
+    Found 32-bit register for signal <reg19>.
+    Found 32-bit register for signal <reg20>.
+    Found 32-bit register for signal <reg21>.
+    Found 32-bit register for signal <reg22>.
+    Found 32-bit register for signal <reg23>.
+    Found 32-bit register for signal <reg24>.
+    Found 32-bit register for signal <reg25>.
+    Found 32-bit register for signal <reg26>.
+    Found 32-bit register for signal <reg27>.
+    Found 32-bit register for signal <reg28>.
+    Found 32-bit register for signal <reg29>.
+    Found 32-bit register for signal <reg30>.
+    Found 32-bit register for signal <reg31>.
+    Found 32-bit register for signal <reg0>.
+    Found 32-bit 32-to-1 multiplexer for signal <mux_out[4]_reg31[31]_wide_mux_103_OUT> created at line 131.
+    Found 32-bit 32-to-1 multiplexer for signal <rrc> created at line 179.
+    Found 1-bit tristate buffer for signal <bus_out<31>> created at line 125
+    Found 1-bit tristate buffer for signal <bus_out<30>> created at line 125
+    Found 1-bit tristate buffer for signal <bus_out<29>> created at line 125
+    Found 1-bit tristate buffer for signal <bus_out<28>> created at line 125
+    Found 1-bit tristate buffer for signal <bus_out<27>> created at line 125
+    Found 1-bit tristate buffer for signal <bus_out<26>> created at line 125
+    Found 1-bit tristate buffer for signal <bus_out<25>> created at line 125
+    Found 1-bit tristate buffer for signal <bus_out<24>> created at line 125
+    Found 1-bit tristate buffer for signal <bus_out<23>> created at line 125
+    Found 1-bit tristate buffer for signal <bus_out<22>> created at line 125
+    Found 1-bit tristate buffer for signal <bus_out<21>> created at line 125
+    Found 1-bit tristate buffer for signal <bus_out<20>> created at line 125
+    Found 1-bit tristate buffer for signal <bus_out<19>> created at line 125
+    Found 1-bit tristate buffer for signal <bus_out<18>> created at line 125
+    Found 1-bit tristate buffer for signal <bus_out<17>> created at line 125
+    Found 1-bit tristate buffer for signal <bus_out<16>> created at line 125
+    Found 1-bit tristate buffer for signal <bus_out<15>> created at line 125
+    Found 1-bit tristate buffer for signal <bus_out<14>> created at line 125
+    Found 1-bit tristate buffer for signal <bus_out<13>> created at line 125
+    Found 1-bit tristate buffer for signal <bus_out<12>> created at line 125
+    Found 1-bit tristate buffer for signal <bus_out<11>> created at line 125
+    Found 1-bit tristate buffer for signal <bus_out<10>> created at line 125
+    Found 1-bit tristate buffer for signal <bus_out<9>> created at line 125
+    Found 1-bit tristate buffer for signal <bus_out<8>> created at line 125
+    Found 1-bit tristate buffer for signal <bus_out<7>> created at line 125
+    Found 1-bit tristate buffer for signal <bus_out<6>> created at line 125
+    Found 1-bit tristate buffer for signal <bus_out<5>> created at line 125
+    Found 1-bit tristate buffer for signal <bus_out<4>> created at line 125
+    Found 1-bit tristate buffer for signal <bus_out<3>> created at line 125
+    Found 1-bit tristate buffer for signal <bus_out<2>> created at line 125
+    Found 1-bit tristate buffer for signal <bus_out<1>> created at line 125
+    Found 1-bit tristate buffer for signal <bus_out<0>> created at line 125
+    Summary:
+	inferred 1024 D-type flip-flop(s).
+	inferred  18 Multiplexer(s).
+	inferred  32 Tristate(s).
+Unit <regfile> synthesized.
+
+Synthesizing Unit <ma>.
+    Related source file is "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/ma.vhd".
+    Found 32-bit register for signal <address>.
+    Summary:
+	inferred  32 D-type flip-flop(s).
+Unit <ma> synthesized.
+
+Synthesizing Unit <md>.
+    Related source file is "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/md.vhd".
+    Found 32-bit register for signal <mdi>.
+    Found 32-bit register for signal <mdo>.
+    Found 1-bit tristate buffer for signal <bus_out<31>> created at line 40
+    Found 1-bit tristate buffer for signal <bus_out<30>> created at line 40
+    Found 1-bit tristate buffer for signal <bus_out<29>> created at line 40
+    Found 1-bit tristate buffer for signal <bus_out<28>> created at line 40
+    Found 1-bit tristate buffer for signal <bus_out<27>> created at line 40
+    Found 1-bit tristate buffer for signal <bus_out<26>> created at line 40
+    Found 1-bit tristate buffer for signal <bus_out<25>> created at line 40
+    Found 1-bit tristate buffer for signal <bus_out<24>> created at line 40
+    Found 1-bit tristate buffer for signal <bus_out<23>> created at line 40
+    Found 1-bit tristate buffer for signal <bus_out<22>> created at line 40
+    Found 1-bit tristate buffer for signal <bus_out<21>> created at line 40
+    Found 1-bit tristate buffer for signal <bus_out<20>> created at line 40
+    Found 1-bit tristate buffer for signal <bus_out<19>> created at line 40
+    Found 1-bit tristate buffer for signal <bus_out<18>> created at line 40
+    Found 1-bit tristate buffer for signal <bus_out<17>> created at line 40
+    Found 1-bit tristate buffer for signal <bus_out<16>> created at line 40
+    Found 1-bit tristate buffer for signal <bus_out<15>> created at line 40
+    Found 1-bit tristate buffer for signal <bus_out<14>> created at line 40
+    Found 1-bit tristate buffer for signal <bus_out<13>> created at line 40
+    Found 1-bit tristate buffer for signal <bus_out<12>> created at line 40
+    Found 1-bit tristate buffer for signal <bus_out<11>> created at line 40
+    Found 1-bit tristate buffer for signal <bus_out<10>> created at line 40
+    Found 1-bit tristate buffer for signal <bus_out<9>> created at line 40
+    Found 1-bit tristate buffer for signal <bus_out<8>> created at line 40
+    Found 1-bit tristate buffer for signal <bus_out<7>> created at line 40
+    Found 1-bit tristate buffer for signal <bus_out<6>> created at line 40
+    Found 1-bit tristate buffer for signal <bus_out<5>> created at line 40
+    Found 1-bit tristate buffer for signal <bus_out<4>> created at line 40
+    Found 1-bit tristate buffer for signal <bus_out<3>> created at line 40
+    Found 1-bit tristate buffer for signal <bus_out<2>> created at line 40
+    Found 1-bit tristate buffer for signal <bus_out<1>> created at line 40
+    Found 1-bit tristate buffer for signal <bus_out<0>> created at line 40
+    Found 1-bit tristate buffer for signal <d<31>> created at line 49
+    Found 1-bit tristate buffer for signal <d<30>> created at line 49
+    Found 1-bit tristate buffer for signal <d<29>> created at line 49
+    Found 1-bit tristate buffer for signal <d<28>> created at line 49
+    Found 1-bit tristate buffer for signal <d<27>> created at line 49
+    Found 1-bit tristate buffer for signal <d<26>> created at line 49
+    Found 1-bit tristate buffer for signal <d<25>> created at line 49
+    Found 1-bit tristate buffer for signal <d<24>> created at line 49
+    Found 1-bit tristate buffer for signal <d<23>> created at line 49
+    Found 1-bit tristate buffer for signal <d<22>> created at line 49
+    Found 1-bit tristate buffer for signal <d<21>> created at line 49
+    Found 1-bit tristate buffer for signal <d<20>> created at line 49
+    Found 1-bit tristate buffer for signal <d<19>> created at line 49
+    Found 1-bit tristate buffer for signal <d<18>> created at line 49
+    Found 1-bit tristate buffer for signal <d<17>> created at line 49
+    Found 1-bit tristate buffer for signal <d<16>> created at line 49
+    Found 1-bit tristate buffer for signal <d<15>> created at line 49
+    Found 1-bit tristate buffer for signal <d<14>> created at line 49
+    Found 1-bit tristate buffer for signal <d<13>> created at line 49
+    Found 1-bit tristate buffer for signal <d<12>> created at line 49
+    Found 1-bit tristate buffer for signal <d<11>> created at line 49
+    Found 1-bit tristate buffer for signal <d<10>> created at line 49
+    Found 1-bit tristate buffer for signal <d<9>> created at line 49
+    Found 1-bit tristate buffer for signal <d<8>> created at line 49
+    Found 1-bit tristate buffer for signal <d<7>> created at line 49
+    Found 1-bit tristate buffer for signal <d<6>> created at line 49
+    Found 1-bit tristate buffer for signal <d<5>> created at line 49
+    Found 1-bit tristate buffer for signal <d<4>> created at line 49
+    Found 1-bit tristate buffer for signal <d<3>> created at line 49
+    Found 1-bit tristate buffer for signal <d<2>> created at line 49
+    Found 1-bit tristate buffer for signal <d<1>> created at line 49
+    Found 1-bit tristate buffer for signal <d<0>> created at line 49
+    Summary:
+	inferred  64 D-type flip-flop(s).
+	inferred  64 Tristate(s).
+Unit <md> synthesized.
+
+Synthesizing Unit <ir>.
+    Related source file is "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/ir.vhd".
+    Found 32-bit register for signal <ir>.
+    Found 1-bit tristate buffer for signal <bus_out<31>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<30>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<29>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<28>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<27>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<26>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<25>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<24>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<23>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<22>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<21>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<20>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<19>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<18>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<17>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<16>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<15>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<14>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<13>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<12>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<11>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<10>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<9>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<8>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<7>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<6>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<5>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<4>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<3>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<2>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<1>> created at line 33
+    Found 1-bit tristate buffer for signal <bus_out<0>> created at line 33
+    Summary:
+	inferred  32 D-type flip-flop(s).
+	inferred   5 Multiplexer(s).
+	inferred  32 Tristate(s).
+Unit <ir> synthesized.
+
+Synthesizing Unit <conbit>.
+    Related source file is "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/conbit.vhd".
+WARNING:Xst:647 - Input <ir<31:3>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Summary:
+	inferred   4 Multiplexer(s).
+Unit <conbit> synthesized.
+
+Synthesizing Unit <control>.
+    Related source file is "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/control.vhd".
+    Found 3-bit register for signal <state>.
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 8                                              |
+    | Transitions        | 17                                             |
+    | Inputs             | 7                                              |
+    | Outputs            | 12                                             |
+    | Clock              | clk (rising_edge)                              |
+    | Reset              | reset_l_INV_92_o (positive)                    |
+    | Reset type         | synchronous                                    |
+    | Reset State        | s0                                             |
+    | Power Up State     | s0                                             |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 1-bit 7-to-1 multiplexer for signal <gra> created at line 189.
+    Found 1-bit 7-to-1 multiplexer for signal <r_in> created at line 189.
+    Summary:
+	inferred 179 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <control> synthesized.
+
+Synthesizing Unit <eprom>.
+    Related source file is "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/eprom.vhd".
+    Found 1-bit tristate buffer for signal <d<31>> created at line 66
+    Found 1-bit tristate buffer for signal <d<30>> created at line 66
+    Found 1-bit tristate buffer for signal <d<29>> created at line 66
+    Found 1-bit tristate buffer for signal <d<28>> created at line 66
+    Found 1-bit tristate buffer for signal <d<27>> created at line 66
+    Found 1-bit tristate buffer for signal <d<26>> created at line 66
+    Found 1-bit tristate buffer for signal <d<25>> created at line 66
+    Found 1-bit tristate buffer for signal <d<24>> created at line 66
+    Found 1-bit tristate buffer for signal <d<23>> created at line 66
+    Found 1-bit tristate buffer for signal <d<22>> created at line 66
+    Found 1-bit tristate buffer for signal <d<21>> created at line 66
+    Found 1-bit tristate buffer for signal <d<20>> created at line 66
+    Found 1-bit tristate buffer for signal <d<19>> created at line 66
+    Found 1-bit tristate buffer for signal <d<18>> created at line 66
+    Found 1-bit tristate buffer for signal <d<17>> created at line 66
+    Found 1-bit tristate buffer for signal <d<16>> created at line 66
+    Found 1-bit tristate buffer for signal <d<15>> created at line 66
+    Found 1-bit tristate buffer for signal <d<14>> created at line 66
+    Found 1-bit tristate buffer for signal <d<13>> created at line 66
+    Found 1-bit tristate buffer for signal <d<12>> created at line 66
+    Found 1-bit tristate buffer for signal <d<11>> created at line 66
+    Found 1-bit tristate buffer for signal <d<10>> created at line 66
+    Found 1-bit tristate buffer for signal <d<9>> created at line 66
+    Found 1-bit tristate buffer for signal <d<8>> created at line 66
+    Found 1-bit tristate buffer for signal <d<7>> created at line 66
+    Found 1-bit tristate buffer for signal <d<6>> created at line 66
+    Found 1-bit tristate buffer for signal <d<5>> created at line 66
+    Found 1-bit tristate buffer for signal <d<4>> created at line 66
+    Found 1-bit tristate buffer for signal <d<3>> created at line 66
+    Found 1-bit tristate buffer for signal <d<2>> created at line 66
+    Found 1-bit tristate buffer for signal <d<1>> created at line 66
+    Found 1-bit tristate buffer for signal <d<0>> created at line 66
+    Summary:
+	inferred   1 Multiplexer(s).
+	inferred  32 Tristate(s).
+Unit <eprom> synthesized.
+
+Synthesizing Unit <sram>.
+    Related source file is "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/sram.vhd".
+    Found 1024x32-bit single-port RAM <Mram_myarray> for signal <myarray>.
+    Found 1-bit tristate buffer for signal <d<31>> created at line 45
+    Found 1-bit tristate buffer for signal <d<30>> created at line 45
+    Found 1-bit tristate buffer for signal <d<29>> created at line 45
+    Found 1-bit tristate buffer for signal <d<28>> created at line 45
+    Found 1-bit tristate buffer for signal <d<27>> created at line 45
+    Found 1-bit tristate buffer for signal <d<26>> created at line 45
+    Found 1-bit tristate buffer for signal <d<25>> created at line 45
+    Found 1-bit tristate buffer for signal <d<24>> created at line 45
+    Found 1-bit tristate buffer for signal <d<23>> created at line 45
+    Found 1-bit tristate buffer for signal <d<22>> created at line 45
+    Found 1-bit tristate buffer for signal <d<21>> created at line 45
+    Found 1-bit tristate buffer for signal <d<20>> created at line 45
+    Found 1-bit tristate buffer for signal <d<19>> created at line 45
+    Found 1-bit tristate buffer for signal <d<18>> created at line 45
+    Found 1-bit tristate buffer for signal <d<17>> created at line 45
+    Found 1-bit tristate buffer for signal <d<16>> created at line 45
+    Found 1-bit tristate buffer for signal <d<15>> created at line 45
+    Found 1-bit tristate buffer for signal <d<14>> created at line 45
+    Found 1-bit tristate buffer for signal <d<13>> created at line 45
+    Found 1-bit tristate buffer for signal <d<12>> created at line 45
+    Found 1-bit tristate buffer for signal <d<11>> created at line 45
+    Found 1-bit tristate buffer for signal <d<10>> created at line 45
+    Found 1-bit tristate buffer for signal <d<9>> created at line 45
+    Found 1-bit tristate buffer for signal <d<8>> created at line 45
+    Found 1-bit tristate buffer for signal <d<7>> created at line 45
+    Found 1-bit tristate buffer for signal <d<6>> created at line 45
+    Found 1-bit tristate buffer for signal <d<5>> created at line 45
+    Found 1-bit tristate buffer for signal <d<4>> created at line 45
+    Found 1-bit tristate buffer for signal <d<3>> created at line 45
+    Found 1-bit tristate buffer for signal <d<2>> created at line 45
+    Found 1-bit tristate buffer for signal <d<1>> created at line 45
+    Found 1-bit tristate buffer for signal <d<0>> created at line 45
+    Summary:
+	inferred   1 RAM(s).
+	inferred  32 Tristate(s).
+Unit <sram> synthesized.
+
+Synthesizing Unit <usb>.
+    Related source file is "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/usb.vhd".
+    Found 1-bit register for signal <txe_l_sync>.
+    Found 1-bit register for signal <rxf_l_tmp>.
+    Found 1-bit register for signal <rxf_l_sync>.
+    Found 3-bit register for signal <rd_count>.
+    Found 1-bit register for signal <rd_l>.
+    Found 1-bit register for signal <rd_done>.
+    Found 1-bit register for signal <usb_rd_h_clk_DFF_44>.
+    Found 3-bit register for signal <wr_count>.
+    Found 1-bit register for signal <wr_h>.
+    Found 8-bit register for signal <Z_23_o_dff_25_OUT>.
+    Found 1-bit register for signal <wr_done>.
+    Found 1-bit register for signal <usb_wr_h_clk_DFF_86>.
+    Found 1-bit register for signal <txe_l_tmp>.
+    Found 8-bit register for signal <Z_23_o_dff_10_OUT>.
+    Found 3-bit adder for signal <rd_count[2]_GND_311_o_add_3_OUT> created at line 102.
+    Found 3-bit adder for signal <wr_count[2]_GND_311_o_add_16_OUT> created at line 142.
+    Found 1-bit tristate buffer for signal <d_bus<31>> created at line 73
+    Found 1-bit tristate buffer for signal <d_bus<30>> created at line 73
+    Found 1-bit tristate buffer for signal <d_bus<29>> created at line 73
+    Found 1-bit tristate buffer for signal <d_bus<28>> created at line 73
+    Found 1-bit tristate buffer for signal <d_bus<27>> created at line 73
+    Found 1-bit tristate buffer for signal <d_bus<26>> created at line 73
+    Found 1-bit tristate buffer for signal <d_bus<25>> created at line 73
+    Found 1-bit tristate buffer for signal <d_bus<24>> created at line 73
+    Found 1-bit tristate buffer for signal <d_bus<23>> created at line 73
+    Found 1-bit tristate buffer for signal <d_bus<22>> created at line 73
+    Found 1-bit tristate buffer for signal <d_bus<21>> created at line 73
+    Found 1-bit tristate buffer for signal <d_bus<20>> created at line 73
+    Found 1-bit tristate buffer for signal <d_bus<19>> created at line 73
+    Found 1-bit tristate buffer for signal <d_bus<18>> created at line 73
+    Found 1-bit tristate buffer for signal <d_bus<17>> created at line 73
+    Found 1-bit tristate buffer for signal <d_bus<16>> created at line 73
+    Found 1-bit tristate buffer for signal <d_bus<15>> created at line 73
+    Found 1-bit tristate buffer for signal <d_bus<14>> created at line 73
+    Found 1-bit tristate buffer for signal <d_bus<13>> created at line 73
+    Found 1-bit tristate buffer for signal <d_bus<12>> created at line 73
+    Found 1-bit tristate buffer for signal <d_bus<11>> created at line 73
+    Found 1-bit tristate buffer for signal <d_bus<10>> created at line 73
+    Found 1-bit tristate buffer for signal <d_bus<9>> created at line 73
+    Found 1-bit tristate buffer for signal <d_bus<8>> created at line 73
+    Found 1-bit tristate buffer for signal <d_bus<7>> created at line 73
+    Found 1-bit tristate buffer for signal <d_bus<6>> created at line 73
+    Found 1-bit tristate buffer for signal <d_bus<5>> created at line 73
+    Found 1-bit tristate buffer for signal <d_bus<4>> created at line 73
+    Found 1-bit tristate buffer for signal <d_bus<3>> created at line 73
+    Found 1-bit tristate buffer for signal <d_bus<2>> created at line 73
+    Found 1-bit tristate buffer for signal <d_bus<1>> created at line 73
+    Found 1-bit tristate buffer for signal <d_bus<0>> created at line 73
+    Found 1-bit tristate buffer for signal <d_bus<31>> created at line 82
+    Found 1-bit tristate buffer for signal <d_bus<30>> created at line 82
+    Found 1-bit tristate buffer for signal <d_bus<29>> created at line 82
+    Found 1-bit tristate buffer for signal <d_bus<28>> created at line 82
+    Found 1-bit tristate buffer for signal <d_bus<27>> created at line 82
+    Found 1-bit tristate buffer for signal <d_bus<26>> created at line 82
+    Found 1-bit tristate buffer for signal <d_bus<25>> created at line 82
+    Found 1-bit tristate buffer for signal <d_bus<24>> created at line 82
+    Found 1-bit tristate buffer for signal <d_bus<23>> created at line 82
+    Found 1-bit tristate buffer for signal <d_bus<22>> created at line 82
+    Found 1-bit tristate buffer for signal <d_bus<21>> created at line 82
+    Found 1-bit tristate buffer for signal <d_bus<20>> created at line 82
+    Found 1-bit tristate buffer for signal <d_bus<19>> created at line 82
+    Found 1-bit tristate buffer for signal <d_bus<18>> created at line 82
+    Found 1-bit tristate buffer for signal <d_bus<17>> created at line 82
+    Found 1-bit tristate buffer for signal <d_bus<16>> created at line 82
+    Found 1-bit tristate buffer for signal <d_bus<15>> created at line 82
+    Found 1-bit tristate buffer for signal <d_bus<14>> created at line 82
+    Found 1-bit tristate buffer for signal <d_bus<13>> created at line 82
+    Found 1-bit tristate buffer for signal <d_bus<12>> created at line 82
+    Found 1-bit tristate buffer for signal <d_bus<11>> created at line 82
+    Found 1-bit tristate buffer for signal <d_bus<10>> created at line 82
+    Found 1-bit tristate buffer for signal <d_bus<9>> created at line 82
+    Found 1-bit tristate buffer for signal <d_bus<8>> created at line 82
+    Found 1-bit tristate buffer for signal <d_bus<7>> created at line 82
+    Found 1-bit tristate buffer for signal <d_bus<6>> created at line 82
+    Found 1-bit tristate buffer for signal <d_bus<5>> created at line 82
+    Found 1-bit tristate buffer for signal <d_bus<4>> created at line 82
+    Found 1-bit tristate buffer for signal <d_bus<3>> created at line 82
+    Found 1-bit tristate buffer for signal <d_bus<2>> created at line 82
+    Found 1-bit tristate buffer for signal <d_bus<1>> created at line 82
+    Found 1-bit tristate buffer for signal <d_bus<0>> created at line 82
+    Found 1-bit tristate buffer for signal <d_bus<31>> created at line 92
+    Found 1-bit tristate buffer for signal <d_bus<30>> created at line 92
+    Found 1-bit tristate buffer for signal <d_bus<29>> created at line 92
+    Found 1-bit tristate buffer for signal <d_bus<28>> created at line 92
+    Found 1-bit tristate buffer for signal <d_bus<27>> created at line 92
+    Found 1-bit tristate buffer for signal <d_bus<26>> created at line 92
+    Found 1-bit tristate buffer for signal <d_bus<25>> created at line 92
+    Found 1-bit tristate buffer for signal <d_bus<24>> created at line 92
+    Found 1-bit tristate buffer for signal <d_bus<23>> created at line 92
+    Found 1-bit tristate buffer for signal <d_bus<22>> created at line 92
+    Found 1-bit tristate buffer for signal <d_bus<21>> created at line 92
+    Found 1-bit tristate buffer for signal <d_bus<20>> created at line 92
+    Found 1-bit tristate buffer for signal <d_bus<19>> created at line 92
+    Found 1-bit tristate buffer for signal <d_bus<18>> created at line 92
+    Found 1-bit tristate buffer for signal <d_bus<17>> created at line 92
+    Found 1-bit tristate buffer for signal <d_bus<16>> created at line 92
+    Found 1-bit tristate buffer for signal <d_bus<15>> created at line 92
+    Found 1-bit tristate buffer for signal <d_bus<14>> created at line 92
+    Found 1-bit tristate buffer for signal <d_bus<13>> created at line 92
+    Found 1-bit tristate buffer for signal <d_bus<12>> created at line 92
+    Found 1-bit tristate buffer for signal <d_bus<11>> created at line 92
+    Found 1-bit tristate buffer for signal <d_bus<10>> created at line 92
+    Found 1-bit tristate buffer for signal <d_bus<9>> created at line 92
+    Found 1-bit tristate buffer for signal <d_bus<8>> created at line 92
+    Found 1-bit tristate buffer for signal <d_bus<7>> created at line 92
+    Found 1-bit tristate buffer for signal <d_bus<6>> created at line 92
+    Found 1-bit tristate buffer for signal <d_bus<5>> created at line 92
+    Found 1-bit tristate buffer for signal <d_bus<4>> created at line 92
+    Found 1-bit tristate buffer for signal <d_bus<3>> created at line 92
+    Found 1-bit tristate buffer for signal <d_bus<2>> created at line 92
+    Found 1-bit tristate buffer for signal <d_bus<1>> created at line 92
+    Found 1-bit tristate buffer for signal <d_bus<0>> created at line 92
+    Found 1-bit tristate buffer for signal <d_usb<7>> created at line 124
+    Found 1-bit tristate buffer for signal <d_usb<6>> created at line 124
+    Found 1-bit tristate buffer for signal <d_usb<5>> created at line 124
+    Found 1-bit tristate buffer for signal <d_usb<4>> created at line 124
+    Found 1-bit tristate buffer for signal <d_usb<3>> created at line 124
+    Found 1-bit tristate buffer for signal <d_usb<2>> created at line 124
+    Found 1-bit tristate buffer for signal <d_usb<1>> created at line 124
+    Found 1-bit tristate buffer for signal <d_usb<0>> created at line 124
+    Found 3-bit comparator greater for signal <GND_311_o_rd_count[2]_LessThan_3_o> created at line 96
+    Found 3-bit comparator lessequal for signal <GND_311_o_rd_count[2]_LessThan_5_o> created at line 104
+    Found 3-bit comparator greater for signal <GND_311_o_wr_count[2]_LessThan_12_o> created at line 128
+    Found 3-bit comparator greater for signal <GND_311_o_wr_count[2]_LessThan_13_o> created at line 133
+    Found 3-bit comparator greater for signal <GND_311_o_wr_count[2]_LessThan_15_o> created at line 137
+    WARNING:Xst:2404 -  FFs/Latches <Z_23_o_dff_10_OUT<31:8>> (without init value) have a constant value of 0 in block <usb>.
+    Summary:
+	inferred   2 Adder/Subtractor(s).
+	inferred  32 D-type flip-flop(s).
+	inferred   5 Comparator(s).
+	inferred   4 Multiplexer(s).
+	inferred 104 Tristate(s).
+Unit <usb> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 1
+ 1024x32-bit single-port RAM                           : 1
+# Adders/Subtractors                                   : 6
+ 3-bit adder                                           : 2
+ 32-bit adder                                          : 2
+ 32-bit subtractor                                     : 2
+# Registers                                            : 55
+ 1-bit register                                        : 12
+ 3-bit register                                        : 2
+ 32-bit register                                       : 39
+ 8-bit register                                        : 2
+# Comparators                                          : 6
+ 3-bit comparator greater                              : 4
+ 3-bit comparator lessequal                            : 1
+ 32-bit comparator lessequal                           : 1
+# Multiplexers                                         : 217
+ 1-bit 2-to-1 multiplexer                              : 203
+ 1-bit 7-to-1 multiplexer                              : 2
+ 3-bit 2-to-1 multiplexer                              : 2
+ 32-bit 2-to-1 multiplexer                             : 3
+ 32-bit 32-to-1 multiplexer                            : 6
+ 5-bit 2-to-1 multiplexer                              : 1
+# Tristates                                            : 360
+ 1-bit tristate buffer                                 : 360
+# FSMs                                                 : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+Synthesizing (advanced) Unit <testbench>.
+INFO:Xst:3225 - The RAM <sram1/Mram_myarray> will be implemented as BLOCK RAM
+    -----------------------------------------------------------------------
+    | ram_type           | Block                               |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 1024-word x 32-bit                  |          |
+    |     mode           | write-first                         |          |
+    |     clkA           | connected to signal <clk_out2>      | rise     |
+    |     weA            | connected to internal node          | high     |
+    |     addrA          | connected to signal <address<11:2>> |          |
+    |     diA            | connected to signal <d>             |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 1024-word x 32-bit                  |          |
+    |     mode           | write-first                         |          |
+    |     clkB           | connected to signal <clk_out2>      | rise     |
+    |     addrB          | connected to signal <rsrc1/cpu_bus<11:2>> |          |
+    |     doB            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+Unit <testbench> synthesized (advanced).
+
+Synthesizing (advanced) Unit <usb>.
+The following registers are absorbed into counter <rd_count>: 1 register on signal <rd_count>.
+The following registers are absorbed into counter <wr_count>: 1 register on signal <wr_count>.
+Unit <usb> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 1
+ 1024x32-bit dual-port block RAM                       : 1
+# Adders/Subtractors                                   : 4
+ 32-bit adder                                          : 2
+ 32-bit subtractor                                     : 2
+# Counters                                             : 2
+ 3-bit up counter                                      : 2
+# Registers                                            : 1276
+ Flip-Flops                                            : 1276
+# Comparators                                          : 6
+ 3-bit comparator greater                              : 4
+ 3-bit comparator lessequal                            : 1
+ 32-bit comparator lessequal                           : 1
+# Multiplexers                                         : 277
+ 1-bit 2-to-1 multiplexer                              : 203
+ 1-bit 32-to-1 multiplexer                             : 64
+ 1-bit 7-to-1 multiplexer                              : 2
+ 32-bit 2-to-1 multiplexer                             : 3
+ 32-bit 32-to-1 multiplexer                            : 4
+ 5-bit 2-to-1 multiplexer                              : 1
+# FSMs                                                 : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <rsrc1/rsrccontrol/FSM_0> on signal <state[1:3]> with user encoding.
+-------------------
+ State | Encoding
+-------------------
+ s0    | 000
+ s1    | 001
+ s2    | 010
+ s3    | 011
+ s4    | 100
+ s5    | 101
+ s6    | 110
+ s7    | 111
+-------------------
+WARNING:Xst:2040 - Unit testbench: 32 multi-source signals are replaced by logic (pull-up yes): d<0>, d<10>, d<11>, d<12>, d<13>, d<14>, d<15>, d<16>, d<17>, d<18>, d<19>, d<1>, d<20>, d<21>, d<22>, d<23>, d<24>, d<25>, d<26>, d<27>, d<28>, d<29>, d<2>, d<30>, d<31>, d<3>, d<4>, d<5>, d<6>, d<7>, d<8>, d<9>.
+WARNING:Xst:2042 - Unit eprom: 32 internal tristates are replaced by logic (pull-up yes): d<0>, d<10>, d<11>, d<12>, d<13>, d<14>, d<15>, d<16>, d<17>, d<18>, d<19>, d<1>, d<20>, d<21>, d<22>, d<23>, d<24>, d<25>, d<26>, d<27>, d<28>, d<29>, d<2>, d<30>, d<31>, d<3>, d<4>, d<5>, d<6>, d<7>, d<8>, d<9>.
+WARNING:Xst:2042 - Unit ir: 32 internal tristates are replaced by logic (pull-up yes): bus_out<0>, bus_out<10>, bus_out<11>, bus_out<12>, bus_out<13>, bus_out<14>, bus_out<15>, bus_out<16>, bus_out<17>, bus_out<18>, bus_out<19>, bus_out<1>, bus_out<20>, bus_out<21>, bus_out<22>, bus_out<23>, bus_out<24>, bus_out<25>, bus_out<26>, bus_out<27>, bus_out<28>, bus_out<29>, bus_out<2>, bus_out<30>, bus_out<31>, bus_out<3>, bus_out<4>, bus_out<5>, bus_out<6>, bus_out<7>, bus_out<8>, bus_out<9>.
+WARNING:Xst:2042 - Unit md: 64 internal tristates are replaced by logic (pull-up yes): bus_out<0>, bus_out<10>, bus_out<11>, bus_out<12>, bus_out<13>, bus_out<14>, bus_out<15>, bus_out<16>, bus_out<17>, bus_out<18>, bus_out<19>, bus_out<1>, bus_out<20>, bus_out<21>, bus_out<22>, bus_out<23>, bus_out<24>, bus_out<25>, bus_out<26>, bus_out<27>, bus_out<28>, bus_out<29>, bus_out<2>, bus_out<30>, bus_out<31>, bus_out<3>, bus_out<4>, bus_out<5>, bus_out<6>, bus_out<7>, bus_out<8>, bus_out<9>, d<0>, d<10>, d<11>, d<12>, d<13>, d<14>, d<15>, d<16>, d<17>, d<18>, d<19>, d<1>, d<20>, d<21>, d<22>, d<23>, d<24>, d<25>, d<26>, d<27>, d<28>, d<29>, d<2>, d<30>, d<31>, d<3>, d<4>, d<5>, d<6>, d<7>, d<8>, d<9>.
+WARNING:Xst:2042 - Unit regfile: 32 internal tristates are replaced by logic (pull-up yes): bus_out<0>, bus_out<10>, bus_out<11>, bus_out<12>, bus_out<13>, bus_out<14>, bus_out<15>, bus_out<16>, bus_out<17>, bus_out<18>, bus_out<19>, bus_out<1>, bus_out<20>, bus_out<21>, bus_out<22>, bus_out<23>, bus_out<24>, bus_out<25>, bus_out<26>, bus_out<27>, bus_out<28>, bus_out<29>, bus_out<2>, bus_out<30>, bus_out<31>, bus_out<3>, bus_out<4>, bus_out<5>, bus_out<6>, bus_out<7>, bus_out<8>, bus_out<9>.
+WARNING:Xst:2042 - Unit c: 32 internal tristates are replaced by logic (pull-up yes): bus_out<0>, bus_out<10>, bus_out<11>, bus_out<12>, bus_out<13>, bus_out<14>, bus_out<15>, bus_out<16>, bus_out<17>, bus_out<18>, bus_out<19>, bus_out<1>, bus_out<20>, bus_out<21>, bus_out<22>, bus_out<23>, bus_out<24>, bus_out<25>, bus_out<26>, bus_out<27>, bus_out<28>, bus_out<29>, bus_out<2>, bus_out<30>, bus_out<31>, bus_out<3>, bus_out<4>, bus_out<5>, bus_out<6>, bus_out<7>, bus_out<8>, bus_out<9>.
+WARNING:Xst:2042 - Unit pc: 32 internal tristates are replaced by logic (pull-up yes): bus_out<0>, bus_out<10>, bus_out<11>, bus_out<12>, bus_out<13>, bus_out<14>, bus_out<15>, bus_out<16>, bus_out<17>, bus_out<18>, bus_out<19>, bus_out<1>, bus_out<20>, bus_out<21>, bus_out<22>, bus_out<23>, bus_out<24>, bus_out<25>, bus_out<26>, bus_out<27>, bus_out<28>, bus_out<29>, bus_out<2>, bus_out<30>, bus_out<31>, bus_out<3>, bus_out<4>, bus_out<5>, bus_out<6>, bus_out<7>, bus_out<8>, bus_out<9>.
+
+Optimizing unit <a> ...
+
+Optimizing unit <testbench> ...
+
+Optimizing unit <control> ...
+
+Optimizing unit <alu> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block testbench, actual ratio is 4.
+FlipFlop rsrc1/rsrccontrol/state_FSM_FFd2 has been replicated 1 time(s)
+FlipFlop rsrc1/rsrccontrol/state_FSM_FFd3 has been replicated 2 time(s)
+FlipFlop rsrc1/rsrcirreg/ir_27 has been replicated 1 time(s)
+FlipFlop rsrc1/rsrcirreg/ir_29 has been replicated 2 time(s)
+
+Final Macro Processing ...
+
+Processing Unit <testbench> :
+	Found 2-bit shift register for signal <reset_l_sync>.
+	Found 2-bit shift register for signal <usb1/rxf_l_sync>.
+	Found 2-bit shift register for signal <usb1/txe_l_sync>.
+Unit <testbench> processed.
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 1285
+ Flip-Flops                                            : 1285
+# Shift Registers                                      : 3
+ 2-bit shift register                                  : 3
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : testbench.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 1963
+#      GND                         : 1
+#      INV                         : 2
+#      LUT1                        : 1
+#      LUT2                        : 50
+#      LUT3                        : 52
+#      LUT4                        : 66
+#      LUT5                        : 107
+#      LUT6                        : 1346
+#      MUXCY                       : 129
+#      MUXF7                       : 82
+#      VCC                         : 1
+#      XORCY                       : 126
+# FlipFlops/Latches                : 1288
+#      FD                          : 19
+#      FDE                         : 1222
+#      FDR                         : 14
+#      FDRE                        : 32
+#      FDS                         : 1
+# RAMS                             : 1
+#      RAMB36E1                    : 1
+# Shift Registers                  : 3
+#      SRLC16E                     : 3
+# Clock Buffers                    : 4
+#      BUFG                        : 4
+# IO Buffers                       : 14
+#      IBUF                        : 3
+#      IBUFG                       : 1
+#      IOBUF                       : 8
+#      OBUF                        : 2
+# Others                           : 1
+#      MMCME2_ADV                  : 1
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 7a100tcsg324-3 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:            1288  out of  126800     1%  
+ Number of Slice LUTs:                 1627  out of  63400     2%  
+    Number used as Logic:              1624  out of  63400     2%  
+    Number used as Memory:                3  out of  19000     0%  
+       Number used as SRL:                3
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:   2795
+   Number with an unused Flip Flop:    1507  out of   2795    53%  
+   Number with an unused LUT:          1168  out of   2795    41%  
+   Number of fully used LUT-FF pairs:   120  out of   2795     4%  
+   Number of unique control sets:        44
+
+IO Utilization: 
+ Number of IOs:                          14
+ Number of bonded IOBs:                  14  out of    210     6%  
+
+Specific Feature Utilization:
+ Number of Block RAM/FIFO:                1  out of    135     0%  
+    Number using Block RAM only:          1
+ Number of BUFG/BUFGCTRLs:                4  out of     32    12%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+mydcm1/clkout1                     | BUFG                   | 1292  |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -3
+
+   Minimum period: 7.039ns (Maximum Frequency: 142.072MHz)
+   Minimum input arrival time before clock: 0.289ns
+   Maximum output required time after clock: 1.065ns
+   Maximum combinational path delay: 0.001ns
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'mydcm1/clkout1'
+  Clock period: 7.039ns (frequency: 142.072MHz)
+  Total number of paths / destination ports: 8854757 / 2610
+-------------------------------------------------------------------------
+Delay:               7.039ns (Levels of Logic = 13)
+  Source:            rsrc1/rsrccontrol/state_FSM_FFd3_1 (FF)
+  Destination:       rsrc1/rsrccreg/c_30 (FF)
+  Source Clock:      mydcm1/clkout1 rising
+  Destination Clock: mydcm1/clkout1 rising
+
+  Data Path: rsrc1/rsrccontrol/state_FSM_FFd3_1 to rsrc1/rsrccreg/c_30
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              1   0.361   0.693  rsrc1/rsrccontrol/state_FSM_FFd3_1 (rsrc1/rsrccontrol/state_FSM_FFd3_1)
+     LUT6:I0->O            2   0.097   0.384  rsrc1/rsrccontrol/Mmux_c_in162 (rsrc1/rsrccontrol/Mmux_c_in161)
+     LUT6:I4->O            1   0.097   0.295  rsrc1/rsrccontrol/Mmux_c_in163_1 (rsrc1/rsrccontrol/Mmux_c_in163)
+     LUT6:I5->O            5   0.097   0.314  rsrc1/rsrccontrol/Mmux_c_in121 (rsrc1/gra)
+     LUT6:I5->O          288   0.097   0.525  rsrc1/rsrcregfile/Mmux_mux_out<0>11 (rsrc1/rsrcregfile/mux_out<0>)
+     LUT6:I4->O            1   0.097   0.556  rsrc1/rsrcregfile/mux4_10 (rsrc1/rsrcregfile/mux4_10)
+     LUT6:I2->O            1   0.097   0.000  rsrc1/rsrcregfile/mux4_2_f7_G (N518)
+     MUXF7:I1->O           6   0.279   0.318  rsrc1/rsrcregfile/mux4_2_f7 (rsrc1/rsrcregfile/mux_out[4]_reg31[31]_wide_mux_103_OUT<13>)
+     LUT6:I5->O            1   0.097   0.556  rsrc1/cpu_bus<13>LogicTrst_1 (rsrc1/cpu_bus<13>LogicTrst1)
+     LUT6:I2->O            5   0.097   0.530  rsrc1/rsrcalu/n<1>_mmx_out2611 (rsrc1/rsrcalu/n<1>_mmx_out261)
+     LUT6:I3->O            1   0.097   0.379  rsrc1/rsrcalu/n<3>611 (rsrc1/rsrcalu/n<3>_mmx_out141)
+     LUT5:I3->O            1   0.097   0.379  rsrc1/rsrcalu/c<30>8 (rsrc1/rsrcalu/c<30>7)
+     LUT6:I4->O            1   0.097   0.295  rsrc1/rsrcalu/c<30>9 (rsrc1/rsrcalu/c<30>8)
+     LUT6:I5->O            1   0.097   0.000  rsrc1/rsrcalu/c<30>11 (rsrc1/c_bus<30>)
+     FDE:D                     0.008          rsrc1/rsrccreg/c_30
+    ----------------------------------------
+    Total                      7.039ns (1.812ns logic, 5.227ns route)
+                                       (25.7% logic, 74.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'mydcm1/clkout1'
+  Total number of paths / destination ports: 11 / 11
+-------------------------------------------------------------------------
+Offset:              0.289ns (Levels of Logic = 1)
+  Source:            txe_l (PAD)
+  Destination:       usb1/Mshreg_txe_l_sync (FF)
+  Destination Clock: mydcm1/clkout1 rising
+
+  Data Path: txe_l to usb1/Mshreg_txe_l_sync
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             1   0.001   0.279  txe_l_IBUF (txe_l_IBUF)
+     SRLC16E:D                 0.009          usb1/Mshreg_txe_l_sync
+    ----------------------------------------
+    Total                      0.289ns (0.010ns logic, 0.279ns route)
+                                       (3.5% logic, 96.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'mydcm1/clkout1'
+  Total number of paths / destination ports: 18 / 10
+-------------------------------------------------------------------------
+Offset:              1.065ns (Levels of Logic = 2)
+  Source:            usb1/usb_wr_h_clk_DFF_86 (FF)
+  Destination:       usb_bus<7> (PAD)
+  Source Clock:      mydcm1/clkout1 rising
+
+  Data Path: usb1/usb_wr_h_clk_DFF_86 to usb_bus<7>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               1   0.361   0.279  usb1/usb_wr_h_clk_DFF_86 (usb1/usb_wr_h_clk_DFF_86)
+     INV:I->O              8   0.113   0.311  usb1/usb_wr_h_clk_DFF_86_inv1_INV_0 (usb1/usb_wr_h_clk_DFF_86_inv)
+     IOBUF:T->IO               0.000          usb_bus_7_IOBUF (usb_bus<7>)
+    ----------------------------------------
+    Total                      1.065ns (0.474ns logic, 0.591ns route)
+                                       (44.5% logic, 55.5% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               0.001ns (Levels of Logic = 1)
+  Source:            clk (PAD)
+  Destination:       mydcm1/mmcm_adv_inst:CLKIN1 (PAD)
+
+  Data Path: clk to mydcm1/mmcm_adv_inst:CLKIN1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUFG:I->O            0   0.001   0.000  mydcm1/clkin1_buf (mydcm1/clkin1)
+    MMCME2_ADV:CLKIN1          0.000          mydcm1/mmcm_adv_inst
+    ----------------------------------------
+    Total                      0.001ns (0.001ns logic, 0.000ns route)
+                                       (100.0% logic, 0.0% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock mydcm1/clkout1
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+mydcm1/clkout1 |    7.039|         |         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 19.00 secs
+Total CPU time to Xst completion: 19.03 secs
+ 
+--> 
+
+
+Total memory usage is 534804 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   16 (   0 filtered)
+Number of infos    :    4 (   0 filtered)
+
