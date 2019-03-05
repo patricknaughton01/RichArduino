@@ -67,19 +67,19 @@ Timing constraint: TS_mydcm1_clkout1 = PERIOD TIMEGRP "mydcm1_clkout1" TS_CLK /
 0.5 HIGH 50%;
 For more information, see Period Analysis in the Timing Closure User Guide (UG612).
 
- 8885146 paths analyzed, 3135 endpoints analyzed, 0 failing endpoints
+ 8884956 paths analyzed, 3143 endpoints analyzed, 0 failing endpoints
  0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
- Minimum period is  12.756ns.
+ Minimum period is  12.694ns.
 --------------------------------------------------------------------------------
 
-Paths for end point rsrc1/rsrccreg/c_27 (SLICE_X14Y58.C1), 52661 paths
+Paths for end point rsrc1/rsrccreg/c_30 (SLICE_X28Y95.A1), 101749 paths
 --------------------------------------------------------------------------------
-Slack (setup path):     7.244ns (requirement - (data path - clock path skew + uncertainty))
+Slack (setup path):     7.306ns (requirement - (data path - clock path skew + uncertainty))
   Source:               rsrc1/rsrccontrol/state_FSM_FFd1 (FF)
-  Destination:          rsrc1/rsrccreg/c_27 (FF)
+  Destination:          rsrc1/rsrccreg/c_30 (FF)
   Requirement:          20.000ns
-  Data Path Delay:      12.641ns (Levels of Logic = 10)
-  Clock Path Skew:      -0.033ns (0.580 - 0.613)
+  Data Path Delay:      12.526ns (Levels of Logic = 11)
+  Clock Path Skew:      -0.086ns (1.152 - 1.238)
   Source Clock:         clk_out2 rising at 0.000ns
   Destination Clock:    clk_out2 rising at 20.000ns
   Clock Uncertainty:    0.082ns
@@ -89,351 +89,442 @@ Slack (setup path):     7.244ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.147ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: rsrc1/rsrccontrol/state_FSM_FFd1 to rsrc1/rsrccreg/c_27
+  Maximum Data Path at Slow Process Corner: rsrc1/rsrccontrol/state_FSM_FFd1 to rsrc1/rsrccreg/c_30
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X8Y68.AQ       Tcko                  0.393   rsrc1/rsrccontrol/state_FSM_FFd3
+    SLICE_X9Y101.AQ      Tcko                  0.341   rsrc1/rsrccontrol/state_FSM_FFd3
                                                        rsrc1/rsrccontrol/state_FSM_FFd1
-    SLICE_X32Y56.C1      net (fanout=26)       1.397   rsrc1/rsrccontrol/state_FSM_FFd1
-    SLICE_X32Y56.C       Tilo                  0.097   rsrc1/notx
+    SLICE_X35Y92.C1      net (fanout=26)       1.390   rsrc1/rsrccontrol/state_FSM_FFd1
+    SLICE_X35Y92.C       Tilo                  0.097   rsrc1/notx
                                                        rsrc1/rsrccontrol/Mmux_c_in1121
-    SLICE_X9Y60.A2       net (fanout=45)       1.079   rsrc1/rsrccontrol/Mmux_c_in1121
-    SLICE_X9Y60.A        Tilo                  0.097   rsrc1/rsrcalu/c<24>6
+    SLICE_X10Y93.A5      net (fanout=45)       0.836   rsrc1/rsrccontrol/Mmux_c_in1121
+    SLICE_X10Y93.A       Tilo                  0.097   rsrc1/rsrcpc/pc<7>
                                                        rsrc1/rsrccontrol/Mmux_grc11
-    SLICE_X12Y49.A1      net (fanout=5)        0.944   rsrc1/grc
-    SLICE_X12Y49.A       Tilo                  0.097   rsrc1/rsrcregfile/mux_7
-                                                       rsrc1/rsrcregfile/Mmux_mux_out<1>11
-    SLICE_X42Y76.D1      net (fanout=288)      2.345   rsrc1/rsrcregfile/mux_out<1>
-    SLICE_X42Y76.D       Tilo                  0.097   rsrc1/rsrcregfile/reg13<31>
-                                                       rsrc1/rsrcregfile/mux20_10
-    SLICE_X39Y73.C3      net (fanout=1)        0.694   rsrc1/rsrcregfile/mux20_10
-    SLICE_X39Y73.CMUX    Tilo                  0.415   rsrc1/rsrcregfile/mux20_82
-                                                       rsrc1/rsrcregfile/mux20_2_f7_G
-                                                       rsrc1/rsrcregfile/mux20_2_f7
-    SLICE_X28Y68.B2      net (fanout=7)        0.910   rsrc1/rsrcregfile/mux_out[4]_reg31[31]_wide_mux_103_OUT<28>
-    SLICE_X28Y68.B       Tilo                  0.097   rsrc1/rsrcregfile/reg5<31>
-                                                       rsrc1/cpu_bus<28>LogicTrst
-    SLICE_X8Y56.D6       net (fanout=47)       0.954   rsrc1/cpu_bus<28>
-    SLICE_X8Y56.D        Tilo                  0.097   rsrc1/rsrcalu/n<1>_mmx_out12
-                                                       rsrc1/rsrcalu/n<1>_mmx_out121
-    SLICE_X12Y58.C1      net (fanout=9)        0.876   rsrc1/rsrcalu/n<1>_mmx_out12
-    SLICE_X12Y58.C       Tilo                  0.097   rsrc1/rsrcalu/n<3>_mmx_out2
-                                                       rsrc1/rsrcalu/c<27>31
-    SLICE_X32Y54.A1      net (fanout=2)        0.974   rsrc1/rsrcalu/c<27>31
-    SLICE_X32Y54.A       Tilo                  0.097   rsrc1/rsrcalu/c<27>1
-                                                       rsrc1/rsrcalu/c<27>8_SW0
-    SLICE_X14Y58.C1      net (fanout=1)        0.857   N184
-    SLICE_X14Y58.CLK     Tas                   0.027   rsrc1/rsrccreg/c<27>
-                                                       rsrc1/rsrcalu/c<27>8
-                                                       rsrc1/rsrccreg/c_27
-    -------------------------------------------------  ---------------------------
-    Total                                     12.641ns (1.611ns logic, 11.030ns route)
-                                                       (12.7% logic, 87.3% route)
-
---------------------------------------------------------------------------------
-Slack (setup path):     7.247ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               rsrc1/rsrccontrol/state_FSM_FFd3 (FF)
-  Destination:          rsrc1/rsrccreg/c_27 (FF)
-  Requirement:          20.000ns
-  Data Path Delay:      12.638ns (Levels of Logic = 10)
-  Clock Path Skew:      -0.033ns (0.580 - 0.613)
-  Source Clock:         clk_out2 rising at 0.000ns
-  Destination Clock:    clk_out2 rising at 20.000ns
-  Clock Uncertainty:    0.082ns
-
-  Clock Uncertainty:          0.082ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
-    Total System Jitter (TSJ):  0.070ns
-    Discrete Jitter (DJ):       0.147ns
-    Phase Error (PE):           0.000ns
-
-  Maximum Data Path at Slow Process Corner: rsrc1/rsrccontrol/state_FSM_FFd3 to rsrc1/rsrccreg/c_27
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X8Y68.CQ       Tcko                  0.393   rsrc1/rsrccontrol/state_FSM_FFd3
-                                                       rsrc1/rsrccontrol/state_FSM_FFd3
-    SLICE_X32Y56.C2      net (fanout=25)       1.394   rsrc1/rsrccontrol/state_FSM_FFd3
-    SLICE_X32Y56.C       Tilo                  0.097   rsrc1/notx
-                                                       rsrc1/rsrccontrol/Mmux_c_in1121
-    SLICE_X9Y60.A2       net (fanout=45)       1.079   rsrc1/rsrccontrol/Mmux_c_in1121
-    SLICE_X9Y60.A        Tilo                  0.097   rsrc1/rsrcalu/c<24>6
-                                                       rsrc1/rsrccontrol/Mmux_grc11
-    SLICE_X12Y49.A1      net (fanout=5)        0.944   rsrc1/grc
-    SLICE_X12Y49.A       Tilo                  0.097   rsrc1/rsrcregfile/mux_7
-                                                       rsrc1/rsrcregfile/Mmux_mux_out<1>11
-    SLICE_X42Y76.D1      net (fanout=288)      2.345   rsrc1/rsrcregfile/mux_out<1>
-    SLICE_X42Y76.D       Tilo                  0.097   rsrc1/rsrcregfile/reg13<31>
-                                                       rsrc1/rsrcregfile/mux20_10
-    SLICE_X39Y73.C3      net (fanout=1)        0.694   rsrc1/rsrcregfile/mux20_10
-    SLICE_X39Y73.CMUX    Tilo                  0.415   rsrc1/rsrcregfile/mux20_82
-                                                       rsrc1/rsrcregfile/mux20_2_f7_G
-                                                       rsrc1/rsrcregfile/mux20_2_f7
-    SLICE_X28Y68.B2      net (fanout=7)        0.910   rsrc1/rsrcregfile/mux_out[4]_reg31[31]_wide_mux_103_OUT<28>
-    SLICE_X28Y68.B       Tilo                  0.097   rsrc1/rsrcregfile/reg5<31>
-                                                       rsrc1/cpu_bus<28>LogicTrst
-    SLICE_X8Y56.D6       net (fanout=47)       0.954   rsrc1/cpu_bus<28>
-    SLICE_X8Y56.D        Tilo                  0.097   rsrc1/rsrcalu/n<1>_mmx_out12
-                                                       rsrc1/rsrcalu/n<1>_mmx_out121
-    SLICE_X12Y58.C1      net (fanout=9)        0.876   rsrc1/rsrcalu/n<1>_mmx_out12
-    SLICE_X12Y58.C       Tilo                  0.097   rsrc1/rsrcalu/n<3>_mmx_out2
-                                                       rsrc1/rsrcalu/c<27>31
-    SLICE_X32Y54.A1      net (fanout=2)        0.974   rsrc1/rsrcalu/c<27>31
-    SLICE_X32Y54.A       Tilo                  0.097   rsrc1/rsrcalu/c<27>1
-                                                       rsrc1/rsrcalu/c<27>8_SW0
-    SLICE_X14Y58.C1      net (fanout=1)        0.857   N184
-    SLICE_X14Y58.CLK     Tas                   0.027   rsrc1/rsrccreg/c<27>
-                                                       rsrc1/rsrcalu/c<27>8
-                                                       rsrc1/rsrccreg/c_27
-    -------------------------------------------------  ---------------------------
-    Total                                     12.638ns (1.611ns logic, 11.027ns route)
-                                                       (12.7% logic, 87.3% route)
-
---------------------------------------------------------------------------------
-Slack (setup path):     7.342ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               rsrc1/rsrccontrol/state_FSM_FFd1 (FF)
-  Destination:          rsrc1/rsrccreg/c_27 (FF)
-  Requirement:          20.000ns
-  Data Path Delay:      12.543ns (Levels of Logic = 10)
-  Clock Path Skew:      -0.033ns (0.580 - 0.613)
-  Source Clock:         clk_out2 rising at 0.000ns
-  Destination Clock:    clk_out2 rising at 20.000ns
-  Clock Uncertainty:    0.082ns
-
-  Clock Uncertainty:          0.082ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
-    Total System Jitter (TSJ):  0.070ns
-    Discrete Jitter (DJ):       0.147ns
-    Phase Error (PE):           0.000ns
-
-  Maximum Data Path at Slow Process Corner: rsrc1/rsrccontrol/state_FSM_FFd1 to rsrc1/rsrccreg/c_27
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X8Y68.AQ       Tcko                  0.393   rsrc1/rsrccontrol/state_FSM_FFd3
-                                                       rsrc1/rsrccontrol/state_FSM_FFd1
-    SLICE_X32Y56.C1      net (fanout=26)       1.397   rsrc1/rsrccontrol/state_FSM_FFd1
-    SLICE_X32Y56.C       Tilo                  0.097   rsrc1/notx
-                                                       rsrc1/rsrccontrol/Mmux_c_in1121
-    SLICE_X9Y60.A2       net (fanout=45)       1.079   rsrc1/rsrccontrol/Mmux_c_in1121
-    SLICE_X9Y60.A        Tilo                  0.097   rsrc1/rsrcalu/c<24>6
-                                                       rsrc1/rsrccontrol/Mmux_grc11
-    SLICE_X12Y49.A1      net (fanout=5)        0.944   rsrc1/grc
-    SLICE_X12Y49.A       Tilo                  0.097   rsrc1/rsrcregfile/mux_7
-                                                       rsrc1/rsrcregfile/Mmux_mux_out<1>11
-    SLICE_X44Y77.B5      net (fanout=288)      2.143   rsrc1/rsrcregfile/mux_out<1>
-    SLICE_X44Y77.B       Tilo                  0.097   rsrc1/rsrcregfile/reg25<31>
-                                                       rsrc1/rsrcregfile/mux21_81
-    SLICE_X40Y72.D2      net (fanout=1)        0.764   rsrc1/rsrcregfile/mux21_81
-    SLICE_X40Y72.CMUX    Topdc                 0.408   rsrc1/rsrcregfile/mux21_82
-                                                       rsrc1/rsrcregfile/mux21_2_f7_F
-                                                       rsrc1/rsrcregfile/mux21_2_f7
-    SLICE_X29Y61.B2      net (fanout=6)        1.042   rsrc1/rsrcregfile/mux_out[4]_reg31[31]_wide_mux_103_OUT<29>
-    SLICE_X29Y61.B       Tilo                  0.097   rsrc1/rsrcareg/a<31>
-                                                       rsrc1/cpu_bus<29>LogicTrst
-    SLICE_X8Y56.D4       net (fanout=51)       0.863   rsrc1/cpu_bus<29>
-    SLICE_X8Y56.D        Tilo                  0.097   rsrc1/rsrcalu/n<1>_mmx_out12
-                                                       rsrc1/rsrcalu/n<1>_mmx_out121
-    SLICE_X12Y58.C1      net (fanout=9)        0.876   rsrc1/rsrcalu/n<1>_mmx_out12
-    SLICE_X12Y58.C       Tilo                  0.097   rsrc1/rsrcalu/n<3>_mmx_out2
-                                                       rsrc1/rsrcalu/c<27>31
-    SLICE_X32Y54.A1      net (fanout=2)        0.974   rsrc1/rsrcalu/c<27>31
-    SLICE_X32Y54.A       Tilo                  0.097   rsrc1/rsrcalu/c<27>1
-                                                       rsrc1/rsrcalu/c<27>8_SW0
-    SLICE_X14Y58.C1      net (fanout=1)        0.857   N184
-    SLICE_X14Y58.CLK     Tas                   0.027   rsrc1/rsrccreg/c<27>
-                                                       rsrc1/rsrcalu/c<27>8
-                                                       rsrc1/rsrccreg/c_27
-    -------------------------------------------------  ---------------------------
-    Total                                     12.543ns (1.604ns logic, 10.939ns route)
-                                                       (12.8% logic, 87.2% route)
-
---------------------------------------------------------------------------------
-
-Paths for end point rsrc1/rsrccreg/c_29 (SLICE_X15Y61.C2), 43732 paths
---------------------------------------------------------------------------------
-Slack (setup path):     7.364ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               rsrc1/rsrccontrol/state_FSM_FFd1 (FF)
-  Destination:          rsrc1/rsrccreg/c_29 (FF)
-  Requirement:          20.000ns
-  Data Path Delay:      12.519ns (Levels of Logic = 10)
-  Clock Path Skew:      -0.035ns (0.578 - 0.613)
-  Source Clock:         clk_out2 rising at 0.000ns
-  Destination Clock:    clk_out2 rising at 20.000ns
-  Clock Uncertainty:    0.082ns
-
-  Clock Uncertainty:          0.082ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
-    Total System Jitter (TSJ):  0.070ns
-    Discrete Jitter (DJ):       0.147ns
-    Phase Error (PE):           0.000ns
-
-  Maximum Data Path at Slow Process Corner: rsrc1/rsrccontrol/state_FSM_FFd1 to rsrc1/rsrccreg/c_29
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X8Y68.AQ       Tcko                  0.393   rsrc1/rsrccontrol/state_FSM_FFd3
-                                                       rsrc1/rsrccontrol/state_FSM_FFd1
-    SLICE_X32Y56.C1      net (fanout=26)       1.397   rsrc1/rsrccontrol/state_FSM_FFd1
-    SLICE_X32Y56.C       Tilo                  0.097   rsrc1/notx
-                                                       rsrc1/rsrccontrol/Mmux_c_in1121
-    SLICE_X9Y60.A2       net (fanout=45)       1.079   rsrc1/rsrccontrol/Mmux_c_in1121
-    SLICE_X9Y60.A        Tilo                  0.097   rsrc1/rsrcalu/c<24>6
-                                                       rsrc1/rsrccontrol/Mmux_grc11
-    SLICE_X12Y49.A1      net (fanout=5)        0.944   rsrc1/grc
-    SLICE_X12Y49.A       Tilo                  0.097   rsrc1/rsrcregfile/mux_7
-                                                       rsrc1/rsrcregfile/Mmux_mux_out<1>11
-    SLICE_X54Y49.D5      net (fanout=288)      1.499   rsrc1/rsrcregfile/mux_out<1>
-    SLICE_X54Y49.D       Tilo                  0.097   rsrc1/rsrcregfile/reg20<19>
-                                                       rsrc1/rsrcregfile/mux9_81
-    SLICE_X48Y50.D1      net (fanout=1)        0.723   rsrc1/rsrcregfile/mux9_81
-    SLICE_X48Y50.CMUX    Topdc                 0.408   rsrc1/rsrcregfile/mux9_82
-                                                       rsrc1/rsrcregfile/mux9_2_f7_F
-                                                       rsrc1/rsrcregfile/mux9_2_f7
-    SLICE_X34Y56.A2      net (fanout=5)        0.988   rsrc1/rsrcregfile/mux_out[4]_reg31[31]_wide_mux_103_OUT<18>
-    SLICE_X34Y56.A       Tilo                  0.097   rsrc1/rsrcregfile/reg14<21>
-                                                       rsrc1/cpu_bus<18>LogicTrst
-    SLICE_X14Y61.C2      net (fanout=48)       1.619   rsrc1/cpu_bus<18>
-    SLICE_X14Y61.C       Tilo                  0.097   rsrc1/rsrcalu/n<3>_mmx_out72
-                                                       rsrc1/rsrcalu/n<1>_mmx_out2521
-    SLICE_X13Y65.A2      net (fanout=9)        0.911   rsrc1/rsrcalu/n<1>_mmx_out252
-    SLICE_X13Y65.A       Tilo                  0.097   rsrc1/rsrcpc/pc<23>
-                                                       rsrc1/rsrcalu/n<3>1611_SW0
-    SLICE_X14Y65.A2      net (fanout=1)        0.927   N373
-    SLICE_X14Y65.A       Tilo                  0.097   N374
-                                                       rsrc1/rsrcalu/c<29>2
-    SLICE_X15Y61.C2      net (fanout=1)        0.790   rsrc1/rsrcalu/c<29>1
-    SLICE_X15Y61.CLK     Tas                   0.065   rsrc1/rsrccreg/c<29>
-                                                       rsrc1/rsrcalu/c<29>6
-                                                       rsrc1/rsrccreg/c_29
-    -------------------------------------------------  ---------------------------
-    Total                                     12.519ns (1.642ns logic, 10.877ns route)
-                                                       (13.1% logic, 86.9% route)
-
---------------------------------------------------------------------------------
-Slack (setup path):     7.367ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               rsrc1/rsrccontrol/state_FSM_FFd3 (FF)
-  Destination:          rsrc1/rsrccreg/c_29 (FF)
-  Requirement:          20.000ns
-  Data Path Delay:      12.516ns (Levels of Logic = 10)
-  Clock Path Skew:      -0.035ns (0.578 - 0.613)
-  Source Clock:         clk_out2 rising at 0.000ns
-  Destination Clock:    clk_out2 rising at 20.000ns
-  Clock Uncertainty:    0.082ns
-
-  Clock Uncertainty:          0.082ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
-    Total System Jitter (TSJ):  0.070ns
-    Discrete Jitter (DJ):       0.147ns
-    Phase Error (PE):           0.000ns
-
-  Maximum Data Path at Slow Process Corner: rsrc1/rsrccontrol/state_FSM_FFd3 to rsrc1/rsrccreg/c_29
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X8Y68.CQ       Tcko                  0.393   rsrc1/rsrccontrol/state_FSM_FFd3
-                                                       rsrc1/rsrccontrol/state_FSM_FFd3
-    SLICE_X32Y56.C2      net (fanout=25)       1.394   rsrc1/rsrccontrol/state_FSM_FFd3
-    SLICE_X32Y56.C       Tilo                  0.097   rsrc1/notx
-                                                       rsrc1/rsrccontrol/Mmux_c_in1121
-    SLICE_X9Y60.A2       net (fanout=45)       1.079   rsrc1/rsrccontrol/Mmux_c_in1121
-    SLICE_X9Y60.A        Tilo                  0.097   rsrc1/rsrcalu/c<24>6
-                                                       rsrc1/rsrccontrol/Mmux_grc11
-    SLICE_X12Y49.A1      net (fanout=5)        0.944   rsrc1/grc
-    SLICE_X12Y49.A       Tilo                  0.097   rsrc1/rsrcregfile/mux_7
-                                                       rsrc1/rsrcregfile/Mmux_mux_out<1>11
-    SLICE_X54Y49.D5      net (fanout=288)      1.499   rsrc1/rsrcregfile/mux_out<1>
-    SLICE_X54Y49.D       Tilo                  0.097   rsrc1/rsrcregfile/reg20<19>
-                                                       rsrc1/rsrcregfile/mux9_81
-    SLICE_X48Y50.D1      net (fanout=1)        0.723   rsrc1/rsrcregfile/mux9_81
-    SLICE_X48Y50.CMUX    Topdc                 0.408   rsrc1/rsrcregfile/mux9_82
-                                                       rsrc1/rsrcregfile/mux9_2_f7_F
-                                                       rsrc1/rsrcregfile/mux9_2_f7
-    SLICE_X34Y56.A2      net (fanout=5)        0.988   rsrc1/rsrcregfile/mux_out[4]_reg31[31]_wide_mux_103_OUT<18>
-    SLICE_X34Y56.A       Tilo                  0.097   rsrc1/rsrcregfile/reg14<21>
-                                                       rsrc1/cpu_bus<18>LogicTrst
-    SLICE_X14Y61.C2      net (fanout=48)       1.619   rsrc1/cpu_bus<18>
-    SLICE_X14Y61.C       Tilo                  0.097   rsrc1/rsrcalu/n<3>_mmx_out72
-                                                       rsrc1/rsrcalu/n<1>_mmx_out2521
-    SLICE_X13Y65.A2      net (fanout=9)        0.911   rsrc1/rsrcalu/n<1>_mmx_out252
-    SLICE_X13Y65.A       Tilo                  0.097   rsrc1/rsrcpc/pc<23>
-                                                       rsrc1/rsrcalu/n<3>1611_SW0
-    SLICE_X14Y65.A2      net (fanout=1)        0.927   N373
-    SLICE_X14Y65.A       Tilo                  0.097   N374
-                                                       rsrc1/rsrcalu/c<29>2
-    SLICE_X15Y61.C2      net (fanout=1)        0.790   rsrc1/rsrcalu/c<29>1
-    SLICE_X15Y61.CLK     Tas                   0.065   rsrc1/rsrccreg/c<29>
-                                                       rsrc1/rsrcalu/c<29>6
-                                                       rsrc1/rsrccreg/c_29
-    -------------------------------------------------  ---------------------------
-    Total                                     12.516ns (1.642ns logic, 10.874ns route)
-                                                       (13.1% logic, 86.9% route)
-
---------------------------------------------------------------------------------
-Slack (setup path):     7.407ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               rsrc1/rsrccontrol/state_FSM_FFd1 (FF)
-  Destination:          rsrc1/rsrccreg/c_29 (FF)
-  Requirement:          20.000ns
-  Data Path Delay:      12.476ns (Levels of Logic = 10)
-  Clock Path Skew:      -0.035ns (0.578 - 0.613)
-  Source Clock:         clk_out2 rising at 0.000ns
-  Destination Clock:    clk_out2 rising at 20.000ns
-  Clock Uncertainty:    0.082ns
-
-  Clock Uncertainty:          0.082ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
-    Total System Jitter (TSJ):  0.070ns
-    Discrete Jitter (DJ):       0.147ns
-    Phase Error (PE):           0.000ns
-
-  Maximum Data Path at Slow Process Corner: rsrc1/rsrccontrol/state_FSM_FFd1 to rsrc1/rsrccreg/c_29
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X8Y68.AQ       Tcko                  0.393   rsrc1/rsrccontrol/state_FSM_FFd3
-                                                       rsrc1/rsrccontrol/state_FSM_FFd1
-    SLICE_X32Y56.C1      net (fanout=26)       1.397   rsrc1/rsrccontrol/state_FSM_FFd1
-    SLICE_X32Y56.C       Tilo                  0.097   rsrc1/notx
-                                                       rsrc1/rsrccontrol/Mmux_c_in1121
-    SLICE_X9Y60.A2       net (fanout=45)       1.079   rsrc1/rsrccontrol/Mmux_c_in1121
-    SLICE_X9Y60.A        Tilo                  0.097   rsrc1/rsrcalu/c<24>6
-                                                       rsrc1/rsrccontrol/Mmux_grc11
-    SLICE_X8Y58.D1       net (fanout=5)        0.633   rsrc1/grc
-    SLICE_X8Y58.D        Tilo                  0.097   rsrc1/rsrcregfile/mux_out<0>
+    SLICE_X13Y92.D2      net (fanout=5)        0.712   rsrc1/grc
+    SLICE_X13Y92.D       Tilo                  0.097   rsrc1/rsrcirreg/ir<22>
                                                        rsrc1/rsrcregfile/Mmux_mux_out<0>11
-    SLICE_X54Y49.D4      net (fanout=288)      1.767   rsrc1/rsrcregfile/mux_out<0>
-    SLICE_X54Y49.D       Tilo                  0.097   rsrc1/rsrcregfile/reg20<19>
-                                                       rsrc1/rsrcregfile/mux9_81
-    SLICE_X48Y50.D1      net (fanout=1)        0.723   rsrc1/rsrcregfile/mux9_81
-    SLICE_X48Y50.CMUX    Topdc                 0.408   rsrc1/rsrcregfile/mux9_82
-                                                       rsrc1/rsrcregfile/mux9_2_f7_F
-                                                       rsrc1/rsrcregfile/mux9_2_f7
-    SLICE_X34Y56.A2      net (fanout=5)        0.988   rsrc1/rsrcregfile/mux_out[4]_reg31[31]_wide_mux_103_OUT<18>
-    SLICE_X34Y56.A       Tilo                  0.097   rsrc1/rsrcregfile/reg14<21>
-                                                       rsrc1/cpu_bus<18>LogicTrst
-    SLICE_X14Y61.C2      net (fanout=48)       1.619   rsrc1/cpu_bus<18>
-    SLICE_X14Y61.C       Tilo                  0.097   rsrc1/rsrcalu/n<3>_mmx_out72
+    SLICE_X45Y70.A1      net (fanout=288)      1.958   rsrc1/rsrcregfile/mux_out<0>
+    SLICE_X45Y70.A       Tilo                  0.097   rsrc1/rsrcregfile/reg12<11>
+                                                       rsrc1/rsrcregfile/mux2_10
+    SLICE_X43Y71.C1      net (fanout=1)        0.686   rsrc1/rsrcregfile/mux2_10
+    SLICE_X43Y71.CMUX    Tilo                  0.415   rsrc1/rsrcregfile/mux2_82
+                                                       rsrc1/rsrcregfile/mux2_2_f7_G
+                                                       rsrc1/rsrcregfile/mux2_2_f7
+    SLICE_X35Y86.A2      net (fanout=6)        1.264   rsrc1/rsrcregfile/mux_out[4]_reg31[31]_wide_mux_103_OUT<11>
+    SLICE_X35Y86.A       Tilo                  0.097   rsrc1/cpu_bus<11>LogicTrst1
+                                                       rsrc1/cpu_bus<11>LogicTrst_1
+    SLICE_X34Y87.D1      net (fanout=1)        0.606   rsrc1/cpu_bus<11>LogicTrst1
+    SLICE_X34Y87.D       Tilo                  0.097   rsrc1/rsrcregfile/reg19<15>
+                                                       rsrc1/rsrcalu/n<1>_mmx_out2611
+    SLICE_X30Y85.B1      net (fanout=5)        0.828   rsrc1/rsrcalu/n<1>_mmx_out261
+    SLICE_X30Y85.B       Tilo                  0.097   N196
+                                                       rsrc1/rsrcalu/n<3>611
+    SLICE_X8Y92.B2       net (fanout=1)        1.102   rsrc1/rsrcalu/n<3>_mmx_out141
+    SLICE_X8Y92.B        Tilo                  0.097   rsrc1/sub
+                                                       rsrc1/rsrcalu/c<30>8
+    SLICE_X28Y95.B4      net (fanout=1)        0.796   rsrc1/rsrcalu/c<30>7
+    SLICE_X28Y95.B       Tilo                  0.097   rsrc1/rsrccreg/c<31>
+                                                       rsrc1/rsrcalu/c<30>9
+    SLICE_X28Y95.A1      net (fanout=1)        0.652   rsrc1/rsrcalu/c<30>8
+    SLICE_X28Y95.CLK     Tas                   0.067   rsrc1/rsrccreg/c<31>
+                                                       rsrc1/rsrcalu/c<30>11
+                                                       rsrc1/rsrccreg/c_30
+    -------------------------------------------------  ---------------------------
+    Total                                     12.526ns (1.696ns logic, 10.830ns route)
+                                                       (13.5% logic, 86.5% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     7.361ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               rsrc1/rsrccontrol/state_FSM_FFd2_1 (FF)
+  Destination:          rsrc1/rsrccreg/c_30 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      12.471ns (Levels of Logic = 12)
+  Clock Path Skew:      -0.086ns (1.152 - 1.238)
+  Source Clock:         clk_out2 rising at 0.000ns
+  Destination Clock:    clk_out2 rising at 20.000ns
+  Clock Uncertainty:    0.082ns
+
+  Clock Uncertainty:          0.082ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Discrete Jitter (DJ):       0.147ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: rsrc1/rsrccontrol/state_FSM_FFd2_1 to rsrc1/rsrccreg/c_30
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X8Y101.CQ      Tcko                  0.393   rsrc1/rsrccontrol/state_FSM_FFd2_1
+                                                       rsrc1/rsrccontrol/state_FSM_FFd2_1
+    SLICE_X11Y99.D2      net (fanout=1)        0.817   rsrc1/rsrccontrol/state_FSM_FFd2_1
+    SLICE_X11Y99.D       Tilo                  0.097   rsrc1/rsrccontrol/Mmux_c_in161
+                                                       rsrc1/rsrccontrol/Mmux_c_in162
+    SLICE_X10Y95.A1      net (fanout=2)        0.722   rsrc1/rsrccontrol/Mmux_c_in161
+    SLICE_X10Y95.A       Tilo                  0.097   rsrc1/rsrcirreg/ir<30>
+                                                       rsrc1/rsrccontrol/Mmux_c_in163_1
+    SLICE_X13Y92.C1      net (fanout=1)        0.755   rsrc1/rsrccontrol/Mmux_c_in163
+    SLICE_X13Y92.C       Tilo                  0.097   rsrc1/rsrcirreg/ir<22>
+                                                       rsrc1/rsrccontrol/Mmux_c_in121
+    SLICE_X12Y86.A1      net (fanout=5)        0.944   rsrc1/gra
+    SLICE_X12Y86.A       Tilo                  0.097   rsrc1/rsrcregfile/mux_7
+                                                       rsrc1/rsrcregfile/Mmux_mux_out<1>11
+    SLICE_X49Y71.A3      net (fanout=288)      1.451   rsrc1/rsrcregfile/mux_out<1>
+    SLICE_X49Y71.A       Tilo                  0.097   rsrc1/rsrcregfile/reg16<11>
+                                                       rsrc1/rsrcregfile/mux2_81
+    SLICE_X43Y71.D2      net (fanout=1)        0.696   rsrc1/rsrcregfile/mux2_81
+    SLICE_X43Y71.CMUX    Topdc                 0.408   rsrc1/rsrcregfile/mux2_82
+                                                       rsrc1/rsrcregfile/mux2_2_f7_F
+                                                       rsrc1/rsrcregfile/mux2_2_f7
+    SLICE_X35Y86.A2      net (fanout=6)        1.264   rsrc1/rsrcregfile/mux_out[4]_reg31[31]_wide_mux_103_OUT<11>
+    SLICE_X35Y86.A       Tilo                  0.097   rsrc1/cpu_bus<11>LogicTrst1
+                                                       rsrc1/cpu_bus<11>LogicTrst_1
+    SLICE_X34Y87.D1      net (fanout=1)        0.606   rsrc1/cpu_bus<11>LogicTrst1
+    SLICE_X34Y87.D       Tilo                  0.097   rsrc1/rsrcregfile/reg19<15>
+                                                       rsrc1/rsrcalu/n<1>_mmx_out2611
+    SLICE_X30Y85.B1      net (fanout=5)        0.828   rsrc1/rsrcalu/n<1>_mmx_out261
+    SLICE_X30Y85.B       Tilo                  0.097   N196
+                                                       rsrc1/rsrcalu/n<3>611
+    SLICE_X8Y92.B2       net (fanout=1)        1.102   rsrc1/rsrcalu/n<3>_mmx_out141
+    SLICE_X8Y92.B        Tilo                  0.097   rsrc1/sub
+                                                       rsrc1/rsrcalu/c<30>8
+    SLICE_X28Y95.B4      net (fanout=1)        0.796   rsrc1/rsrcalu/c<30>7
+    SLICE_X28Y95.B       Tilo                  0.097   rsrc1/rsrccreg/c<31>
+                                                       rsrc1/rsrcalu/c<30>9
+    SLICE_X28Y95.A1      net (fanout=1)        0.652   rsrc1/rsrcalu/c<30>8
+    SLICE_X28Y95.CLK     Tas                   0.067   rsrc1/rsrccreg/c<31>
+                                                       rsrc1/rsrcalu/c<30>11
+                                                       rsrc1/rsrccreg/c_30
+    -------------------------------------------------  ---------------------------
+    Total                                     12.471ns (1.838ns logic, 10.633ns route)
+                                                       (14.7% logic, 85.3% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     7.412ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               rsrc1/rsrcirreg/ir_28 (FF)
+  Destination:          rsrc1/rsrccreg/c_30 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      12.459ns (Levels of Logic = 12)
+  Clock Path Skew:      -0.047ns (0.577 - 0.624)
+  Source Clock:         clk_out2 rising at 0.000ns
+  Destination Clock:    clk_out2 rising at 20.000ns
+  Clock Uncertainty:    0.082ns
+
+  Clock Uncertainty:          0.082ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Discrete Jitter (DJ):       0.147ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: rsrc1/rsrcirreg/ir_28 to rsrc1/rsrccreg/c_30
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X10Y95.BQ      Tcko                  0.393   rsrc1/rsrcirreg/ir<30>
+                                                       rsrc1/rsrcirreg/ir_28
+    SLICE_X11Y99.D1      net (fanout=43)       0.805   rsrc1/rsrcirreg/ir<28>
+    SLICE_X11Y99.D       Tilo                  0.097   rsrc1/rsrccontrol/Mmux_c_in161
+                                                       rsrc1/rsrccontrol/Mmux_c_in162
+    SLICE_X10Y95.A1      net (fanout=2)        0.722   rsrc1/rsrccontrol/Mmux_c_in161
+    SLICE_X10Y95.A       Tilo                  0.097   rsrc1/rsrcirreg/ir<30>
+                                                       rsrc1/rsrccontrol/Mmux_c_in163_1
+    SLICE_X13Y92.C1      net (fanout=1)        0.755   rsrc1/rsrccontrol/Mmux_c_in163
+    SLICE_X13Y92.C       Tilo                  0.097   rsrc1/rsrcirreg/ir<22>
+                                                       rsrc1/rsrccontrol/Mmux_c_in121
+    SLICE_X12Y86.A1      net (fanout=5)        0.944   rsrc1/gra
+    SLICE_X12Y86.A       Tilo                  0.097   rsrc1/rsrcregfile/mux_7
+                                                       rsrc1/rsrcregfile/Mmux_mux_out<1>11
+    SLICE_X49Y71.A3      net (fanout=288)      1.451   rsrc1/rsrcregfile/mux_out<1>
+    SLICE_X49Y71.A       Tilo                  0.097   rsrc1/rsrcregfile/reg16<11>
+                                                       rsrc1/rsrcregfile/mux2_81
+    SLICE_X43Y71.D2      net (fanout=1)        0.696   rsrc1/rsrcregfile/mux2_81
+    SLICE_X43Y71.CMUX    Topdc                 0.408   rsrc1/rsrcregfile/mux2_82
+                                                       rsrc1/rsrcregfile/mux2_2_f7_F
+                                                       rsrc1/rsrcregfile/mux2_2_f7
+    SLICE_X35Y86.A2      net (fanout=6)        1.264   rsrc1/rsrcregfile/mux_out[4]_reg31[31]_wide_mux_103_OUT<11>
+    SLICE_X35Y86.A       Tilo                  0.097   rsrc1/cpu_bus<11>LogicTrst1
+                                                       rsrc1/cpu_bus<11>LogicTrst_1
+    SLICE_X34Y87.D1      net (fanout=1)        0.606   rsrc1/cpu_bus<11>LogicTrst1
+    SLICE_X34Y87.D       Tilo                  0.097   rsrc1/rsrcregfile/reg19<15>
+                                                       rsrc1/rsrcalu/n<1>_mmx_out2611
+    SLICE_X30Y85.B1      net (fanout=5)        0.828   rsrc1/rsrcalu/n<1>_mmx_out261
+    SLICE_X30Y85.B       Tilo                  0.097   N196
+                                                       rsrc1/rsrcalu/n<3>611
+    SLICE_X8Y92.B2       net (fanout=1)        1.102   rsrc1/rsrcalu/n<3>_mmx_out141
+    SLICE_X8Y92.B        Tilo                  0.097   rsrc1/sub
+                                                       rsrc1/rsrcalu/c<30>8
+    SLICE_X28Y95.B4      net (fanout=1)        0.796   rsrc1/rsrcalu/c<30>7
+    SLICE_X28Y95.B       Tilo                  0.097   rsrc1/rsrccreg/c<31>
+                                                       rsrc1/rsrcalu/c<30>9
+    SLICE_X28Y95.A1      net (fanout=1)        0.652   rsrc1/rsrcalu/c<30>8
+    SLICE_X28Y95.CLK     Tas                   0.067   rsrc1/rsrccreg/c<31>
+                                                       rsrc1/rsrcalu/c<30>11
+                                                       rsrc1/rsrccreg/c_30
+    -------------------------------------------------  ---------------------------
+    Total                                     12.459ns (1.838ns logic, 10.621ns route)
+                                                       (14.8% logic, 85.2% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point rsrc1/rsrccreg/c_2 (SLICE_X31Y87.A2), 75158 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     7.788ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               rsrc1/rsrccontrol/state_FSM_FFd2_1 (FF)
+  Destination:          rsrc1/rsrccreg/c_2 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      12.040ns (Levels of Logic = 12)
+  Clock Path Skew:      -0.090ns (1.148 - 1.238)
+  Source Clock:         clk_out2 rising at 0.000ns
+  Destination Clock:    clk_out2 rising at 20.000ns
+  Clock Uncertainty:    0.082ns
+
+  Clock Uncertainty:          0.082ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Discrete Jitter (DJ):       0.147ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: rsrc1/rsrccontrol/state_FSM_FFd2_1 to rsrc1/rsrccreg/c_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X8Y101.CQ      Tcko                  0.393   rsrc1/rsrccontrol/state_FSM_FFd2_1
+                                                       rsrc1/rsrccontrol/state_FSM_FFd2_1
+    SLICE_X11Y99.D2      net (fanout=1)        0.817   rsrc1/rsrccontrol/state_FSM_FFd2_1
+    SLICE_X11Y99.D       Tilo                  0.097   rsrc1/rsrccontrol/Mmux_c_in161
+                                                       rsrc1/rsrccontrol/Mmux_c_in162
+    SLICE_X10Y95.A1      net (fanout=2)        0.722   rsrc1/rsrccontrol/Mmux_c_in161
+    SLICE_X10Y95.A       Tilo                  0.097   rsrc1/rsrcirreg/ir<30>
+                                                       rsrc1/rsrccontrol/Mmux_c_in163_1
+    SLICE_X13Y92.C1      net (fanout=1)        0.755   rsrc1/rsrccontrol/Mmux_c_in163
+    SLICE_X13Y92.C       Tilo                  0.097   rsrc1/rsrcirreg/ir<22>
+                                                       rsrc1/rsrccontrol/Mmux_c_in121
+    SLICE_X12Y86.A1      net (fanout=5)        0.944   rsrc1/gra
+    SLICE_X12Y86.A       Tilo                  0.097   rsrc1/rsrcregfile/mux_7
+                                                       rsrc1/rsrcregfile/Mmux_mux_out<1>11
+    SLICE_X42Y115.D1     net (fanout=288)      2.110   rsrc1/rsrcregfile/mux_out<1>
+    SLICE_X42Y115.D      Tilo                  0.097   rsrc1/rsrcregfile/reg24<31>
+                                                       rsrc1/rsrcregfile/mux20_81
+    SLICE_X37Y111.D2     net (fanout=1)        0.748   rsrc1/rsrcregfile/mux20_81
+    SLICE_X37Y111.CMUX   Topdc                 0.408   rsrc1/rsrcregfile/mux20_82
+                                                       rsrc1/rsrcregfile/mux20_2_f7_F
+                                                       rsrc1/rsrcregfile/mux20_2_f7
+    SLICE_X29Y102.A2     net (fanout=7)        0.896   rsrc1/rsrcregfile/mux_out[4]_reg31[31]_wide_mux_103_OUT<28>
+    SLICE_X29Y102.A      Tilo                  0.097   rsrc1/rsrcregfile/reg0<31>
+                                                       rsrc1/cpu_bus<28>LogicTrst
+    SLICE_X32Y97.D1      net (fanout=47)       0.805   rsrc1/cpu_bus<28>
+    SLICE_X32Y97.D       Tilo                  0.097   rsrc1/rsrcalu/n<1>_mmx_out5
+                                                       rsrc1/rsrcalu/n<1>_mmx_out51
+    SLICE_X35Y93.A3      net (fanout=6)        0.621   rsrc1/rsrcalu/n<1>_mmx_out5
+    SLICE_X35Y93.A       Tilo                  0.097   rsrc1/rsrcalu/c<26>2
+                                                       rsrc1/rsrcalu/n<2>1231
+    SLICE_X36Y91.B3      net (fanout=2)        0.558   rsrc1/rsrcalu/n<2>_mmx_out210
+    SLICE_X36Y91.B       Tilo                  0.097   N144
+                                                       rsrc1/rsrcalu/c<18>41
+    SLICE_X32Y89.A4      net (fanout=2)        0.539   rsrc1/rsrcalu/c<18>4
+    SLICE_X32Y89.A       Tilo                  0.097   rsrc1/rsrcalu/n<3>_mmx_out101
+                                                       rsrc1/rsrcalu/c<2>7
+    SLICE_X31Y87.A2      net (fanout=1)        0.687   rsrc1/rsrcalu/c<2>7
+    SLICE_X31Y87.CLK     Tas                   0.067   rsrc1/rsrccreg/c<3>
+                                                       rsrc1/rsrcalu/c<2>9
+                                                       rsrc1/rsrccreg/c_2
+    -------------------------------------------------  ---------------------------
+    Total                                     12.040ns (1.838ns logic, 10.202ns route)
+                                                       (15.3% logic, 84.7% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     7.809ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               rsrc1/rsrccontrol/state_FSM_FFd2_1 (FF)
+  Destination:          rsrc1/rsrccreg/c_2 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      12.019ns (Levels of Logic = 11)
+  Clock Path Skew:      -0.090ns (1.148 - 1.238)
+  Source Clock:         clk_out2 rising at 0.000ns
+  Destination Clock:    clk_out2 rising at 20.000ns
+  Clock Uncertainty:    0.082ns
+
+  Clock Uncertainty:          0.082ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Discrete Jitter (DJ):       0.147ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: rsrc1/rsrccontrol/state_FSM_FFd2_1 to rsrc1/rsrccreg/c_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X8Y101.CQ      Tcko                  0.393   rsrc1/rsrccontrol/state_FSM_FFd2_1
+                                                       rsrc1/rsrccontrol/state_FSM_FFd2_1
+    SLICE_X11Y99.D2      net (fanout=1)        0.817   rsrc1/rsrccontrol/state_FSM_FFd2_1
+    SLICE_X11Y99.D       Tilo                  0.097   rsrc1/rsrccontrol/Mmux_c_in161
+                                                       rsrc1/rsrccontrol/Mmux_c_in162
+    SLICE_X10Y95.A1      net (fanout=2)        0.722   rsrc1/rsrccontrol/Mmux_c_in161
+    SLICE_X10Y95.A       Tilo                  0.097   rsrc1/rsrcirreg/ir<30>
+                                                       rsrc1/rsrccontrol/Mmux_c_in163_1
+    SLICE_X13Y92.C1      net (fanout=1)        0.755   rsrc1/rsrccontrol/Mmux_c_in163
+    SLICE_X13Y92.C       Tilo                  0.097   rsrc1/rsrcirreg/ir<22>
+                                                       rsrc1/rsrccontrol/Mmux_c_in121
+    SLICE_X12Y86.A1      net (fanout=5)        0.944   rsrc1/gra
+    SLICE_X12Y86.A       Tilo                  0.097   rsrc1/rsrcregfile/mux_7
+                                                       rsrc1/rsrcregfile/Mmux_mux_out<1>11
+    SLICE_X42Y114.C1     net (fanout=288)      1.984   rsrc1/rsrcregfile/mux_out<1>
+    SLICE_X42Y114.C      Tilo                  0.097   rsrc1/rsrcregfile/reg8<31>
+                                                       rsrc1/rsrcregfile/mux23_81
+    SLICE_X38Y110.D1     net (fanout=1)        0.756   rsrc1/rsrcregfile/mux23_81
+    SLICE_X38Y110.CMUX   Topdc                 0.397   rsrc1/rsrcregfile/mux23_82
+                                                       rsrc1/rsrcregfile/mux23_2_f7_F
+                                                       rsrc1/rsrcregfile/mux23_2_f7
+    SLICE_X29Y97.A1      net (fanout=4)        1.074   rsrc1/rsrcregfile/mux_out[4]_reg31[31]_wide_mux_103_OUT<30>
+    SLICE_X29Y97.A       Tilo                  0.097   rsrc1/rsrcalu/c<28>
+                                                       rsrc1/rsrcalu/n<0>_mmx_out131
+    SLICE_X13Y94.A6      net (fanout=5)        0.884   rsrc1/rsrcalu/n<0>_mmx_out13
+    SLICE_X13Y94.A       Tilo                  0.097   rsrc1/rsrcalu/n<3>_mmx_out221
+                                                       rsrc1/rsrcalu/n<2>1141_SW0
+    SLICE_X33Y91.C1      net (fanout=1)        0.963   N415
+    SLICE_X33Y91.C       Tilo                  0.097   rsrc1/rsrcareg/a<19>
+                                                       rsrc1/rsrcalu/n<3>1
+    SLICE_X32Y89.A1      net (fanout=2)        0.703   rsrc1/rsrcalu/n<3>_mmx_out
+    SLICE_X32Y89.A       Tilo                  0.097   rsrc1/rsrcalu/n<3>_mmx_out101
+                                                       rsrc1/rsrcalu/c<2>7
+    SLICE_X31Y87.A2      net (fanout=1)        0.687   rsrc1/rsrcalu/c<2>7
+    SLICE_X31Y87.CLK     Tas                   0.067   rsrc1/rsrccreg/c<3>
+                                                       rsrc1/rsrcalu/c<2>9
+                                                       rsrc1/rsrccreg/c_2
+    -------------------------------------------------  ---------------------------
+    Total                                     12.019ns (1.730ns logic, 10.289ns route)
+                                                       (14.4% logic, 85.6% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     7.839ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               rsrc1/rsrcirreg/ir_28 (FF)
+  Destination:          rsrc1/rsrccreg/c_2 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      12.028ns (Levels of Logic = 12)
+  Clock Path Skew:      -0.051ns (0.573 - 0.624)
+  Source Clock:         clk_out2 rising at 0.000ns
+  Destination Clock:    clk_out2 rising at 20.000ns
+  Clock Uncertainty:    0.082ns
+
+  Clock Uncertainty:          0.082ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Discrete Jitter (DJ):       0.147ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: rsrc1/rsrcirreg/ir_28 to rsrc1/rsrccreg/c_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X10Y95.BQ      Tcko                  0.393   rsrc1/rsrcirreg/ir<30>
+                                                       rsrc1/rsrcirreg/ir_28
+    SLICE_X11Y99.D1      net (fanout=43)       0.805   rsrc1/rsrcirreg/ir<28>
+    SLICE_X11Y99.D       Tilo                  0.097   rsrc1/rsrccontrol/Mmux_c_in161
+                                                       rsrc1/rsrccontrol/Mmux_c_in162
+    SLICE_X10Y95.A1      net (fanout=2)        0.722   rsrc1/rsrccontrol/Mmux_c_in161
+    SLICE_X10Y95.A       Tilo                  0.097   rsrc1/rsrcirreg/ir<30>
+                                                       rsrc1/rsrccontrol/Mmux_c_in163_1
+    SLICE_X13Y92.C1      net (fanout=1)        0.755   rsrc1/rsrccontrol/Mmux_c_in163
+    SLICE_X13Y92.C       Tilo                  0.097   rsrc1/rsrcirreg/ir<22>
+                                                       rsrc1/rsrccontrol/Mmux_c_in121
+    SLICE_X12Y86.A1      net (fanout=5)        0.944   rsrc1/gra
+    SLICE_X12Y86.A       Tilo                  0.097   rsrc1/rsrcregfile/mux_7
+                                                       rsrc1/rsrcregfile/Mmux_mux_out<1>11
+    SLICE_X42Y115.D1     net (fanout=288)      2.110   rsrc1/rsrcregfile/mux_out<1>
+    SLICE_X42Y115.D      Tilo                  0.097   rsrc1/rsrcregfile/reg24<31>
+                                                       rsrc1/rsrcregfile/mux20_81
+    SLICE_X37Y111.D2     net (fanout=1)        0.748   rsrc1/rsrcregfile/mux20_81
+    SLICE_X37Y111.CMUX   Topdc                 0.408   rsrc1/rsrcregfile/mux20_82
+                                                       rsrc1/rsrcregfile/mux20_2_f7_F
+                                                       rsrc1/rsrcregfile/mux20_2_f7
+    SLICE_X29Y102.A2     net (fanout=7)        0.896   rsrc1/rsrcregfile/mux_out[4]_reg31[31]_wide_mux_103_OUT<28>
+    SLICE_X29Y102.A      Tilo                  0.097   rsrc1/rsrcregfile/reg0<31>
+                                                       rsrc1/cpu_bus<28>LogicTrst
+    SLICE_X32Y97.D1      net (fanout=47)       0.805   rsrc1/cpu_bus<28>
+    SLICE_X32Y97.D       Tilo                  0.097   rsrc1/rsrcalu/n<1>_mmx_out5
+                                                       rsrc1/rsrcalu/n<1>_mmx_out51
+    SLICE_X35Y93.A3      net (fanout=6)        0.621   rsrc1/rsrcalu/n<1>_mmx_out5
+    SLICE_X35Y93.A       Tilo                  0.097   rsrc1/rsrcalu/c<26>2
+                                                       rsrc1/rsrcalu/n<2>1231
+    SLICE_X36Y91.B3      net (fanout=2)        0.558   rsrc1/rsrcalu/n<2>_mmx_out210
+    SLICE_X36Y91.B       Tilo                  0.097   N144
+                                                       rsrc1/rsrcalu/c<18>41
+    SLICE_X32Y89.A4      net (fanout=2)        0.539   rsrc1/rsrcalu/c<18>4
+    SLICE_X32Y89.A       Tilo                  0.097   rsrc1/rsrcalu/n<3>_mmx_out101
+                                                       rsrc1/rsrcalu/c<2>7
+    SLICE_X31Y87.A2      net (fanout=1)        0.687   rsrc1/rsrcalu/c<2>7
+    SLICE_X31Y87.CLK     Tas                   0.067   rsrc1/rsrccreg/c<3>
+                                                       rsrc1/rsrcalu/c<2>9
+                                                       rsrc1/rsrccreg/c_2
+    -------------------------------------------------  ---------------------------
+    Total                                     12.028ns (1.838ns logic, 10.190ns route)
+                                                       (15.3% logic, 84.7% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point rsrc1/rsrccreg/c_29 (SLICE_X14Y94.C2), 43732 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     7.929ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               rsrc1/rsrccontrol/state_FSM_FFd2_1 (FF)
+  Destination:          rsrc1/rsrccreg/c_29 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      11.907ns (Levels of Logic = 11)
+  Clock Path Skew:      -0.082ns (1.156 - 1.238)
+  Source Clock:         clk_out2 rising at 0.000ns
+  Destination Clock:    clk_out2 rising at 20.000ns
+  Clock Uncertainty:    0.082ns
+
+  Clock Uncertainty:          0.082ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Discrete Jitter (DJ):       0.147ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: rsrc1/rsrccontrol/state_FSM_FFd2_1 to rsrc1/rsrccreg/c_29
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X8Y101.CQ      Tcko                  0.393   rsrc1/rsrccontrol/state_FSM_FFd2_1
+                                                       rsrc1/rsrccontrol/state_FSM_FFd2_1
+    SLICE_X11Y99.D2      net (fanout=1)        0.817   rsrc1/rsrccontrol/state_FSM_FFd2_1
+    SLICE_X11Y99.D       Tilo                  0.097   rsrc1/rsrccontrol/Mmux_c_in161
+                                                       rsrc1/rsrccontrol/Mmux_c_in162
+    SLICE_X10Y95.A1      net (fanout=2)        0.722   rsrc1/rsrccontrol/Mmux_c_in161
+    SLICE_X10Y95.A       Tilo                  0.097   rsrc1/rsrcirreg/ir<30>
+                                                       rsrc1/rsrccontrol/Mmux_c_in163_1
+    SLICE_X13Y92.C1      net (fanout=1)        0.755   rsrc1/rsrccontrol/Mmux_c_in163
+    SLICE_X13Y92.C       Tilo                  0.097   rsrc1/rsrcirreg/ir<22>
+                                                       rsrc1/rsrccontrol/Mmux_c_in121
+    SLICE_X12Y86.A1      net (fanout=5)        0.944   rsrc1/gra
+    SLICE_X12Y86.A       Tilo                  0.097   rsrc1/rsrcregfile/mux_7
+                                                       rsrc1/rsrcregfile/Mmux_mux_out<1>11
+    SLICE_X60Y98.B3      net (fanout=288)      1.879   rsrc1/rsrcregfile/mux_out<1>
+    SLICE_X60Y98.B       Tilo                  0.097   rsrc1/rsrcregfile/mux45_81
+                                                       rsrc1/rsrcregfile/mux13_81
+    SLICE_X52Y96.D3      net (fanout=1)        0.690   rsrc1/rsrcregfile/mux13_81
+    SLICE_X52Y96.CMUX    Topdc                 0.408   rsrc1/rsrcregfile/mux13_82
+                                                       rsrc1/rsrcregfile/mux13_2_f7_F
+                                                       rsrc1/rsrcregfile/mux13_2_f7
+    SLICE_X30Y97.B4      net (fanout=5)        0.907   rsrc1/rsrcregfile/mux_out[4]_reg31[31]_wide_mux_103_OUT<21>
+    SLICE_X30Y97.B       Tilo                  0.097   rsrc1/rsrcregfile/reg19<23>
+                                                       rsrc1/cpu_bus<21>LogicTrst
+    SLICE_X14Y93.C4      net (fanout=50)       0.952   rsrc1/cpu_bus<21>
+    SLICE_X14Y93.C       Tilo                  0.097   rsrc1/rsrcirreg/ir<3>
                                                        rsrc1/rsrcalu/n<1>_mmx_out2521
-    SLICE_X13Y65.A2      net (fanout=9)        0.911   rsrc1/rsrcalu/n<1>_mmx_out252
-    SLICE_X13Y65.A       Tilo                  0.097   rsrc1/rsrcpc/pc<23>
+    SLICE_X13Y97.A3      net (fanout=9)        1.269   rsrc1/rsrcalu/n<1>_mmx_out252
+    SLICE_X13Y97.A       Tilo                  0.097   N74
                                                        rsrc1/rsrcalu/n<3>1611_SW0
-    SLICE_X14Y65.A2      net (fanout=1)        0.927   N373
-    SLICE_X14Y65.A       Tilo                  0.097   N374
+    SLICE_X13Y96.C2      net (fanout=1)        0.585   N369
+    SLICE_X13Y96.C       Tilo                  0.097   N370
                                                        rsrc1/rsrcalu/c<29>2
-    SLICE_X15Y61.C2      net (fanout=1)        0.790   rsrc1/rsrcalu/c<29>1
-    SLICE_X15Y61.CLK     Tas                   0.065   rsrc1/rsrccreg/c<29>
+    SLICE_X14Y94.C2      net (fanout=1)        0.686   rsrc1/rsrcalu/c<29>1
+    SLICE_X14Y94.CLK     Tas                   0.027   rsrc1/rsrccreg/c<29>
                                                        rsrc1/rsrcalu/c<29>6
                                                        rsrc1/rsrccreg/c_29
     -------------------------------------------------  ---------------------------
-    Total                                     12.476ns (1.642ns logic, 10.834ns route)
-                                                       (13.2% logic, 86.8% route)
+    Total                                     11.907ns (1.701ns logic, 10.206ns route)
+                                                       (14.3% logic, 85.7% route)
 
 --------------------------------------------------------------------------------
-
-Paths for end point rsrc1/rsrccreg/c_30 (SLICE_X14Y59.A4), 101749 paths
---------------------------------------------------------------------------------
-Slack (setup path):     7.436ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               rsrc1/rsrccontrol/state_FSM_FFd1 (FF)
-  Destination:          rsrc1/rsrccreg/c_30 (FF)
+Slack (setup path):     7.980ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               rsrc1/rsrcirreg/ir_28 (FF)
+  Destination:          rsrc1/rsrccreg/c_29 (FF)
   Requirement:          20.000ns
-  Data Path Delay:      12.449ns (Levels of Logic = 11)
-  Clock Path Skew:      -0.033ns (0.580 - 0.613)
+  Data Path Delay:      11.895ns (Levels of Logic = 11)
+  Clock Path Skew:      -0.043ns (0.581 - 0.624)
   Source Clock:         clk_out2 rising at 0.000ns
   Destination Clock:    clk_out2 rising at 20.000ns
   Clock Uncertainty:    0.082ns
@@ -443,58 +534,58 @@ Slack (setup path):     7.436ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.147ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: rsrc1/rsrccontrol/state_FSM_FFd1 to rsrc1/rsrccreg/c_30
+  Maximum Data Path at Slow Process Corner: rsrc1/rsrcirreg/ir_28 to rsrc1/rsrccreg/c_29
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X8Y68.AQ       Tcko                  0.393   rsrc1/rsrccontrol/state_FSM_FFd3
-                                                       rsrc1/rsrccontrol/state_FSM_FFd1
-    SLICE_X32Y56.C1      net (fanout=26)       1.397   rsrc1/rsrccontrol/state_FSM_FFd1
-    SLICE_X32Y56.C       Tilo                  0.097   rsrc1/notx
-                                                       rsrc1/rsrccontrol/Mmux_c_in1121
-    SLICE_X9Y60.A2       net (fanout=45)       1.079   rsrc1/rsrccontrol/Mmux_c_in1121
-    SLICE_X9Y60.A        Tilo                  0.097   rsrc1/rsrcalu/c<24>6
-                                                       rsrc1/rsrccontrol/Mmux_grc11
-    SLICE_X12Y49.A1      net (fanout=5)        0.944   rsrc1/grc
-    SLICE_X12Y49.A       Tilo                  0.097   rsrc1/rsrcregfile/mux_7
+    SLICE_X10Y95.BQ      Tcko                  0.393   rsrc1/rsrcirreg/ir<30>
+                                                       rsrc1/rsrcirreg/ir_28
+    SLICE_X11Y99.D1      net (fanout=43)       0.805   rsrc1/rsrcirreg/ir<28>
+    SLICE_X11Y99.D       Tilo                  0.097   rsrc1/rsrccontrol/Mmux_c_in161
+                                                       rsrc1/rsrccontrol/Mmux_c_in162
+    SLICE_X10Y95.A1      net (fanout=2)        0.722   rsrc1/rsrccontrol/Mmux_c_in161
+    SLICE_X10Y95.A       Tilo                  0.097   rsrc1/rsrcirreg/ir<30>
+                                                       rsrc1/rsrccontrol/Mmux_c_in163_1
+    SLICE_X13Y92.C1      net (fanout=1)        0.755   rsrc1/rsrccontrol/Mmux_c_in163
+    SLICE_X13Y92.C       Tilo                  0.097   rsrc1/rsrcirreg/ir<22>
+                                                       rsrc1/rsrccontrol/Mmux_c_in121
+    SLICE_X12Y86.A1      net (fanout=5)        0.944   rsrc1/gra
+    SLICE_X12Y86.A       Tilo                  0.097   rsrc1/rsrcregfile/mux_7
                                                        rsrc1/rsrcregfile/Mmux_mux_out<1>11
-    SLICE_X44Y77.B5      net (fanout=288)      2.143   rsrc1/rsrcregfile/mux_out<1>
-    SLICE_X44Y77.B       Tilo                  0.097   rsrc1/rsrcregfile/reg25<31>
-                                                       rsrc1/rsrcregfile/mux21_81
-    SLICE_X40Y72.D2      net (fanout=1)        0.764   rsrc1/rsrcregfile/mux21_81
-    SLICE_X40Y72.CMUX    Topdc                 0.408   rsrc1/rsrcregfile/mux21_82
-                                                       rsrc1/rsrcregfile/mux21_2_f7_F
-                                                       rsrc1/rsrcregfile/mux21_2_f7
-    SLICE_X29Y61.B2      net (fanout=6)        1.042   rsrc1/rsrcregfile/mux_out[4]_reg31[31]_wide_mux_103_OUT<29>
-    SLICE_X29Y61.B       Tilo                  0.097   rsrc1/rsrcareg/a<31>
-                                                       rsrc1/cpu_bus<29>LogicTrst
-    SLICE_X28Y68.A2      net (fanout=51)       0.821   rsrc1/cpu_bus<29>
-    SLICE_X28Y68.A       Tilo                  0.097   rsrc1/rsrcregfile/reg5<31>
-                                                       rsrc1/rsrcalu/n<1>2521
-    SLICE_X14Y57.D4      net (fanout=4)        0.860   rsrc1/rsrcalu/n<1>_mmx_out311
-    SLICE_X14Y57.D       Tilo                  0.097   rsrc1/rsrcirreg/ir<3>
-                                                       rsrc1/rsrcalu/c<30>121
-    SLICE_X9Y57.B4       net (fanout=3)        0.653   rsrc1/rsrcalu/c<30>12
-    SLICE_X9Y57.B        Tilo                  0.097   rsrc1/shra
-                                                       rsrc1/rsrcalu/c<30>8
-    SLICE_X14Y59.B2      net (fanout=1)        0.729   rsrc1/rsrcalu/c<30>7
-    SLICE_X14Y59.B       Tilo                  0.097   rsrc1/rsrccreg/c<31>
-                                                       rsrc1/rsrcalu/c<30>9
-    SLICE_X14Y59.A4      net (fanout=1)        0.315   rsrc1/rsrcalu/c<30>8
-    SLICE_X14Y59.CLK     Tas                   0.028   rsrc1/rsrccreg/c<31>
-                                                       rsrc1/rsrcalu/c<30>11
-                                                       rsrc1/rsrccreg/c_30
+    SLICE_X60Y98.B3      net (fanout=288)      1.879   rsrc1/rsrcregfile/mux_out<1>
+    SLICE_X60Y98.B       Tilo                  0.097   rsrc1/rsrcregfile/mux45_81
+                                                       rsrc1/rsrcregfile/mux13_81
+    SLICE_X52Y96.D3      net (fanout=1)        0.690   rsrc1/rsrcregfile/mux13_81
+    SLICE_X52Y96.CMUX    Topdc                 0.408   rsrc1/rsrcregfile/mux13_82
+                                                       rsrc1/rsrcregfile/mux13_2_f7_F
+                                                       rsrc1/rsrcregfile/mux13_2_f7
+    SLICE_X30Y97.B4      net (fanout=5)        0.907   rsrc1/rsrcregfile/mux_out[4]_reg31[31]_wide_mux_103_OUT<21>
+    SLICE_X30Y97.B       Tilo                  0.097   rsrc1/rsrcregfile/reg19<23>
+                                                       rsrc1/cpu_bus<21>LogicTrst
+    SLICE_X14Y93.C4      net (fanout=50)       0.952   rsrc1/cpu_bus<21>
+    SLICE_X14Y93.C       Tilo                  0.097   rsrc1/rsrcirreg/ir<3>
+                                                       rsrc1/rsrcalu/n<1>_mmx_out2521
+    SLICE_X13Y97.A3      net (fanout=9)        1.269   rsrc1/rsrcalu/n<1>_mmx_out252
+    SLICE_X13Y97.A       Tilo                  0.097   N74
+                                                       rsrc1/rsrcalu/n<3>1611_SW0
+    SLICE_X13Y96.C2      net (fanout=1)        0.585   N369
+    SLICE_X13Y96.C       Tilo                  0.097   N370
+                                                       rsrc1/rsrcalu/c<29>2
+    SLICE_X14Y94.C2      net (fanout=1)        0.686   rsrc1/rsrcalu/c<29>1
+    SLICE_X14Y94.CLK     Tas                   0.027   rsrc1/rsrccreg/c<29>
+                                                       rsrc1/rsrcalu/c<29>6
+                                                       rsrc1/rsrccreg/c_29
     -------------------------------------------------  ---------------------------
-    Total                                     12.449ns (1.702ns logic, 10.747ns route)
-                                                       (13.7% logic, 86.3% route)
+    Total                                     11.895ns (1.701ns logic, 10.194ns route)
+                                                       (14.3% logic, 85.7% route)
 
 --------------------------------------------------------------------------------
-Slack (setup path):     7.439ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               rsrc1/rsrccontrol/state_FSM_FFd3 (FF)
-  Destination:          rsrc1/rsrccreg/c_30 (FF)
+Slack (setup path):     7.998ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               rsrc1/rsrcirreg/ir_27 (FF)
+  Destination:          rsrc1/rsrccreg/c_29 (FF)
   Requirement:          20.000ns
-  Data Path Delay:      12.446ns (Levels of Logic = 11)
-  Clock Path Skew:      -0.033ns (0.580 - 0.613)
+  Data Path Delay:      11.877ns (Levels of Logic = 11)
+  Clock Path Skew:      -0.043ns (0.581 - 0.624)
   Source Clock:         clk_out2 rising at 0.000ns
   Destination Clock:    clk_out2 rising at 20.000ns
   Clock Uncertainty:    0.082ns
@@ -504,381 +595,197 @@ Slack (setup path):     7.439ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.147ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path at Slow Process Corner: rsrc1/rsrccontrol/state_FSM_FFd3 to rsrc1/rsrccreg/c_30
+  Maximum Data Path at Slow Process Corner: rsrc1/rsrcirreg/ir_27 to rsrc1/rsrccreg/c_29
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X8Y68.CQ       Tcko                  0.393   rsrc1/rsrccontrol/state_FSM_FFd3
-                                                       rsrc1/rsrccontrol/state_FSM_FFd3
-    SLICE_X32Y56.C2      net (fanout=25)       1.394   rsrc1/rsrccontrol/state_FSM_FFd3
-    SLICE_X32Y56.C       Tilo                  0.097   rsrc1/notx
-                                                       rsrc1/rsrccontrol/Mmux_c_in1121
-    SLICE_X9Y60.A2       net (fanout=45)       1.079   rsrc1/rsrccontrol/Mmux_c_in1121
-    SLICE_X9Y60.A        Tilo                  0.097   rsrc1/rsrcalu/c<24>6
-                                                       rsrc1/rsrccontrol/Mmux_grc11
-    SLICE_X12Y49.A1      net (fanout=5)        0.944   rsrc1/grc
-    SLICE_X12Y49.A       Tilo                  0.097   rsrc1/rsrcregfile/mux_7
+    SLICE_X10Y95.AQ      Tcko                  0.393   rsrc1/rsrcirreg/ir<30>
+                                                       rsrc1/rsrcirreg/ir_27
+    SLICE_X11Y99.D3      net (fanout=42)       0.787   rsrc1/rsrcirreg/ir<27>
+    SLICE_X11Y99.D       Tilo                  0.097   rsrc1/rsrccontrol/Mmux_c_in161
+                                                       rsrc1/rsrccontrol/Mmux_c_in162
+    SLICE_X10Y95.A1      net (fanout=2)        0.722   rsrc1/rsrccontrol/Mmux_c_in161
+    SLICE_X10Y95.A       Tilo                  0.097   rsrc1/rsrcirreg/ir<30>
+                                                       rsrc1/rsrccontrol/Mmux_c_in163_1
+    SLICE_X13Y92.C1      net (fanout=1)        0.755   rsrc1/rsrccontrol/Mmux_c_in163
+    SLICE_X13Y92.C       Tilo                  0.097   rsrc1/rsrcirreg/ir<22>
+                                                       rsrc1/rsrccontrol/Mmux_c_in121
+    SLICE_X12Y86.A1      net (fanout=5)        0.944   rsrc1/gra
+    SLICE_X12Y86.A       Tilo                  0.097   rsrc1/rsrcregfile/mux_7
                                                        rsrc1/rsrcregfile/Mmux_mux_out<1>11
-    SLICE_X44Y77.B5      net (fanout=288)      2.143   rsrc1/rsrcregfile/mux_out<1>
-    SLICE_X44Y77.B       Tilo                  0.097   rsrc1/rsrcregfile/reg25<31>
-                                                       rsrc1/rsrcregfile/mux21_81
-    SLICE_X40Y72.D2      net (fanout=1)        0.764   rsrc1/rsrcregfile/mux21_81
-    SLICE_X40Y72.CMUX    Topdc                 0.408   rsrc1/rsrcregfile/mux21_82
-                                                       rsrc1/rsrcregfile/mux21_2_f7_F
-                                                       rsrc1/rsrcregfile/mux21_2_f7
-    SLICE_X29Y61.B2      net (fanout=6)        1.042   rsrc1/rsrcregfile/mux_out[4]_reg31[31]_wide_mux_103_OUT<29>
-    SLICE_X29Y61.B       Tilo                  0.097   rsrc1/rsrcareg/a<31>
-                                                       rsrc1/cpu_bus<29>LogicTrst
-    SLICE_X28Y68.A2      net (fanout=51)       0.821   rsrc1/cpu_bus<29>
-    SLICE_X28Y68.A       Tilo                  0.097   rsrc1/rsrcregfile/reg5<31>
-                                                       rsrc1/rsrcalu/n<1>2521
-    SLICE_X14Y57.D4      net (fanout=4)        0.860   rsrc1/rsrcalu/n<1>_mmx_out311
-    SLICE_X14Y57.D       Tilo                  0.097   rsrc1/rsrcirreg/ir<3>
-                                                       rsrc1/rsrcalu/c<30>121
-    SLICE_X9Y57.B4       net (fanout=3)        0.653   rsrc1/rsrcalu/c<30>12
-    SLICE_X9Y57.B        Tilo                  0.097   rsrc1/shra
-                                                       rsrc1/rsrcalu/c<30>8
-    SLICE_X14Y59.B2      net (fanout=1)        0.729   rsrc1/rsrcalu/c<30>7
-    SLICE_X14Y59.B       Tilo                  0.097   rsrc1/rsrccreg/c<31>
-                                                       rsrc1/rsrcalu/c<30>9
-    SLICE_X14Y59.A4      net (fanout=1)        0.315   rsrc1/rsrcalu/c<30>8
-    SLICE_X14Y59.CLK     Tas                   0.028   rsrc1/rsrccreg/c<31>
-                                                       rsrc1/rsrcalu/c<30>11
-                                                       rsrc1/rsrccreg/c_30
+    SLICE_X60Y98.B3      net (fanout=288)      1.879   rsrc1/rsrcregfile/mux_out<1>
+    SLICE_X60Y98.B       Tilo                  0.097   rsrc1/rsrcregfile/mux45_81
+                                                       rsrc1/rsrcregfile/mux13_81
+    SLICE_X52Y96.D3      net (fanout=1)        0.690   rsrc1/rsrcregfile/mux13_81
+    SLICE_X52Y96.CMUX    Topdc                 0.408   rsrc1/rsrcregfile/mux13_82
+                                                       rsrc1/rsrcregfile/mux13_2_f7_F
+                                                       rsrc1/rsrcregfile/mux13_2_f7
+    SLICE_X30Y97.B4      net (fanout=5)        0.907   rsrc1/rsrcregfile/mux_out[4]_reg31[31]_wide_mux_103_OUT<21>
+    SLICE_X30Y97.B       Tilo                  0.097   rsrc1/rsrcregfile/reg19<23>
+                                                       rsrc1/cpu_bus<21>LogicTrst
+    SLICE_X14Y93.C4      net (fanout=50)       0.952   rsrc1/cpu_bus<21>
+    SLICE_X14Y93.C       Tilo                  0.097   rsrc1/rsrcirreg/ir<3>
+                                                       rsrc1/rsrcalu/n<1>_mmx_out2521
+    SLICE_X13Y97.A3      net (fanout=9)        1.269   rsrc1/rsrcalu/n<1>_mmx_out252
+    SLICE_X13Y97.A       Tilo                  0.097   N74
+                                                       rsrc1/rsrcalu/n<3>1611_SW0
+    SLICE_X13Y96.C2      net (fanout=1)        0.585   N369
+    SLICE_X13Y96.C       Tilo                  0.097   N370
+                                                       rsrc1/rsrcalu/c<29>2
+    SLICE_X14Y94.C2      net (fanout=1)        0.686   rsrc1/rsrcalu/c<29>1
+    SLICE_X14Y94.CLK     Tas                   0.027   rsrc1/rsrccreg/c<29>
+                                                       rsrc1/rsrcalu/c<29>6
+                                                       rsrc1/rsrccreg/c_29
     -------------------------------------------------  ---------------------------
-    Total                                     12.446ns (1.702ns logic, 10.744ns route)
-                                                       (13.7% logic, 86.3% route)
-
---------------------------------------------------------------------------------
-Slack (setup path):     7.608ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               rsrc1/rsrccontrol/state_FSM_FFd1 (FF)
-  Destination:          rsrc1/rsrccreg/c_30 (FF)
-  Requirement:          20.000ns
-  Data Path Delay:      12.277ns (Levels of Logic = 11)
-  Clock Path Skew:      -0.033ns (0.580 - 0.613)
-  Source Clock:         clk_out2 rising at 0.000ns
-  Destination Clock:    clk_out2 rising at 20.000ns
-  Clock Uncertainty:    0.082ns
-
-  Clock Uncertainty:          0.082ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
-    Total System Jitter (TSJ):  0.070ns
-    Discrete Jitter (DJ):       0.147ns
-    Phase Error (PE):           0.000ns
-
-  Maximum Data Path at Slow Process Corner: rsrc1/rsrccontrol/state_FSM_FFd1 to rsrc1/rsrccreg/c_30
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X8Y68.AQ       Tcko                  0.393   rsrc1/rsrccontrol/state_FSM_FFd3
-                                                       rsrc1/rsrccontrol/state_FSM_FFd1
-    SLICE_X32Y56.C1      net (fanout=26)       1.397   rsrc1/rsrccontrol/state_FSM_FFd1
-    SLICE_X32Y56.C       Tilo                  0.097   rsrc1/notx
-                                                       rsrc1/rsrccontrol/Mmux_c_in1121
-    SLICE_X9Y60.A2       net (fanout=45)       1.079   rsrc1/rsrccontrol/Mmux_c_in1121
-    SLICE_X9Y60.A        Tilo                  0.097   rsrc1/rsrcalu/c<24>6
-                                                       rsrc1/rsrccontrol/Mmux_grc11
-    SLICE_X12Y49.A1      net (fanout=5)        0.944   rsrc1/grc
-    SLICE_X12Y49.A       Tilo                  0.097   rsrc1/rsrcregfile/mux_7
-                                                       rsrc1/rsrcregfile/Mmux_mux_out<1>11
-    SLICE_X45Y75.B5      net (fanout=288)      1.886   rsrc1/rsrcregfile/mux_out<1>
-    SLICE_X45Y75.B       Tilo                  0.097   rsrc1/rsrcregfile/mux21_8
-                                                       rsrc1/rsrcregfile/mux21_8
-    SLICE_X40Y72.C1      net (fanout=1)        0.842   rsrc1/rsrcregfile/mux21_8
-    SLICE_X40Y72.CMUX    Tilo                  0.415   rsrc1/rsrcregfile/mux21_82
-                                                       rsrc1/rsrcregfile/mux21_2_f7_G
-                                                       rsrc1/rsrcregfile/mux21_2_f7
-    SLICE_X29Y61.B2      net (fanout=6)        1.042   rsrc1/rsrcregfile/mux_out[4]_reg31[31]_wide_mux_103_OUT<29>
-    SLICE_X29Y61.B       Tilo                  0.097   rsrc1/rsrcareg/a<31>
-                                                       rsrc1/cpu_bus<29>LogicTrst
-    SLICE_X28Y68.A2      net (fanout=51)       0.821   rsrc1/cpu_bus<29>
-    SLICE_X28Y68.A       Tilo                  0.097   rsrc1/rsrcregfile/reg5<31>
-                                                       rsrc1/rsrcalu/n<1>2521
-    SLICE_X14Y57.D4      net (fanout=4)        0.860   rsrc1/rsrcalu/n<1>_mmx_out311
-    SLICE_X14Y57.D       Tilo                  0.097   rsrc1/rsrcirreg/ir<3>
-                                                       rsrc1/rsrcalu/c<30>121
-    SLICE_X9Y57.B4       net (fanout=3)        0.653   rsrc1/rsrcalu/c<30>12
-    SLICE_X9Y57.B        Tilo                  0.097   rsrc1/shra
-                                                       rsrc1/rsrcalu/c<30>8
-    SLICE_X14Y59.B2      net (fanout=1)        0.729   rsrc1/rsrcalu/c<30>7
-    SLICE_X14Y59.B       Tilo                  0.097   rsrc1/rsrccreg/c<31>
-                                                       rsrc1/rsrcalu/c<30>9
-    SLICE_X14Y59.A4      net (fanout=1)        0.315   rsrc1/rsrcalu/c<30>8
-    SLICE_X14Y59.CLK     Tas                   0.028   rsrc1/rsrccreg/c<31>
-                                                       rsrc1/rsrcalu/c<30>11
-                                                       rsrc1/rsrccreg/c_30
-    -------------------------------------------------  ---------------------------
-    Total                                     12.277ns (1.709ns logic, 10.568ns route)
-                                                       (13.9% logic, 86.1% route)
+    Total                                     11.877ns (1.701ns logic, 10.176ns route)
+                                                       (14.3% logic, 85.7% route)
 
 --------------------------------------------------------------------------------
 
 Hold Paths: TS_mydcm1_clkout1 = PERIOD TIMEGRP "mydcm1_clkout1" TS_CLK / 0.5 HIGH 50%;
 --------------------------------------------------------------------------------
 
-Paths for end point sram1/Mram_myarray (RAMB36_X0Y15.DIADI14), 183 paths
+Paths for end point sram1/Mram_myarray (RAMB36_X0Y20.DIADI8), 183 paths
 --------------------------------------------------------------------------------
-Slack (hold path):      0.074ns (requirement - (clock path skew + uncertainty - data path))
-  Source:               rsrc1/rsrcmdreg/mdo_14 (FF)
+Slack (hold path):      0.014ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               rsrc1/rsrcmdreg/mdo_8 (FF)
   Destination:          sram1/Mram_myarray (RAM)
   Requirement:          0.000ns
-  Data Path Delay:      0.148ns (Levels of Logic = 1)
-  Clock Path Skew:      0.074ns (0.343 - 0.269)
+  Data Path Delay:      0.093ns (Levels of Logic = 1)
+  Clock Path Skew:      0.079ns (0.661 - 0.582)
   Source Clock:         clk_out2 rising at 20.000ns
   Destination Clock:    clk_out2 rising at 20.000ns
   Clock Uncertainty:    0.000ns
 
-  Minimum Data Path at Fast Process Corner: rsrc1/rsrcmdreg/mdo_14 to sram1/Mram_myarray
+  Minimum Data Path at Slow Process Corner: rsrc1/rsrcmdreg/mdo_8 to sram1/Mram_myarray
     Location                Delay type         Delay(ns)  Physical Resource
                                                           Logical Resource(s)
     ----------------------------------------------------  -------------------
-    SLICE_X8Y74.CQ          Tcko                  0.164   rsrc1/rsrcmdreg/mdo<15>
-                                                          rsrc1/rsrcmdreg/mdo_14
-    SLICE_X8Y76.D6          net (fanout=1)        0.135   rsrc1/rsrcmdreg/mdo<14>
-    SLICE_X8Y76.D           Tilo                  0.045   rsrc1/rsrcmdreg/mdi<14>
-                                                          d<14>LogicTrst
-    RAMB36_X0Y15.DIADI14    net (fanout=1)        0.100   d<14>
-    RAMB36_X0Y15.CLKARDCLKL Trckd_DIA   (-Th)     0.296   sram1/Mram_myarray
+    SLICE_X11Y101.AQ        Tcko                  0.274   rsrc1/rsrcmdreg/mdo<11>
+                                                          rsrc1/rsrcmdreg/mdo_8
+    SLICE_X10Y101.A5        net (fanout=1)        0.152   rsrc1/rsrcmdreg/mdo<8>
+    SLICE_X10Y101.A         Tilo                  0.078   rsrc1/rsrcmdreg/mdi<10>
+                                                          d<8>LogicTrst1
+    RAMB36_X0Y20.DIADI8     net (fanout=1)        0.182   d<8>
+    RAMB36_X0Y20.CLKARDCLKL Trckd_DIA   (-Th)     0.593   sram1/Mram_myarray
                                                           sram1/Mram_myarray
     ----------------------------------------------------  ---------------------------
-    Total                                         0.148ns (-0.087ns logic, 0.235ns route)
-                                                          (-58.8% logic, 158.8% route)
+    Total                                         0.093ns (-0.241ns logic, 0.334ns route)
+                                                          (-259.1% logic, 359.1% route)
 
 --------------------------------------------------------------------------------
-Slack (hold path):      0.410ns (requirement - (clock path skew + uncertainty - data path))
-  Source:               rsrc1/rsrcmareg/address_14 (FF)
+Slack (hold path):      0.534ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               rsrc1/rsrcirreg/ir_28 (FF)
   Destination:          sram1/Mram_myarray (RAM)
   Requirement:          0.000ns
-  Data Path Delay:      0.460ns (Levels of Logic = 2)
-  Clock Path Skew:      0.050ns (0.111 - 0.061)
+  Data Path Delay:      0.834ns (Levels of Logic = 2)
+  Clock Path Skew:      0.300ns (0.874 - 0.574)
   Source Clock:         clk_out2 rising at 20.000ns
   Destination Clock:    clk_out2 rising at 20.000ns
   Clock Uncertainty:    0.000ns
 
-  Minimum Data Path at Fast Process Corner: rsrc1/rsrcmareg/address_14 to sram1/Mram_myarray
+  Minimum Data Path at Fast Process Corner: rsrc1/rsrcirreg/ir_28 to sram1/Mram_myarray
     Location                Delay type         Delay(ns)  Physical Resource
                                                           Logical Resource(s)
     ----------------------------------------------------  -------------------
-    SLICE_X8Y77.CQ          Tcko                  0.164   rsrc1/rsrcmareg/address<15>
-                                                          rsrc1/rsrcmareg/address_14
-    SLICE_X8Y77.B5          net (fanout=11)       0.192   rsrc1/rsrcmareg/address<14>
-    SLICE_X8Y77.B           Tilo                  0.045   rsrc1/rsrcmareg/address<15>
-                                                          d<14>LogicTrst_SW0
-    SLICE_X8Y76.D5          net (fanout=1)        0.210   N88
-    SLICE_X8Y76.D           Tilo                  0.045   rsrc1/rsrcmdreg/mdi<14>
-                                                          d<14>LogicTrst
-    RAMB36_X0Y15.DIADI14    net (fanout=1)        0.100   d<14>
-    RAMB36_X0Y15.CLKARDCLKL Trckd_DIA   (-Th)     0.296   sram1/Mram_myarray
+    SLICE_X10Y95.BQ         Tcko                  0.164   rsrc1/rsrcirreg/ir<30>
+                                                          rsrc1/rsrcirreg/ir_28
+    SLICE_X10Y100.D3        net (fanout=43)       0.421   rsrc1/rsrcirreg/ir<28>
+    SLICE_X10Y100.D         Tilo                  0.045   rsrc1/rsrcmdreg/mdo<19>
+                                                          rsrc1/rsrccontrol/Mmux_md_wr11
+    SLICE_X10Y101.A1        net (fanout=39)       0.337   rsrc1/md_wr
+    SLICE_X10Y101.A         Tilo                  0.045   rsrc1/rsrcmdreg/mdi<10>
+                                                          d<8>LogicTrst1
+    RAMB36_X0Y20.DIADI8     net (fanout=1)        0.118   d<8>
+    RAMB36_X0Y20.CLKARDCLKL Trckd_DIA   (-Th)     0.296   sram1/Mram_myarray
                                                           sram1/Mram_myarray
     ----------------------------------------------------  ---------------------------
-    Total                                         0.460ns (-0.042ns logic, 0.502ns route)
-                                                          (-9.1% logic, 109.1% route)
+    Total                                         0.834ns (-0.042ns logic, 0.876ns route)
+                                                          (-5.0% logic, 105.0% route)
 
 --------------------------------------------------------------------------------
-Slack (hold path):      0.440ns (requirement - (clock path skew + uncertainty - data path))
-  Source:               rsrc1/rsrcmareg/address_12 (FF)
+Slack (hold path):      0.577ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               rsrc1/rsrcirreg/ir_29 (FF)
   Destination:          sram1/Mram_myarray (RAM)
   Requirement:          0.000ns
-  Data Path Delay:      0.490ns (Levels of Logic = 2)
-  Clock Path Skew:      0.050ns (0.111 - 0.061)
+  Data Path Delay:      0.877ns (Levels of Logic = 2)
+  Clock Path Skew:      0.300ns (0.874 - 0.574)
   Source Clock:         clk_out2 rising at 20.000ns
   Destination Clock:    clk_out2 rising at 20.000ns
   Clock Uncertainty:    0.000ns
 
-  Minimum Data Path at Fast Process Corner: rsrc1/rsrcmareg/address_12 to sram1/Mram_myarray
+  Minimum Data Path at Fast Process Corner: rsrc1/rsrcirreg/ir_29 to sram1/Mram_myarray
     Location                Delay type         Delay(ns)  Physical Resource
                                                           Logical Resource(s)
     ----------------------------------------------------  -------------------
-    SLICE_X8Y77.AQ          Tcko                  0.164   rsrc1/rsrcmareg/address<15>
-                                                          rsrc1/rsrcmareg/address_12
-    SLICE_X8Y77.B3          net (fanout=10)       0.222   rsrc1/rsrcmareg/address<12>
-    SLICE_X8Y77.B           Tilo                  0.045   rsrc1/rsrcmareg/address<15>
-                                                          d<14>LogicTrst_SW0
-    SLICE_X8Y76.D5          net (fanout=1)        0.210   N88
-    SLICE_X8Y76.D           Tilo                  0.045   rsrc1/rsrcmdreg/mdi<14>
-                                                          d<14>LogicTrst
-    RAMB36_X0Y15.DIADI14    net (fanout=1)        0.100   d<14>
-    RAMB36_X0Y15.CLKARDCLKL Trckd_DIA   (-Th)     0.296   sram1/Mram_myarray
+    SLICE_X10Y95.CQ         Tcko                  0.164   rsrc1/rsrcirreg/ir<30>
+                                                          rsrc1/rsrcirreg/ir_29
+    SLICE_X10Y100.D5        net (fanout=44)       0.464   rsrc1/rsrcirreg/ir<29>
+    SLICE_X10Y100.D         Tilo                  0.045   rsrc1/rsrcmdreg/mdo<19>
+                                                          rsrc1/rsrccontrol/Mmux_md_wr11
+    SLICE_X10Y101.A1        net (fanout=39)       0.337   rsrc1/md_wr
+    SLICE_X10Y101.A         Tilo                  0.045   rsrc1/rsrcmdreg/mdi<10>
+                                                          d<8>LogicTrst1
+    RAMB36_X0Y20.DIADI8     net (fanout=1)        0.118   d<8>
+    RAMB36_X0Y20.CLKARDCLKL Trckd_DIA   (-Th)     0.296   sram1/Mram_myarray
                                                           sram1/Mram_myarray
     ----------------------------------------------------  ---------------------------
-    Total                                         0.490ns (-0.042ns logic, 0.532ns route)
-                                                          (-8.6% logic, 108.6% route)
+    Total                                         0.877ns (-0.042ns logic, 0.919ns route)
+                                                          (-4.8% logic, 104.8% route)
 
 --------------------------------------------------------------------------------
 
-Paths for end point sram1/Mram_myarray (RAMB36_X0Y15.DIADI7), 184 paths
+Paths for end point sram1/Mram_myarray (RAMB36_X0Y20.ADDRARDADDRU9), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      0.078ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               rsrc1/rsrcmareg/address_6 (FF)
+  Destination:          sram1/Mram_myarray (RAM)
+  Requirement:          0.000ns
+  Data Path Delay:      0.130ns (Levels of Logic = 0)
+  Clock Path Skew:      0.052ns (0.123 - 0.071)
+  Source Clock:         clk_out2 rising at 20.000ns
+  Destination Clock:    clk_out2 rising at 20.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path at Fast Process Corner: rsrc1/rsrcmareg/address_6 to sram1/Mram_myarray
+    Location                   Delay type         Delay(ns)  Physical Resource
+                                                             Logical Resource(s)
+    -------------------------------------------------------  -------------------
+    SLICE_X9Y103.CQ            Tcko                  0.141   rsrc1/rsrcmareg/address<7>
+                                                             rsrc1/rsrcmareg/address_6
+    RAMB36_X0Y20.ADDRARDADDRU9 net (fanout=6)        0.172   rsrc1/rsrcmareg/address<6>
+    RAMB36_X0Y20.CLKARDCLKU    Trckc_ADDRA (-Th)     0.183   sram1/Mram_myarray
+                                                             sram1/Mram_myarray
+    -------------------------------------------------------  ---------------------------
+    Total                                            0.130ns (-0.042ns logic, 0.172ns route)
+                                                             (-32.3% logic, 132.3% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point sram1/Mram_myarray (RAMB36_X0Y20.ADDRARDADDRL9), 1 path
 --------------------------------------------------------------------------------
 Slack (hold path):      0.079ns (requirement - (clock path skew + uncertainty - data path))
-  Source:               rsrc1/rsrcmdreg/mdo_7 (FF)
+  Source:               rsrc1/rsrcmareg/address_6 (FF)
   Destination:          sram1/Mram_myarray (RAM)
   Requirement:          0.000ns
-  Data Path Delay:      0.128ns (Levels of Logic = 1)
-  Clock Path Skew:      0.049ns (0.111 - 0.062)
+  Data Path Delay:      0.131ns (Levels of Logic = 0)
+  Clock Path Skew:      0.052ns (0.123 - 0.071)
   Source Clock:         clk_out2 rising at 20.000ns
   Destination Clock:    clk_out2 rising at 20.000ns
   Clock Uncertainty:    0.000ns
 
-  Minimum Data Path at Fast Process Corner: rsrc1/rsrcmdreg/mdo_7 to sram1/Mram_myarray
-    Location                Delay type         Delay(ns)  Physical Resource
-                                                          Logical Resource(s)
-    ----------------------------------------------------  -------------------
-    SLICE_X9Y79.DQ          Tcko                  0.141   rsrc1/rsrcmdreg/mdo<7>
-                                                          rsrc1/rsrcmdreg/mdo_7
-    SLICE_X8Y79.D5          net (fanout=1)        0.079   rsrc1/rsrcmdreg/mdo<7>
-    SLICE_X8Y79.D           Tilo                  0.045   rsrc1/rsrcmdreg/mdi<7>
-                                                          d<7>LogicTrst
-    RAMB36_X0Y15.DIADI7     net (fanout=2)        0.159   d<7>
-    RAMB36_X0Y15.CLKARDCLKU Trckd_DIA   (-Th)     0.296   sram1/Mram_myarray
-                                                          sram1/Mram_myarray
-    ----------------------------------------------------  ---------------------------
-    Total                                         0.128ns (-0.110ns logic, 0.238ns route)
-                                                          (-85.9% logic, 185.9% route)
-
---------------------------------------------------------------------------------
-Slack (hold path):      0.708ns (requirement - (clock path skew + uncertainty - data path))
-  Source:               sram1/Mram_myarray (RAM)
-  Destination:          sram1/Mram_myarray (RAM)
-  Requirement:          0.000ns
-  Data Path Delay:      0.724ns (Levels of Logic = 1)
-  Clock Path Skew:      0.016ns (0.111 - 0.095)
-  Source Clock:         clk_out2 rising at 20.000ns
-  Destination Clock:    clk_out2 rising at 20.000ns
-  Clock Uncertainty:    0.000ns
-
-  Minimum Data Path at Fast Process Corner: sram1/Mram_myarray to sram1/Mram_myarray
-    Location                Delay type         Delay(ns)  Physical Resource
-                                                          Logical Resource(s)
-    ----------------------------------------------------  -------------------
-    RAMB36_X0Y15.DOBDO7     Trcko_DOB             0.585   sram1/Mram_myarray
-                                                          sram1/Mram_myarray
-    SLICE_X8Y79.D6          net (fanout=1)        0.231   sram1/_n0047<7>
-    SLICE_X8Y79.D           Tilo                  0.045   rsrc1/rsrcmdreg/mdi<7>
-                                                          d<7>LogicTrst
-    RAMB36_X0Y15.DIADI7     net (fanout=2)        0.159   d<7>
-    RAMB36_X0Y15.CLKARDCLKU Trckd_DIA   (-Th)     0.296   sram1/Mram_myarray
-                                                          sram1/Mram_myarray
-    ----------------------------------------------------  ---------------------------
-    Total                                         0.724ns (0.334ns logic, 0.390ns route)
-                                                          (46.1% logic, 53.9% route)
-
---------------------------------------------------------------------------------
-Slack (hold path):      0.827ns (requirement - (clock path skew + uncertainty - data path))
-  Source:               usb1/usb_rd_h_clk_DFF_44 (FF)
-  Destination:          sram1/Mram_myarray (RAM)
-  Requirement:          0.000ns
-  Data Path Delay:      0.862ns (Levels of Logic = 2)
-  Clock Path Skew:      0.035ns (0.343 - 0.308)
-  Source Clock:         clk_out2 rising at 20.000ns
-  Destination Clock:    clk_out2 rising at 20.000ns
-  Clock Uncertainty:    0.000ns
-
-  Minimum Data Path at Fast Process Corner: usb1/usb_rd_h_clk_DFF_44 to sram1/Mram_myarray
-    Location                Delay type         Delay(ns)  Physical Resource
-                                                          Logical Resource(s)
-    ----------------------------------------------------  -------------------
-    SLICE_X4Y88.AMUX        Tshcko                0.182   usb1/usb_wr_h_inv
-                                                          usb1/usb_rd_h_clk_DFF_44
-    SLICE_X6Y88.A4          net (fanout=6)        0.192   usb1/usb_rd_h_clk_DFF_44
-    SLICE_X6Y88.A           Tilo                  0.045   N60
-                                                          d<7>LogicTrst_SW0
-    SLICE_X8Y79.D2          net (fanout=1)        0.535   N60
-    SLICE_X8Y79.D           Tilo                  0.045   rsrc1/rsrcmdreg/mdi<7>
-                                                          d<7>LogicTrst
-    RAMB36_X0Y15.DIADI7     net (fanout=2)        0.159   d<7>
-    RAMB36_X0Y15.CLKARDCLKU Trckd_DIA   (-Th)     0.296   sram1/Mram_myarray
-                                                          sram1/Mram_myarray
-    ----------------------------------------------------  ---------------------------
-    Total                                         0.862ns (-0.024ns logic, 0.886ns route)
-                                                          (-2.8% logic, 102.8% route)
-
---------------------------------------------------------------------------------
-
-Paths for end point sram1/Mram_myarray (RAMB36_X0Y15.DIADI21), 182 paths
---------------------------------------------------------------------------------
-Slack (hold path):      0.095ns (requirement - (clock path skew + uncertainty - data path))
-  Source:               rsrc1/rsrcmdreg/mdo_21 (FF)
-  Destination:          sram1/Mram_myarray (RAM)
-  Requirement:          0.000ns
-  Data Path Delay:      0.148ns (Levels of Logic = 1)
-  Clock Path Skew:      0.053ns (0.111 - 0.058)
-  Source Clock:         clk_out2 rising at 20.000ns
-  Destination Clock:    clk_out2 rising at 20.000ns
-  Clock Uncertainty:    0.000ns
-
-  Minimum Data Path at Fast Process Corner: rsrc1/rsrcmdreg/mdo_21 to sram1/Mram_myarray
-    Location                Delay type         Delay(ns)  Physical Resource
-                                                          Logical Resource(s)
-    ----------------------------------------------------  -------------------
-    SLICE_X9Y75.BQ          Tcko                  0.141   rsrc1/rsrcmdreg/mdo<23>
-                                                          rsrc1/rsrcmdreg/mdo_21
-    SLICE_X8Y75.D6          net (fanout=1)        0.051   rsrc1/rsrcmdreg/mdo<21>
-    SLICE_X8Y75.D           Tilo                  0.045   rsrc1/rsrcmdreg/mdi<21>
-                                                          d<21>LogicTrst
-    RAMB36_X0Y15.DIADI21    net (fanout=1)        0.207   d<21>
-    RAMB36_X0Y15.CLKARDCLKU Trckd_DIA   (-Th)     0.296   sram1/Mram_myarray
-                                                          sram1/Mram_myarray
-    ----------------------------------------------------  ---------------------------
-    Total                                         0.148ns (-0.110ns logic, 0.258ns route)
-                                                          (-74.3% logic, 174.3% route)
-
---------------------------------------------------------------------------------
-Slack (hold path):      0.467ns (requirement - (clock path skew + uncertainty - data path))
-  Source:               rsrc1/rsrcmareg/address_14 (FF)
-  Destination:          sram1/Mram_myarray (RAM)
-  Requirement:          0.000ns
-  Data Path Delay:      0.517ns (Levels of Logic = 2)
-  Clock Path Skew:      0.050ns (0.111 - 0.061)
-  Source Clock:         clk_out2 rising at 20.000ns
-  Destination Clock:    clk_out2 rising at 20.000ns
-  Clock Uncertainty:    0.000ns
-
-  Minimum Data Path at Fast Process Corner: rsrc1/rsrcmareg/address_14 to sram1/Mram_myarray
-    Location                Delay type         Delay(ns)  Physical Resource
-                                                          Logical Resource(s)
-    ----------------------------------------------------  -------------------
-    SLICE_X8Y77.CQ          Tcko                  0.164   rsrc1/rsrcmareg/address<15>
-                                                          rsrc1/rsrcmareg/address_14
-    SLICE_X9Y78.A6          net (fanout=11)       0.159   rsrc1/rsrcmareg/address<14>
-    SLICE_X9Y78.A           Tilo                  0.045   N78
-                                                          d<21>LogicTrst_SW0
-    SLICE_X8Y75.D5          net (fanout=1)        0.193   N80
-    SLICE_X8Y75.D           Tilo                  0.045   rsrc1/rsrcmdreg/mdi<21>
-                                                          d<21>LogicTrst
-    RAMB36_X0Y15.DIADI21    net (fanout=1)        0.207   d<21>
-    RAMB36_X0Y15.CLKARDCLKU Trckd_DIA   (-Th)     0.296   sram1/Mram_myarray
-                                                          sram1/Mram_myarray
-    ----------------------------------------------------  ---------------------------
-    Total                                         0.517ns (-0.042ns logic, 0.559ns route)
-                                                          (-8.1% logic, 108.1% route)
-
---------------------------------------------------------------------------------
-Slack (hold path):      0.579ns (requirement - (clock path skew + uncertainty - data path))
-  Source:               rsrc1/rsrcmareg/address_13 (FF)
-  Destination:          sram1/Mram_myarray (RAM)
-  Requirement:          0.000ns
-  Data Path Delay:      0.629ns (Levels of Logic = 2)
-  Clock Path Skew:      0.050ns (0.111 - 0.061)
-  Source Clock:         clk_out2 rising at 20.000ns
-  Destination Clock:    clk_out2 rising at 20.000ns
-  Clock Uncertainty:    0.000ns
-
-  Minimum Data Path at Fast Process Corner: rsrc1/rsrcmareg/address_13 to sram1/Mram_myarray
-    Location                Delay type         Delay(ns)  Physical Resource
-                                                          Logical Resource(s)
-    ----------------------------------------------------  -------------------
-    SLICE_X8Y77.BQ          Tcko                  0.164   rsrc1/rsrcmareg/address<15>
-                                                          rsrc1/rsrcmareg/address_13
-    SLICE_X9Y78.A3          net (fanout=12)       0.271   rsrc1/rsrcmareg/address<13>
-    SLICE_X9Y78.A           Tilo                  0.045   N78
-                                                          d<21>LogicTrst_SW0
-    SLICE_X8Y75.D5          net (fanout=1)        0.193   N80
-    SLICE_X8Y75.D           Tilo                  0.045   rsrc1/rsrcmdreg/mdi<21>
-                                                          d<21>LogicTrst
-    RAMB36_X0Y15.DIADI21    net (fanout=1)        0.207   d<21>
-    RAMB36_X0Y15.CLKARDCLKU Trckd_DIA   (-Th)     0.296   sram1/Mram_myarray
-                                                          sram1/Mram_myarray
-    ----------------------------------------------------  ---------------------------
-    Total                                         0.629ns (-0.042ns logic, 0.671ns route)
-                                                          (-6.7% logic, 106.7% route)
+  Minimum Data Path at Fast Process Corner: rsrc1/rsrcmareg/address_6 to sram1/Mram_myarray
+    Location                   Delay type         Delay(ns)  Physical Resource
+                                                             Logical Resource(s)
+    -------------------------------------------------------  -------------------
+    SLICE_X9Y103.CQ            Tcko                  0.141   rsrc1/rsrcmareg/address<7>
+                                                             rsrc1/rsrcmareg/address_6
+    RAMB36_X0Y20.ADDRARDADDRL9 net (fanout=6)        0.173   rsrc1/rsrcmareg/address<6>
+    RAMB36_X0Y20.CLKARDCLKL    Trckc_ADDRA (-Th)     0.183   sram1/Mram_myarray
+                                                             sram1/Mram_myarray
+    -------------------------------------------------------  ---------------------------
+    Total                                            0.131ns (-0.042ns logic, 0.173ns route)
+                                                             (-32.1% logic, 132.1% route)
 
 --------------------------------------------------------------------------------
 
@@ -889,7 +796,7 @@ Slack: 18.038ns (period - min period limit)
   Min period limit: 1.962ns (509.684MHz) (Trper_CLKA)
   Physical resource: sram1/Mram_myarray/CLKARDCLKL
   Logical resource: sram1/Mram_myarray/CLKARDCLKL
-  Location pin: RAMB36_X0Y15.CLKARDCLKL
+  Location pin: RAMB36_X0Y20.CLKARDCLKL
   Clock network: clk_out2
 --------------------------------------------------------------------------------
 Slack: 18.038ns (period - min period limit)
@@ -897,7 +804,7 @@ Slack: 18.038ns (period - min period limit)
   Min period limit: 1.962ns (509.684MHz) (Trper_CLKA)
   Physical resource: sram1/Mram_myarray/CLKARDCLKU
   Logical resource: sram1/Mram_myarray/CLKARDCLKU
-  Location pin: RAMB36_X0Y15.CLKARDCLKU
+  Location pin: RAMB36_X0Y20.CLKARDCLKU
   Clock network: clk_out2
 --------------------------------------------------------------------------------
 Slack: 18.038ns (period - min period limit)
@@ -905,7 +812,7 @@ Slack: 18.038ns (period - min period limit)
   Min period limit: 1.962ns (509.684MHz) (Trper_CLKB)
   Physical resource: sram1/Mram_myarray/CLKBWRCLKL
   Logical resource: sram1/Mram_myarray/CLKBWRCLKL
-  Location pin: RAMB36_X0Y15.CLKBWRCLKL
+  Location pin: RAMB36_X0Y20.CLKBWRCLKL
   Clock network: clk_out2
 --------------------------------------------------------------------------------
 
@@ -917,8 +824,8 @@ Derived Constraints for TS_CLK
 |           Constraint          | Requirement |-------------+-------------|-------------+-------------|-------------+-------------|
 |                               |             |   Direct    | Derivative  |   Direct    | Derivative  |   Direct    | Derivative  |
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-|TS_CLK                         |     10.000ns|      4.000ns|      6.378ns|            0|            0|            0|      8885146|
-| TS_mydcm1_clkout1             |     20.000ns|     12.756ns|          N/A|            0|            0|      8885146|            0|
+|TS_CLK                         |     10.000ns|      4.000ns|      6.347ns|            0|            0|            0|      8884956|
+| TS_mydcm1_clkout1             |     20.000ns|     12.694ns|          N/A|            0|            0|      8884956|            0|
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
 
 All constraints were met.
@@ -933,7 +840,7 @@ Clock to Setup on destination clock clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk            |   12.756|         |         |         |
+clk            |   12.694|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
@@ -942,16 +849,16 @@ Timing summary:
 
 Timing errors: 0  Score: 0  (Setup/Max: 0, Hold: 0)
 
-Constraints cover 8885146 paths, 0 nets, and 11137 connections
+Constraints cover 8884956 paths, 0 nets, and 11085 connections
 
 Design statistics:
-   Minimum period:  12.756ns{1}   (Maximum frequency:  78.394MHz)
+   Minimum period:  12.694ns{1}   (Maximum frequency:  78.777MHz)
 
 
 ------------------------------------Footnotes-----------------------------------
 1)  The minimum period statistic assumes all single cycle delays.
 
-Analysis completed Tue Mar  5 14:17:53 2019 
+Analysis completed Tue Mar  5 14:43:08 2019 
 --------------------------------------------------------------------------------
 
 Trace Settings:

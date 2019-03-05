@@ -1,0 +1,16 @@
+(SRCTools Version 3.1.1)
+ HexLoc     DecLoc    MachWord   Label        Instruction                Comment
+00000000  0000000000  2fc1ffff                la r31, -1                 ;
+00000004  0000000004  2f80000c                la r30, CHECK_READ         ;
+00000008  0000000008  2f400018                la r29, CHECK_WRITE        ;
+0000000c  0000000012  087fffe9  CHECK_READ:   ld r1, -23(r31)            ; loop until we can read
+00000010  0000000016  403c1003                brnz r30, r1               ;
+00000014  0000000020  087dffea                ld r1, -22(r30)            ; read
+00000018  0000000024  08bdffe8  CHECK_WRITE:  ld r2, -24(r30)            ; loop until we can write
+0000001c  0000000028  403a2003                brnz r29, r2               ;
+00000020  0000000032  187dffea                st r1, -22(r30)            ;
+00000024  0000000036  403c0001                br r30                     ;
+
+--- Symbol Table ---
+CHECK_WRITE: 24
+CHECK_READ: 12

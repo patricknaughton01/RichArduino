@@ -12,7 +12,7 @@ Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.05 secs
+Total CPU time to Xst completion: 0.04 secs
  
 --> 
 Reading design: testbench.prj
@@ -573,38 +573,38 @@ Unit <control> synthesized.
 
 Synthesizing Unit <eprom>.
     Related source file is "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/eprom.vhd".
-    Found 1-bit tristate buffer for signal <d<31>> created at line 66
-    Found 1-bit tristate buffer for signal <d<30>> created at line 66
-    Found 1-bit tristate buffer for signal <d<29>> created at line 66
-    Found 1-bit tristate buffer for signal <d<28>> created at line 66
-    Found 1-bit tristate buffer for signal <d<27>> created at line 66
-    Found 1-bit tristate buffer for signal <d<26>> created at line 66
-    Found 1-bit tristate buffer for signal <d<25>> created at line 66
-    Found 1-bit tristate buffer for signal <d<24>> created at line 66
-    Found 1-bit tristate buffer for signal <d<23>> created at line 66
-    Found 1-bit tristate buffer for signal <d<22>> created at line 66
-    Found 1-bit tristate buffer for signal <d<21>> created at line 66
-    Found 1-bit tristate buffer for signal <d<20>> created at line 66
-    Found 1-bit tristate buffer for signal <d<19>> created at line 66
-    Found 1-bit tristate buffer for signal <d<18>> created at line 66
-    Found 1-bit tristate buffer for signal <d<17>> created at line 66
-    Found 1-bit tristate buffer for signal <d<16>> created at line 66
-    Found 1-bit tristate buffer for signal <d<15>> created at line 66
-    Found 1-bit tristate buffer for signal <d<14>> created at line 66
-    Found 1-bit tristate buffer for signal <d<13>> created at line 66
-    Found 1-bit tristate buffer for signal <d<12>> created at line 66
-    Found 1-bit tristate buffer for signal <d<11>> created at line 66
-    Found 1-bit tristate buffer for signal <d<10>> created at line 66
-    Found 1-bit tristate buffer for signal <d<9>> created at line 66
-    Found 1-bit tristate buffer for signal <d<8>> created at line 66
-    Found 1-bit tristate buffer for signal <d<7>> created at line 66
-    Found 1-bit tristate buffer for signal <d<6>> created at line 66
-    Found 1-bit tristate buffer for signal <d<5>> created at line 66
-    Found 1-bit tristate buffer for signal <d<4>> created at line 66
-    Found 1-bit tristate buffer for signal <d<3>> created at line 66
-    Found 1-bit tristate buffer for signal <d<2>> created at line 66
-    Found 1-bit tristate buffer for signal <d<1>> created at line 66
-    Found 1-bit tristate buffer for signal <d<0>> created at line 66
+    Found 1-bit tristate buffer for signal <d<31>> created at line 80
+    Found 1-bit tristate buffer for signal <d<30>> created at line 80
+    Found 1-bit tristate buffer for signal <d<29>> created at line 80
+    Found 1-bit tristate buffer for signal <d<28>> created at line 80
+    Found 1-bit tristate buffer for signal <d<27>> created at line 80
+    Found 1-bit tristate buffer for signal <d<26>> created at line 80
+    Found 1-bit tristate buffer for signal <d<25>> created at line 80
+    Found 1-bit tristate buffer for signal <d<24>> created at line 80
+    Found 1-bit tristate buffer for signal <d<23>> created at line 80
+    Found 1-bit tristate buffer for signal <d<22>> created at line 80
+    Found 1-bit tristate buffer for signal <d<21>> created at line 80
+    Found 1-bit tristate buffer for signal <d<20>> created at line 80
+    Found 1-bit tristate buffer for signal <d<19>> created at line 80
+    Found 1-bit tristate buffer for signal <d<18>> created at line 80
+    Found 1-bit tristate buffer for signal <d<17>> created at line 80
+    Found 1-bit tristate buffer for signal <d<16>> created at line 80
+    Found 1-bit tristate buffer for signal <d<15>> created at line 80
+    Found 1-bit tristate buffer for signal <d<14>> created at line 80
+    Found 1-bit tristate buffer for signal <d<13>> created at line 80
+    Found 1-bit tristate buffer for signal <d<12>> created at line 80
+    Found 1-bit tristate buffer for signal <d<11>> created at line 80
+    Found 1-bit tristate buffer for signal <d<10>> created at line 80
+    Found 1-bit tristate buffer for signal <d<9>> created at line 80
+    Found 1-bit tristate buffer for signal <d<8>> created at line 80
+    Found 1-bit tristate buffer for signal <d<7>> created at line 80
+    Found 1-bit tristate buffer for signal <d<6>> created at line 80
+    Found 1-bit tristate buffer for signal <d<5>> created at line 80
+    Found 1-bit tristate buffer for signal <d<4>> created at line 80
+    Found 1-bit tristate buffer for signal <d<3>> created at line 80
+    Found 1-bit tristate buffer for signal <d<2>> created at line 80
+    Found 1-bit tristate buffer for signal <d<1>> created at line 80
+    Found 1-bit tristate buffer for signal <d<0>> created at line 80
     Summary:
 	inferred   1 Multiplexer(s).
 	inferred  32 Tristate(s).
@@ -961,17 +961,17 @@ Top Level Output File Name         : testbench.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 1963
+# BELS                             : 1949
 #      GND                         : 1
 #      INV                         : 2
 #      LUT1                        : 1
 #      LUT2                        : 50
-#      LUT3                        : 52
+#      LUT3                        : 49
 #      LUT4                        : 66
-#      LUT5                        : 107
-#      LUT6                        : 1346
+#      LUT5                        : 106
+#      LUT6                        : 1337
 #      MUXCY                       : 129
-#      MUXF7                       : 82
+#      MUXF7                       : 81
 #      VCC                         : 1
 #      XORCY                       : 126
 # FlipFlops/Latches                : 1288
@@ -1002,16 +1002,16 @@ Selected Device : 7a100tcsg324-3
 
 Slice Logic Utilization: 
  Number of Slice Registers:            1288  out of  126800     1%  
- Number of Slice LUTs:                 1627  out of  63400     2%  
-    Number used as Logic:              1624  out of  63400     2%  
+ Number of Slice LUTs:                 1614  out of  63400     2%  
+    Number used as Logic:              1611  out of  63400     2%  
     Number used as Memory:                3  out of  19000     0%  
        Number used as SRL:                3
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:   2795
-   Number with an unused Flip Flop:    1507  out of   2795    53%  
-   Number with an unused LUT:          1168  out of   2795    41%  
-   Number of fully used LUT-FF pairs:   120  out of   2795     4%  
+ Number of LUT Flip Flop pairs used:   2782
+   Number with an unused Flip Flop:    1494  out of   2782    53%  
+   Number with an unused LUT:          1168  out of   2782    41%  
+   Number of fully used LUT-FF pairs:   120  out of   2782     4%  
    Number of unique control sets:        44
 
 IO Utilization: 
@@ -1055,7 +1055,7 @@ Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: 7.039ns (Maximum Frequency: 142.072MHz)
+   Minimum period: 7.057ns (Maximum Frequency: 141.705MHz)
    Minimum input arrival time before clock: 0.289ns
    Maximum output required time after clock: 1.065ns
    Maximum combinational path delay: 0.001ns
@@ -1066,10 +1066,10 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'mydcm1/clkout1'
-  Clock period: 7.039ns (frequency: 142.072MHz)
-  Total number of paths / destination ports: 8854757 / 2610
+  Clock period: 7.057ns (frequency: 141.705MHz)
+  Total number of paths / destination ports: 8854567 / 2610
 -------------------------------------------------------------------------
-Delay:               7.039ns (Levels of Logic = 13)
+Delay:               7.057ns (Levels of Logic = 13)
   Source:            rsrc1/rsrccontrol/state_FSM_FFd3_1 (FF)
   Destination:       rsrc1/rsrccreg/c_30 (FF)
   Source Clock:      mydcm1/clkout1 rising
@@ -1084,18 +1084,18 @@ Delay:               7.039ns (Levels of Logic = 13)
      LUT6:I4->O            1   0.097   0.295  rsrc1/rsrccontrol/Mmux_c_in163_1 (rsrc1/rsrccontrol/Mmux_c_in163)
      LUT6:I5->O            5   0.097   0.314  rsrc1/rsrccontrol/Mmux_c_in121 (rsrc1/gra)
      LUT6:I5->O          288   0.097   0.525  rsrc1/rsrcregfile/Mmux_mux_out<0>11 (rsrc1/rsrcregfile/mux_out<0>)
-     LUT6:I4->O            1   0.097   0.556  rsrc1/rsrcregfile/mux4_10 (rsrc1/rsrcregfile/mux4_10)
-     LUT6:I2->O            1   0.097   0.000  rsrc1/rsrcregfile/mux4_2_f7_G (N518)
-     MUXF7:I1->O           6   0.279   0.318  rsrc1/rsrcregfile/mux4_2_f7 (rsrc1/rsrcregfile/mux_out[4]_reg31[31]_wide_mux_103_OUT<13>)
-     LUT6:I5->O            1   0.097   0.556  rsrc1/cpu_bus<13>LogicTrst_1 (rsrc1/cpu_bus<13>LogicTrst1)
-     LUT6:I2->O            5   0.097   0.530  rsrc1/rsrcalu/n<1>_mmx_out2611 (rsrc1/rsrcalu/n<1>_mmx_out261)
+     LUT6:I4->O            1   0.097   0.556  rsrc1/rsrcregfile/mux31_10 (rsrc1/rsrcregfile/mux31_10)
+     LUT6:I2->O            1   0.097   0.000  rsrc1/rsrcregfile/mux31_2_f7_G (N470)
+     MUXF7:I1->O           6   0.279   0.318  rsrc1/rsrcregfile/mux31_2_f7 (rsrc1/rsrcregfile/mux_out[4]_reg31[31]_wide_mux_103_OUT<9>)
+     LUT6:I5->O            1   0.097   0.556  rsrc1/cpu_bus<9>LogicTrst_1 (rsrc1/cpu_bus<9>LogicTrst1)
+     LUT6:I2->O            9   0.097   0.548  rsrc1/rsrcalu/n<1>_mmx_out2211 (rsrc1/rsrcalu/n<1>_mmx_out221)
      LUT6:I3->O            1   0.097   0.379  rsrc1/rsrcalu/n<3>611 (rsrc1/rsrcalu/n<3>_mmx_out141)
      LUT5:I3->O            1   0.097   0.379  rsrc1/rsrcalu/c<30>8 (rsrc1/rsrcalu/c<30>7)
      LUT6:I4->O            1   0.097   0.295  rsrc1/rsrcalu/c<30>9 (rsrc1/rsrcalu/c<30>8)
      LUT6:I5->O            1   0.097   0.000  rsrc1/rsrcalu/c<30>11 (rsrc1/c_bus<30>)
      FDE:D                     0.008          rsrc1/rsrccreg/c_30
     ----------------------------------------
-    Total                      7.039ns (1.812ns logic, 5.227ns route)
+    Total                      7.057ns (1.812ns logic, 5.245ns route)
                                        (25.7% logic, 74.3% route)
 
 =========================================================================
@@ -1165,19 +1165,19 @@ Clock to Setup on destination clock mydcm1/clkout1
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-mydcm1/clkout1 |    7.039|         |         |         |
+mydcm1/clkout1 |    7.057|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
 Total REAL time to Xst completion: 19.00 secs
-Total CPU time to Xst completion: 19.03 secs
+Total CPU time to Xst completion: 18.53 secs
  
 --> 
 
 
-Total memory usage is 534804 kilobytes
+Total memory usage is 534684 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :   16 (   0 filtered)

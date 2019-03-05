@@ -13,24 +13,38 @@ ARCHITECTURE behavioral OF eprom IS
    SIGNAL data    : STD_LOGIC_VECTOR(31 DOWNTO 0) ;
 
 BEGIN
-
----------------------IO TEST-------------------------
+---------------------USB ECHO-------------------------
 	WITH address  SELECT
    data <=
-     X"2f81ffff" WHEN "0000000000" , --- la r30, -1
-	  X"28400003" WHEN "0000000001" , --- la r1, 3
-	  X"28800016" WHEN "0000000010" , --- la r2, 22 
-	  X"28c00014" WHEN "0000000011" , --- la r3, LOOP
-	  X"29000024" WHEN "0000000100" , --- la r4, LOOP2
-	  X"187c0000" WHEN "0000000101" , --- st r1, 0(r30)
-	  X"6fbdffff" WHEN "0000000110" , --- addi r30, r30, -1
-	  X"6885ffff" WHEN "0000000111" , --- addi r2, r2, -1
-	  X"40062003" WHEN "0000001000" , --- brnz r3, r2
-	  X"6fbc0001" WHEN "0000001001" , --- addi r30, r30, 1
-	  X"097c0000" WHEN "0000001010" , --- ld r5, 0(r30)
-	  X"4009e005" WHEN "0000001011" , --- brmi r4, r30
-	  X"f8000000" WHEN "0000001100" , --- stop
+     X"2fc1ffff" WHEN "0000000000" , --- la r31, -1
+	  X"2f80000c" WHEN "0000000001" , --- la r30, CHECK_READ
+	  X"2f400018" WHEN "0000000010" , --- la r29, CHECK_WRITE 
+	  X"087fffe9" WHEN "0000000011" , --- CHECK_READ:   ld r1, -23(r31)
+	  X"403c1003" WHEN "0000000100" , --- brnz r30, r1
+	  X"087dffea" WHEN "0000000101" , --- ld r1, -22(r30)
+	  X"08bdffe8" WHEN "0000000110" , --- CHECK_WRITE:  ld r2, -24(r30)
+	  X"403a2003" WHEN "0000000111" , --- brnz r29, r2
+	  X"187dffea" WHEN "0000001000" , --- st r1, -22(r30)
+	  X"403c0001" WHEN "0000001001" , --- br r30
      X"00000000" WHEN OTHERS ;
+
+---------------------IO TEST-------------------------
+--	WITH address  SELECT
+--   data <=
+--     X"2f81ffff" WHEN "0000000000" , --- la r30, -1
+--	  X"28400003" WHEN "0000000001" , --- la r1, 3
+--	  X"28800016" WHEN "0000000010" , --- la r2, 22 
+--	  X"28c00014" WHEN "0000000011" , --- la r3, LOOP
+--	  X"29000024" WHEN "0000000100" , --- la r4, LOOP2
+--	  X"187c0000" WHEN "0000000101" , --- st r1, 0(r30)
+--	  X"6fbdffff" WHEN "0000000110" , --- addi r30, r30, -1
+--	  X"6885ffff" WHEN "0000000111" , --- addi r2, r2, -1
+--	  X"40062003" WHEN "0000001000" , --- brnz r3, r2
+--	  X"6fbc0001" WHEN "0000001001" , --- addi r30, r30, 1
+--	  X"097c0000" WHEN "0000001010" , --- ld r5, 0(r30)
+--	  X"4009e005" WHEN "0000001011" , --- brmi r4, r30
+--	  X"f8000000" WHEN "0000001100" , --- stop
+--     X"00000000" WHEN OTHERS ;
 ------------- HDMI test program, clear screen --------------
 --	WITH address  SELECT
 --   data <=

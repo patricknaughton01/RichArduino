@@ -11,3 +11,9 @@ map -intstyle ise -p xc7a100t-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -re
 par -w -intstyle ise -ol high -mt off testbench_map.ncd testbench.ncd testbench.pcf 
 trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml testbench.twx testbench.ncd -o testbench.twr testbench.pcf 
 bitgen -intstyle ise -f testbench.ut testbench.ncd 
+xst -intstyle ise -ifn "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/testbench.xst" -ofn "/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/testbench.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd usb_test/ipcore_dir -nt timestamp -uc usb_test/artix7.ucf -p xc7a100t-csg324-3 testbench.ngc testbench.ngd  
+map -intstyle ise -p xc7a100t-csg324-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -mt off -ir off -pr off -lc off -power off -o testbench_map.ncd testbench.ngd testbench.pcf 
+par -w -intstyle ise -ol high -mt off testbench_map.ncd testbench.ncd testbench.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml testbench.twx testbench.ncd -o testbench.twr testbench.pcf 
+bitgen -intstyle ise -f testbench.ut testbench.ncd 
