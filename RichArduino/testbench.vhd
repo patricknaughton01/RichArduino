@@ -10,7 +10,8 @@ USE IEEE.STD_LOGIC_ARITH.ALL ;
 
 ENTITY testbench IS
    PORT(clk       : IN  STD_LOGIC;
-        reset_l   : IN  STD_LOGIC;
+        reset_l_usb   : IN  STD_LOGIC;
+		  reset_l_but	 : IN STD_LOGIC;
 		  txe_l		: IN  STD_LOGIC;
 		  rxf_l		: IN	STD_LOGIC;
 --        r         : OUT STD_LOGIC_VECTOR(1 DOWNTO 0) ;
@@ -113,6 +114,7 @@ ARCHITECTURE structure OF testbench IS
 			pins	: INOUT	STD_LOGIC_VECTOR(21 DOWNTO 0));
 	END COMPONENT;
 
+	SIGNAL reset_l		  : STD_LOGIC ;
    SIGNAL reset_l_temp : STD_LOGIC ;
    SIGNAL reset_l_sync : STD_LOGIC ;
    SIGNAL clk_out1     : STD_LOGIC ;
@@ -146,6 +148,8 @@ BEGIN
 				clk_out2 => clk_out2 ,
 				clk_out3 => clk_out3,
             clk_in1  => clk) ;
+				
+	reset_l <= reset_l_usb AND reset_l_but;
 
    syncprocess:PROCESS(clk_out2)
    begin

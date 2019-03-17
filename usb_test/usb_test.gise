@@ -78,6 +78,7 @@
   <transforms xmlns="http://www.xilinx.com/XMLSchema">
     <transform xil_pn:end_ts="1551816581" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1551816581">
       <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
     </transform>
     <transform xil_pn:end_ts="1551816581" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="-8000800836259548075" xil_pn:start_ts="1551816581">
       <status xil_pn:value="SuccessfullyRun"/>
@@ -139,6 +140,8 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="_xmsgs/map.xmsgs"/>
       <outfile xil_pn:name="testbench.pcf"/>
       <outfile xil_pn:name="testbench_map.map"/>

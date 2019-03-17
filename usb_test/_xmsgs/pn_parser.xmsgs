@@ -8,5 +8,53 @@
 <!-- Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.    -->
 
 <messages>
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/a.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/alu.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/c.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/conbit.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/control.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/eprom.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/ir.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/ma.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/md.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/pc.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/regfile.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/rsrc.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/shiftcounter.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/sram.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/testbench.vhd&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/usb.vhd&quot; into library work</arg>
+</msg>
+
 </messages>
 

@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2019-03-05T14:41:00</DateModified>
+  <DateModified>2019-03-07T14:43:04</DateModified>
   <ModuleName>testbench</ModuleName>
   <SummaryTimeStamp>2019-03-05T14:18:26</SummaryTimeStamp>
   <SavedFilePath>/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/usb_test/iseconfig/testbench.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test</ImplementationReportsDirectory>
+  <ImplementationReportsDirectory>/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/usb_test/</ImplementationReportsDirectory>
   <DateInitialized>2019-03-05T14:05:58</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>
