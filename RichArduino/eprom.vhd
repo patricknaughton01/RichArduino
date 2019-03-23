@@ -17,73 +17,73 @@ ARCHITECTURE behavioral OF eprom IS
 BEGIN
 
 -----------Monitor program test---------
-	sel <= "00000000000000000000" & address & "00" ;
-
-	WITH sel  SELECT
-	data <=
-      X"2fc1ffe9" WHEN X"00000000" , 
-      X"2f81ffe8" WHEN X"00000004" , 
-      X"2f400050" WHEN X"00000008" , 
-      X"2f000018" WHEN X"0000000c" , 
-      X"2ec0002c" WHEN X"00000010" , 
-      X"28401000" WHEN X"00000014" , 
-      X"08bc0000" WHEN X"00000018" , 
-      X"40382003" WHEN X"0000001c" , 
-      X"08fe0000" WHEN X"00000020" , 
-      X"70c7d000" WHEN X"00000024" , 
-      X"40383003" WHEN X"00000028" , 
-      X"08bc0000" WHEN X"0000002c" , 
-      X"40362003" WHEN X"00000030" , 
-      X"08fe0000" WHEN X"00000034" , 
-      X"2ec0003c" WHEN X"00000038" , 
-      X"08bc0000" WHEN X"0000003c" , 
-      X"40362003" WHEN X"00000040" , 
-      X"093e0000" WHEN X"00000044" , 
-      X"2ec0004c" WHEN X"00000048" , 
-      X"08bc0000" WHEN X"0000004c" , 
-      X"40362003" WHEN X"00000050" , 
-      X"097e0000" WHEN X"00000054" , 
-      X"2ec0005c" WHEN X"00000058" , 
-      X"08bc0000" WHEN X"0000005c" , 
-      X"40362003" WHEN X"00000060" , 
-      X"09be0000" WHEN X"00000064" , 
-      X"e1080008" WHEN X"00000068" , 
-      X"e14a0010" WHEN X"0000006c" , 
-      X"e18c0018" WHEN X"00000070" , 
-      X"b14a6000" WHEN X"00000074" , 
-      X"b1085000" WHEN X"00000078" , 
-      X"b0c64000" WHEN X"0000007c" , 
-      X"6a860000" WHEN X"00000080" , 
-      X"2ec00088" WHEN X"00000084" , 
-      X"08bc0000" WHEN X"00000088" , 
-      X"40362003" WHEN X"0000008c" , 
-      X"08fe0000" WHEN X"00000090" , 
-      X"2ec00098" WHEN X"00000094" , 
-      X"08bc0000" WHEN X"00000098" , 
-      X"40362003" WHEN X"0000009c" , 
-      X"093e0000" WHEN X"000000a0" , 
-      X"2ec000a8" WHEN X"000000a4" , 
-      X"08bc0000" WHEN X"000000a8" , 
-      X"40362003" WHEN X"000000ac" , 
-      X"097e0000" WHEN X"000000b0" , 
-      X"2ec000b8" WHEN X"000000b4" , 
-      X"08bc0000" WHEN X"000000b8" , 
-      X"40362003" WHEN X"000000bc" , 
-      X"09be0000" WHEN X"000000c0" , 
-      X"e1080008" WHEN X"000000c4" , 
-      X"e14a0010" WHEN X"000000c8" , 
-      X"e18c0018" WHEN X"000000cc" , 
-      X"b14a6000" WHEN X"000000d0" , 
-      X"b1085000" WHEN X"000000d4" , 
-      X"b0c64000" WHEN X"000000d8" , 
-      X"18c20000" WHEN X"000000dc" , 
-      X"68420004" WHEN X"000000e0" , 
-      X"2ec00088" WHEN X"000000e4" , 
-      X"6a95ffff" WHEN X"000000e8" , 
-      X"4036a003" WHEN X"000000ec" , 
-      X"28401000" WHEN X"000000f0" , 
-      X"40020001" WHEN X"000000f4" , 
-      X"00000000" WHEN OTHERS ;
+--	sel <= "00000000000000000000" & address & "00" ;
+--
+--	WITH sel  SELECT
+--	data <=
+--      X"2fc1ffe9" WHEN X"00000000" , 
+--      X"2f81ffe8" WHEN X"00000004" , 
+--      X"2f400050" WHEN X"00000008" , 
+--      X"2f000018" WHEN X"0000000c" , 
+--      X"2ec0002c" WHEN X"00000010" , 
+--      X"28401000" WHEN X"00000014" , 
+--      X"08bc0000" WHEN X"00000018" , 
+--      X"40382003" WHEN X"0000001c" , 
+--      X"08fe0000" WHEN X"00000020" , 
+--      X"70c7d000" WHEN X"00000024" , 
+--      X"40383003" WHEN X"00000028" , 
+--      X"08bc0000" WHEN X"0000002c" , 
+--      X"40362003" WHEN X"00000030" , 
+--      X"08fe0000" WHEN X"00000034" , 
+--      X"2ec0003c" WHEN X"00000038" , 
+--      X"08bc0000" WHEN X"0000003c" , 
+--      X"40362003" WHEN X"00000040" , 
+--      X"093e0000" WHEN X"00000044" , 
+--      X"2ec0004c" WHEN X"00000048" , 
+--      X"08bc0000" WHEN X"0000004c" , 
+--      X"40362003" WHEN X"00000050" , 
+--      X"097e0000" WHEN X"00000054" , 
+--      X"2ec0005c" WHEN X"00000058" , 
+--      X"08bc0000" WHEN X"0000005c" , 
+--      X"40362003" WHEN X"00000060" , 
+--      X"09be0000" WHEN X"00000064" , 
+--      X"e1080008" WHEN X"00000068" , 
+--      X"e14a0010" WHEN X"0000006c" , 
+--      X"e18c0018" WHEN X"00000070" , 
+--      X"b14a6000" WHEN X"00000074" , 
+--      X"b1085000" WHEN X"00000078" , 
+--      X"b0c64000" WHEN X"0000007c" , 
+--      X"6a860000" WHEN X"00000080" , 
+--      X"2ec00088" WHEN X"00000084" , 
+--      X"08bc0000" WHEN X"00000088" , 
+--      X"40362003" WHEN X"0000008c" , 
+--      X"08fe0000" WHEN X"00000090" , 
+--      X"2ec00098" WHEN X"00000094" , 
+--      X"08bc0000" WHEN X"00000098" , 
+--      X"40362003" WHEN X"0000009c" , 
+--      X"093e0000" WHEN X"000000a0" , 
+--      X"2ec000a8" WHEN X"000000a4" , 
+--      X"08bc0000" WHEN X"000000a8" , 
+--      X"40362003" WHEN X"000000ac" , 
+--      X"097e0000" WHEN X"000000b0" , 
+--      X"2ec000b8" WHEN X"000000b4" , 
+--      X"08bc0000" WHEN X"000000b8" , 
+--      X"40362003" WHEN X"000000bc" , 
+--      X"09be0000" WHEN X"000000c0" , 
+--      X"e1080008" WHEN X"000000c4" , 
+--      X"e14a0010" WHEN X"000000c8" , 
+--      X"e18c0018" WHEN X"000000cc" , 
+--      X"b14a6000" WHEN X"000000d0" , 
+--      X"b1085000" WHEN X"000000d4" , 
+--      X"b0c64000" WHEN X"000000d8" , 
+--      X"18c20000" WHEN X"000000dc" , 
+--      X"68420004" WHEN X"000000e0" , 
+--      X"2ec00088" WHEN X"000000e4" , 
+--      X"6a95ffff" WHEN X"000000e8" , 
+--      X"4036a003" WHEN X"000000ec" , 
+--      X"28401000" WHEN X"000000f0" , 
+--      X"40020001" WHEN X"000000f4" , 
+--      X"00000000" WHEN OTHERS ;
 
 ---------------------IO TEST-------------------------
 --	WITH address  SELECT
@@ -117,16 +117,16 @@ BEGIN
 --     X"00000000" WHEN OTHERS ;
 
 ------------- USB test program --------------
---   WITH address  SELECT
---   data <=
---	  X"2f81ffff" WHEN "0000000000", --- la r30, -1
---     X"2880000a" WHEN "0000000001", --- la r2, 10
---	  X"087dffea" WHEN "0000000010", --- ld r1, -22(r30) Read USB
---	  X"18bdffea" WHEN "0000000011", --- st r2, -22(r30) Write r2
---	  X"08fdffe9" WHEN "0000000100", --- ld r3, -23(r30) Poll RXF
---	  X"093dffe8" WHEN "0000000101", --- ld r4, -24(r30) Poll TXE
---	  X"f8000000" WHEN "0000000110", --- stop
---     X"00000000" WHEN OTHERS ;
+   WITH address  SELECT
+   data <=
+	  X"2f81ffff" WHEN "0000000000", --- la r30, -1
+     X"2880000a" WHEN "0000000001", --- la r2, 10
+	  X"087dffea" WHEN "0000000010", --- ld r1, -22(r30) Read USB
+	  X"18bdffea" WHEN "0000000011", --- st r2, -22(r30) Write r2
+	  X"08fdffe9" WHEN "0000000100", --- ld r3, -23(r30) Poll RXF
+	  X"093dffe8" WHEN "0000000101", --- ld r4, -24(r30) Poll TXE
+	  X"f8000000" WHEN "0000000110", --- stop
+     X"00000000" WHEN OTHERS ;
 
 ------------ Stop program --------------
 --   WITH address  SELECT

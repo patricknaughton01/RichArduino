@@ -1,0 +1,8 @@
+Storage Target: SPI Flash Single FPGA
+32M
+FF
+day1
+/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/RichArduino/
+
+MCS
+No

@@ -56,6 +56,7 @@ architecture Behavioral of usb is
 	SIGNAL rxf_l_sync		:	STD_LOGIC;
 	SIGNAL rd_done			:	STD_LOGIC := '0';
 	SIGNAL wr_done			:	STD_LOGIC := '0';
+	SIGNAL rd_tmp 			:	STD_LOGIC_VECTOR(7 DOWNTO 0);
 	
 
 begin
@@ -88,24 +89,29 @@ begin
 		END IF;
 	END PROCESS poll_rxf;
 	
-	-- Assert rd_l for two clock ticks before we read in the data.
+	-- Assert rd_l for 4 clock ticks before we read in the data.
 	read_usb:PROCESS(clk)
 	BEGIN
 		IF(clk='1' AND clk'EVENT)THEN
 			IF(usb_rd_h='1')THEN
-				IF(rd_count > 3)THEN
+				d_usb <= (OTHERS => 'Z');
+				IF(rd_count > 6)THEN
 					rd_count <= "000";
+				ELSIF(rd_count > 5)THEN
 					rd_l <= '1';
 					rd_done <= '1';
-					d_bus <= "000000000000000000000000" & d_usb;
+					rd_count <= rd_count + '1';
+				ELSIF(rd_count > 4)THEN
+					rd_l <= '1';
+					d_bus <= "000000000000000000000000" &  rd_tmp;
+					rd_count <= rd_count + '1';
+				ELSIF(rd_count > 3)THEN
+					rd_tmp <= d_usb;
+					rd_count <= rd_count + '1';
 				ELSE
 					rd_count <= rd_count + '1';
 					d_bus <= (OTHERS => 'Z');
-					IF(rd_count > 0)THEN
-						rd_l <= '0';
-					ELSE
-						rd_l <= '1';
-					END IF;
+					rd_l <= '0';
 				END IF;
 			ELSE
 				rd_l <= '1';
@@ -125,7 +131,7 @@ begin
 	BEGIN
 		IF(clk='1' AND clk'EVENT)THEN
 			IF(usb_wr_h='1')THEN
-				IF(wr_count > 3)THEN
+				IF(wr_count > 4)THEN
 					wr_count <= "000";
 					wr_h <= '0';
 					d_usb <= (OTHERS => 'Z');

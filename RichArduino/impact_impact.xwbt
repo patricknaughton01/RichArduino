@@ -1,0 +1,8 @@
+INTSTYLE=impact
+INFILE=/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/RichArduino/impact.xsl
+OUTFILE=/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/RichArduino/impact.xsl
+FAMILY=Multiple
+PART=Multiple
+WORKINGDIR=/home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/RichArduino
+LICENSE=iMPACT
+USER_INFO=iMPACT

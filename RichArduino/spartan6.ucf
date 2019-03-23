@@ -8,6 +8,10 @@ NET "reset_l_but" LOC = P111;
 NET "reset_l_usb" IOSTANDARD = LVCMOS33;
 NET "reset_l_but" IOSTANDARD = LVCMOS33;
 PIN "mydcm1/clkout1_buf.O" CLOCK_DEDICATED_ROUTE = FALSE;
+
+OFFSET = OUT 10 ns AFTER "clk";
+OFFSET = IN 15 ns VALID 10 ns BEFORE "clk" RISING;
+
 #NET "TMDSp[2]" LOC = P85;
 #NET "TMDSn[2]" LOC = P84;
 #NET "TMDSp[1]" LOC = P75;

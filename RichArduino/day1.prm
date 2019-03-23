@@ -1,0 +1,17 @@
+PROMGEN: Xilinx Prom Generator P.20131013
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+promgen -w -p mcs -c FF -o /home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/RichArduino//day1 -s 4096 -u 0000 /home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/RichArduino/testbench.bit -spi 
+
+PROM /home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/RichArduino/day1.prm map: Tue Mar 19 12:42:14 2019
+
+Calculating PROM checksum with fill value ff
+
+Format        Mcs86 (32-bit)
+Size          4096K
+PROM start    0000:0000
+PROM end      003f:ffff
+PROM checksum 3ad857d8
+
+        Addr1        Addr2                     Date File(s)
+    0000:0000    0005:327b     Mar 19 12:37:07 2019 /home/patricknaughton01/Documents/WashU/School/Sem4/CSE462/Project/RichArduino/RichArduino/testbench.bit
