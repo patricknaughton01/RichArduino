@@ -131,23 +131,19 @@ begin
 	BEGIN
 		IF(clk='1' AND clk'EVENT)THEN
 			IF(usb_wr_h='1')THEN
-				IF(wr_count > 4)THEN
+				IF(wr_count > 6)THEN
 					wr_count <= "000";
-					wr_h <= '0';
+				ELSIF(wr_count > 5)THEN
+					wr_count <= wr_count + 1;
 					d_usb <= (OTHERS => 'Z');
 					wr_done <= '1';
-				ELSIF(wr_count > 1)THEN
-					wr_count <= wr_count + 1;
-					wr_h <= '1';
-					d_usb <= d_bus(7 DOWNTO 0);
-				ELSIF(wr_count > 0)THEN
-					wr_count <= wr_count + 1;
-					wr_h <= '1';
-					d_usb <= (OTHERS => 'Z');
-				ELSE
+				ELSIF(wr_count > 4)THEN
 					wr_count <= wr_count + 1;
 					wr_h <= '0';
-					d_usb <= (OTHERS => 'Z');
+				ELSE
+					d_usb <= d_bus(7 DOWNTO 0);
+					wr_count <= wr_count + 1;
+					wr_h <= '1';
 				END IF;
 			ELSE
 				wr_count <= "000";

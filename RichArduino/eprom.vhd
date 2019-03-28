@@ -16,6 +16,21 @@ ARCHITECTURE behavioral OF eprom IS
 
 BEGIN
 
+---------------------USB ECHO-------------------------
+	WITH address  SELECT
+   data <=
+     X"2fc1ffff" WHEN "0000000000" , --- la r31, -1
+	  X"2f80000c" WHEN "0000000001" , --- la r30, CHECK_READ
+	  X"2f400018" WHEN "0000000010" , --- la r29, CHECK_WRITE 
+	  X"087fffe9" WHEN "0000000011" , --- CHECK_READ:   ld r1, -23(r31)
+	  X"403c1003" WHEN "0000000100" , --- brnz r30, r1
+	  X"087fffea" WHEN "0000000101" , --- ld r1, -22(r31)
+	  X"08bfffe8" WHEN "0000000110" , --- CHECK_WRITE:  ld r2, -24(r31)
+	  X"403a2003" WHEN "0000000111" , --- brnz r29, r2
+	  X"187fffea" WHEN "0000001000" , --- st r1, -22(r31)
+	  X"403c0001" WHEN "0000001001" , --- br r30
+     X"00000000" WHEN OTHERS ;
+
 -----------Monitor program test---------
 --	sel <= "00000000000000000000" & address & "00" ;
 --
@@ -117,16 +132,16 @@ BEGIN
 --     X"00000000" WHEN OTHERS ;
 
 ------------- USB test program --------------
-   WITH address  SELECT
-   data <=
-	  X"2f81ffff" WHEN "0000000000", --- la r30, -1
-     X"2880000a" WHEN "0000000001", --- la r2, 10
-	  X"087dffea" WHEN "0000000010", --- ld r1, -22(r30) Read USB
-	  X"18bdffea" WHEN "0000000011", --- st r2, -22(r30) Write r2
-	  X"08fdffe9" WHEN "0000000100", --- ld r3, -23(r30) Poll RXF
-	  X"093dffe8" WHEN "0000000101", --- ld r4, -24(r30) Poll TXE
-	  X"f8000000" WHEN "0000000110", --- stop
-     X"00000000" WHEN OTHERS ;
+--   WITH address  SELECT
+--   data <=
+--	  X"2f81ffff" WHEN "0000000000", --- la r30, -1
+--     X"2880000a" WHEN "0000000001", --- la r2, 10
+--	  X"087dffea" WHEN "0000000010", --- ld r1, -22(r30) Read USB
+--	  X"18bdffea" WHEN "0000000011", --- st r2, -22(r30) Write r2
+--	  X"08fdffe9" WHEN "0000000100", --- ld r3, -23(r30) Poll RXF
+--	  X"093dffe8" WHEN "0000000101", --- ld r4, -24(r30) Poll TXE
+--	  X"f8000000" WHEN "0000000110", --- stop
+--     X"00000000" WHEN OTHERS ;
 
 ------------ Stop program --------------
 --   WITH address  SELECT
