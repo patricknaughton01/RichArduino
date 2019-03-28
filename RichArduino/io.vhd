@@ -78,7 +78,13 @@ begin
 		END IF;
 	END PROCESS sync;
 	
-	read_pin:PROCESS(ce_l, oe_l, addr)
+	read_pin:PROCESS(ce_l, oe_l, addr, reg0, 
+							reg1, reg2, reg3, reg4, 
+							reg5, reg6, reg7, reg8, 
+							reg9, reg10, reg11, reg12, 
+							reg13, reg14, reg15, reg16, 
+							reg17, reg18, reg19, reg20, 
+							reg21)
 	BEGIN
 		IF(ce_l = '0' AND oe_l = '0')THEN
 			CASE(addr) IS

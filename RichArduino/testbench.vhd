@@ -246,7 +246,7 @@ BEGIN
 
 		usb1:usb
 		PORT MAP(  d_bus		=> d(31 DOWNTO 0),
-					  d_usb		=> usb_bus,
+					  d_usb		=> usb_bus(7 DOWNTO 0),
 					  clk			=> clk_out2,
 					  usb_rd_h	=> usb_oe_h,
 					  usb_wr_h	=> usb_we_h,

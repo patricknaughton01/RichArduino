@@ -94,9 +94,9 @@ begin
 	BEGIN
 		IF(clk='1' AND clk'EVENT)THEN
 			IF(usb_rd_h='1')THEN
-				d_usb <= (OTHERS => 'Z');
 				IF(rd_count > 6)THEN
 					rd_count <= "000";
+					d_bus <= (OTHERS => 'Z');
 				ELSIF(rd_count > 5)THEN
 					rd_l <= '1';
 					rd_done <= '1';

@@ -131,7 +131,7 @@ BEGIN
 --	  X"f8000000" WHEN "0000001000" , --- stop
 --     X"00000000" WHEN OTHERS ;
 
-------------- USB test program --------------
+----------- USB test program --------------
 --   WITH address  SELECT
 --   data <=
 --	  X"2f81ffff" WHEN "0000000000", --- la r30, -1
