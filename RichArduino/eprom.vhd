@@ -16,20 +16,38 @@ ARCHITECTURE behavioral OF eprom IS
 
 BEGIN
 
----------------------USB ECHO-------------------------
-	WITH address  SELECT
+---------------------USB Write Pin High-------------------------
+	sel <= "00000000000000000000" & address & "00" ;
+
+   WITH sel  SELECT
    data <=
-     X"2fc1ffff" WHEN "0000000000" , --- la r31, -1
-	  X"2f80000c" WHEN "0000000001" , --- la r30, CHECK_READ
-	  X"2f400018" WHEN "0000000010" , --- la r29, CHECK_WRITE 
-	  X"087fffe9" WHEN "0000000011" , --- CHECK_READ:   ld r1, -23(r31)
-	  X"403c1003" WHEN "0000000100" , --- brnz r30, r1
-	  X"087fffea" WHEN "0000000101" , --- ld r1, -22(r31)
-	  X"08bfffe8" WHEN "0000000110" , --- CHECK_WRITE:  ld r2, -24(r31)
-	  X"403a2003" WHEN "0000000111" , --- brnz r29, r2
-	  X"187fffea" WHEN "0000001000" , --- st r1, -22(r31)
-	  X"403c0001" WHEN "0000001001" , --- br r30
-     X"00000000" WHEN OTHERS ;
+      X"2fc1ffe8" WHEN X"00000000" , 
+      X"2f81ffe9" WHEN X"00000004" , 
+      X"2f41ffea" WHEN X"00000008" , 
+      X"2f00001c" WHEN X"0000000c" , 
+      X"28800003" WHEN X"00000010" , 
+      X"28c00000" WHEN X"00000014" , 
+      X"18fa0000" WHEN X"00000018" , 
+      X"083e0000" WHEN X"0000001c" , 
+      X"40380003" WHEN X"00000020" , 
+      X"087c0000" WHEN X"00000024" , 
+      X"18ba0000" WHEN X"00000028" , 
+      X"00000000" WHEN OTHERS ;
+
+---------------------USB ECHO-------------------------
+--	WITH address  SELECT
+--   data <=
+--     X"2fc1ffff" WHEN "0000000000" , --- la r31, -1
+--	  X"2f80000c" WHEN "0000000001" , --- la r30, CHECK_READ
+--	  X"2f400018" WHEN "0000000010" , --- la r29, CHECK_WRITE 
+--	  X"087fffe9" WHEN "0000000011" , --- CHECK_READ:   ld r1, -23(r31)
+--	  X"403c1003" WHEN "0000000100" , --- brnz r30, r1
+--	  X"087fffea" WHEN "0000000101" , --- ld r1, -22(r31)
+--	  X"08bfffe8" WHEN "0000000110" , --- CHECK_WRITE:  ld r2, -24(r31)
+--	  X"403a2003" WHEN "0000000111" , --- brnz r29, r2
+--	  X"187fffea" WHEN "0000001000" , --- st r1, -22(r31)
+--	  X"403c0001" WHEN "0000001001" , --- br r30
+--     X"00000000" WHEN OTHERS ;
 
 -----------Monitor program test---------
 --	sel <= "00000000000000000000" & address & "00" ;

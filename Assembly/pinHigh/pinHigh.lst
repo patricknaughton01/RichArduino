@@ -1,0 +1,16 @@
+(SRCTools Version 3.1.1)
+ HexLoc     DecLoc    MachWord   Label        Instruction                Comment
+00000000  0000000000  2fc1ffe8                la r31, 0xFFFFFFE8         ; RXF
+00000004  0000000004  2f81ffe9                la r30, 0xFFFFFFE9         ; USB
+00000008  0000000008  2f41ffea                la r29, 0xFFFFFFEA         ; D0
+0000000c  0000000012  2f00001c                la r28, CHECKREAD          
+00000010  0000000016  28800003                la r2, 3                   ; write DO as output and high
+00000014  0000000020  28c00000                la r3, 0                   ;
+00000018  0000000024  18fa0000                st r3, (r29)               ; 0 out D0 initially
+0000001c  0000000028  083e0000  CHECKREAD:    ld r0, (r31)               ;
+00000020  0000000032  40380003                brnz r28, r0               ; loop until we see RXF=0
+00000024  0000000036  087c0000                ld r1, (r30)               ; Read from USB
+00000028  0000000040  18ba0000                st r2, (r29)               
+
+--- Symbol Table ---
+CHECKREAD: 28
