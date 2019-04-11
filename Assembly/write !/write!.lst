@@ -1,0 +1,13 @@
+(SRCTools Version 3.1.1)
+ HexLoc     DecLoc    MachWord   Label        Instruction                Comment
+00000000  0000000000  2fc1ffe7                la r31, 0xFFFFFFE7         ; TXE
+00000004  0000000004  2f81ffe9                la r30, 0xFFFFFFE9         ; USB
+00000008  0000000008  2f400010                la r29, CHECKWRITE         ;
+0000000c  0000000012  2f000021                la r28, 33                 ; character to write (!)
+00000010  0000000016  083e0000  CHECKWRITE:   ld r0, (r31)               ;
+00000014  0000000020  403a0003                brnz r29, r0               ; Test TXE until low
+00000018  0000000024  1f3c0000                st r28, (r30)              ; write ! to usb
+0000001c  0000000028  403a0001                br r29                     ; loopback to write again
+
+--- Symbol Table ---
+CHECKWRITE: 16

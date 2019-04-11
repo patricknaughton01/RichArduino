@@ -151,9 +151,11 @@ BEGIN
 				
 	reset_l <= reset_l_usb AND reset_l_but;
 
-   syncprocess:PROCESS(clk_out2)
+   --syncprocess:PROCESS(clk_out2)
+	syncprocess:PROCESS(clk_out1)
    begin
-      IF (clk_out2 = '1' AND clk_out2'event) THEN
+      --IF (clk_out2 = '1' AND clk_out2'event) THEN
+		IF (clk_out1 = '1' AND clk_out1'event) THEN
          reset_l_temp <= reset_l ;
          reset_l_sync <= reset_l_temp ;
       END IF;
@@ -187,7 +189,8 @@ BEGIN
 			OR io_ce_l = '0') ELSE '0' ;
 	
    rsrc1:rsrc      
-   PORT MAP(clk       => clk_out2,
+   PORT MAP(--clk       => clk_out2,
+				clk       => clk_out1,
             reset_l   => reset_l_sync,
             d         => d,
             address   => address,
@@ -207,7 +210,8 @@ BEGIN
                ce_l      => sram_ce_l,
                oe_l      => sram_oe_l,
                we_l      => sram_we_l,
-               clk       => clk_out2);
+               --clk       => clk_out2);
+					clk       => clk_out1);
 
    hdmi_ena <= '1' WHEN address(31 DOWNTO 14) = "000000000000000001" ELSE '0' ;
    hdmi_wea <= CONV_STD_LOGIC_VECTOR(write,1) ;
@@ -236,7 +240,8 @@ BEGIN
 				TMDSn_clock	=> TMDSn_clock);
 
 	io1:io
-	PORT MAP(clk	=> clk_out2,
+	PORT MAP(--clk	=> clk_out2,
+				clk	=> clk_out1,
 				d		=> d,
 				addr	=> address(4 DOWNTO 0),
 				ce_l	=> io_ce_l,
@@ -247,7 +252,8 @@ BEGIN
 		usb1:usb
 		PORT MAP(  d_bus		=> d(31 DOWNTO 0),
 					  d_usb		=> usb_bus(7 DOWNTO 0),
-					  clk			=> clk_out2,
+					  --clk			=> clk_out2,
+					  clk			=> clk_out1,
 					  usb_rd_h	=> usb_oe_h,
 					  usb_wr_h	=> usb_we_h,
 					  txe_oe_l	=> usb_txe_oe_l,

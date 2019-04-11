@@ -1,0 +1,40 @@
+		.org 4096
+		la r2, SERIALWRITE
+		la r10, LOOP
+		la r9, PRELOOP
+		la r11, SERIALLOOP
+		la r30, 4294967275 ; Pin D1
+		la r25, 3
+		st r25, (r30) ; raise high
+		la r29, 33 ; byte to write in decimal********
+		brl r6, r2 ; begin serialwrite
+
+		la r18,33 ; begin overwriting frame store
+		la r17,FSLOOP
+		la r15,32768
+		la r14,16384
+FSLOOP:		st r18, (r14)
+		addi r14,r14,4
+		sub r16,r15,r14
+		brpl r17,r16
+		stop
+
+SERIALWRITE: 	la r4, 7
+		la r25, 2
+		st r25, (r30) ; start bit
+		brl r5, r9
+SERIALLOOP:	shl r28, r29, r4 ; shift left to get desired bit, start with least significant bit
+		shr r28, r28, 7 ; shift right so the register has value of desired bit
+		brl r5, r9
+		addi r4, r4, -1
+		brpl r11, r4
+		la r25, 3
+		st r25, (r30) ; stop bit
+		brl r5, r9
+		br r6
+
+PRELOOP:	la r3, 1042 ; change this
+LOOP:		addi r3, r3, -1
+		brnz r10, r3
+		br r5
+		

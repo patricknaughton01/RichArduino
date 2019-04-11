@@ -1,0 +1,6 @@
+        .org 4096
+        la r30, 4294967275; pin 1
+        la r1, 3; write as output and high
+        st r1, (r30)
+        la r3, 0; address to branch back to
+        br r3;
