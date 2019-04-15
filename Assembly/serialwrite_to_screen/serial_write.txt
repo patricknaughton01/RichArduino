@@ -1,0 +1,43 @@
+        .org 4096
+        la r16, 4294967273; USB FIFO
+        la r17, 4294967272; USB RXF
+        la r18, POLL;
+POLL:   ld r0, (r17); poll rxf
+        brnz r18, r0;
+        ld r0, (r16); read from usb
+        la r15, SERIAL
+        brl r1, r15; push to the shield
+        br r18; Try to read again
+        
+SERIAL: la r30, 4294967275; pin 1
+        la r6, 3; write high
+        la r2, 2; write low
+        st r6, (r30); Default to high
+        la r29, 1;
+        shl r29, r29, 13
+        la r20, INIT
+INIT:   addi r29, r29, -1; dec counter
+        brpl r20, r29
+        la r29, 520; change this for how long the counter should go
+        la r28, 0;
+        la r27, OUTER
+        la r26, INNER
+        la r25, STOP
+        la r24, HIGH
+        la r23, LOW
+        la r22, STOP
+        shl r0, r0, 1; start with a 0 bit
+        ori r0, r0, 512; padding digit
+        ori r0, r0, 1024; padding digit
+OUTER:  addi r28, r29, 0; start the counter
+        andi r5, r0, 1; get lowest bit
+        shr r0, r0, 1; go to next bit
+        brzr r22, r0; we're done
+        brnz r24, r5; Write a high bit
+LOW:    st r2, (r30); write a low bit
+        br r26; go to inner
+HIGH:   st r6, (r30); write a high bit
+INNER:  addi r28, r28, -1; dec counter
+        brpl r26, r28
+        br r27
+STOP:   br r1
