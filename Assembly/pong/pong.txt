@@ -1,0 +1,279 @@
+;Standards:
+; r31 is used as the stack pointer and initially points to the top of the stack
+; r30 is always the return address for a function.
+; r0 will always be 0.
+; The arguments to a function will be pushed to the stack in reverse order.
+; r20-r29 (inclusive) are callee save registers, the rest are caller save.
+; r19 stores the return value of the function
+;
+; Main stack frame looks like:
+;   paddle len          <-- bottom of stack
+;   paddle 1 x
+;   paddle 1 y
+;   paddle 2 x
+;   paddle 2 y
+;   paddle velocity
+;   ball location x
+;   ball location y
+;   ball velocity x
+;   ball velocity y
+;   frame delay
+
+        .org 4096
+        la r0, 0
+        la r31, 8191            ; top of sram
+        addi r31, r31, -40      ; dec stack pointer
+        la r1, 6                ; paddle len
+        la r2, 12               ; paddle ys
+        la r3, 1                ; paddle 1 x
+        la r4, 78               ; paddle 2 x
+        la r5, 1                ; paddle vel
+        la r6, 40               ; ball loc x
+        la r7, 15               ; ball loc y
+        la r8, -1               ; ball vel x and y
+        la r9, 1                ; frame delay TODO: (change this)
+        shl r9, r9, 18          ; frame delay = 2^18
+        st r1, 40(r31)
+        st r3, 36(r31)
+        st r2, 32(r31)
+        st r4, 28(r31)
+        st r2, 24(r31)
+        st r5, 20(r31)
+        st r6, 16(r31)
+        st r7, 12(r31)
+        st r8, 8(r31)
+        st r8, 4(r31)
+        st r9, (r31)
+        st r0, 4(r31)           ; debug
+                                ; Data is stored on the stack
+MAIN_L: la r20, CLR_F           ; Begin the main function
+        ld r21, 36(r31)         ; p1x
+        ld r22, 28(r31)         ; p2x
+        ld r23, 16(r31)         ; ball x
+        addi r31, r31, -12
+        st r23, 8(r31)
+        st r22, 4(r31)
+        st r21, (r31)
+        brl r30, r20            ; call clear(p1x, p2x, p3x)
+        addi r31, r31, 12
+        
+        la r20, DRWP_F          ; draw paddle 1
+        ld r21, 40(r31)         ; push p1len
+        ld r22, 32(r31)         ; push p1y
+        ld r23, 36(r31)         ; push p1x
+        addi r31, r31, -12
+        st r21, 8(r31)
+        st r22, 4(r31)
+        st r23, (r31)
+        brl r30, r20            ; call draw_paddle(x, y, len) for paddle 1
+        addi r31, r31, 12       ; restore main stack frame
+        
+        la r20, DRWP_F          ; draw paddle 2
+        ld r21, 40(r31)         ; push p2len
+        ld r22, 24(r31)         ; push p2y
+        ld r23, 28(r31)         ; push p2x
+        addi r31, r31, -12
+        st r21, 8(r31)
+        st r22, 4(r31)
+        st r23, (r31)
+        brl r30, r20            ; call draw_paddle(x, y, len) for paddle 1
+        addi r31, r31, 12       ; restore main stack frame
+        
+        la r20, MB_F            ; move ball
+        la r21, 16(r31)         ; *ball x
+        la r22, 12(r31)         ; *ball y
+        ld r23, 8(r31)          ; ball vel x
+        ld r24, 4(r31)          ; ball vel y
+        addi r31, r31, -16
+        st r24, 12(r31)
+        st r23, 8(r31)
+        st r22, 4(r31)
+        st r21, (r31)
+        brl r30, r20            ; call move_ball(*x, *y, velx, vely)
+        addi r31, r31, 16       ; restore main stack frame
+        
+        la r20, CBY_F
+        ld r21, 12(r31)         ; y
+        la r22, 4(r31)          ; *vely
+        addi r31, r31, -8
+        st r22, 4(r31)
+        st r21, (r31)
+        brl r30, r20            ; call collide_ball_y(y, *vely)
+        addi r31, r31, 8        ; restore main stack frame
+        
+        la r20, CBP_F           ; collision with p1
+        ld r21, 36(r31)
+        addi r21, r21, 1        ; x to check
+        ld r22, 32(r31)         ; p1 y
+        ld r23, 40(r31)         ; p1 len
+        ld r24, 16(r31)         ; ball x
+        ld r25, 12(r31)         ; ball y
+        la r26, 8(r31)          ; *velx
+        addi r31, r31, -24
+        st r26, 20(r31)
+        st r25, 16(r31)
+        st r24, 12(r31)
+        st r23, 8(r31)
+        st r22, 4(r31)
+        st r21, (r31)
+        brl r30, r20            ; call collide_ball_p(x, p1y, p1len, ball x, ball y, *velx)
+        addi r31, r31, 24
+        
+        la r20, CBP_F           ; collision with p2
+        ld r21, 28(r31)
+        addi r21, r21, -1       ; x to check
+        ld r22, 24(r31)         ; p2 y
+        ld r23, 40(r31)         ; p2 len
+        ld r24, 16(r31)         ; ball x
+        ld r25, 12(r31)         ; ball y
+        la r26, 8(r31)          ; *velx
+        addi r31, r31, -24
+        st r26, 20(r31)
+        st r25, 16(r31)
+        st r24, 12(r31)
+        st r23, 8(r31)
+        st r22, 4(r31)
+        st r21, (r31)
+        brl r30, r20            ; call collide_ball_p(x, p2y, p2len, ball x, ball y, *velx)
+        addi r31, r31, 24
+        
+        la r20, DRWB_F          ; draw ball
+        ld r21, 16(r31)         ; ball x
+        ld r22, 12(r31)         ; ball y
+        addi r31, r31, -8
+        st r22, 4(r31)
+        st r21, (r31)
+        brl r30, r20            ; call draw_ball(x, y)
+        addi r31, r31, 8        ; restore main stack frame
+        
+        la r20, DLY_F
+        ld r21, (r31)           ; get frame delay
+        addi r31, r31, -4
+        st r21, (r31)
+        brl r30, r20            ; call delay(frame_delay)
+        addi r31, r31, 4        ; restore main stack frame
+        la r21, MAIN_L
+        br r21
+      
+; func move_ball(*x, *y, velx, vely)
+MB_F:   ld r1, (r31)            ; *x
+        ld r2, 4(r31)           ; *y
+        ld r3, 8(r31)           ; velx
+        ld r4, 12(r31)          ; vely
+        
+        ld r5, (r1)             ; x
+        ld r6, (r2)             ; y
+        add r5, r5, r3          ; new x
+        add r6, r6, r4          ; new y
+        
+        st r5, (r1)             ; write x back
+        st r6, (r2)             ; write y back
+        br r30                  ; ret
+        
+; func collide_ball_y(y, *vely)
+CBY_F:  ld r1, (r31)            ; y
+        ld r2, 4(r31)           ; *vely
+        addi r3, r1, -29        ; is y 29?
+        ld r4, (r2)             ; vely
+        neg r4, r4              ; flip vely
+        st r4, (r2)             ; store new vely
+        brzr r30, r1            ; if y 0, flip
+        brzr r30, r3            ; if y 29, flip
+        neg r4, r4              ; flip back
+        st r4, (r2)             ; store original vely
+        br r30                  ; ret
+        
+; func collide_ball_p(check x, paddle y, paddle len, ball x, ball y, *velx)
+CBP_F:  ld r1, (r31)            ; check x
+        ld r2, 4(r31)           ; paddle y
+        ld r3, 8(r31)           ; paddle len
+        ld r4, 12(r31)          ; ball x
+        ld r5, 16(r31)          ; ball y
+        ld r6, 20(r31)          ; *velx
+        ld r7, (r6)
+        sub r8, r1, r4          ; in the collide col?
+        brnz r30, r8            ; ret
+        add r8, r2, r3
+        addi r8, r8, -1         ; bottom of paddle
+        sub r9, r5, r2          ; above top?
+        brmi r30, r9            ; ret
+        sub r9, r8, r5          ; below bottom?
+        brmi r30, r9            ; ret
+        neg r7, r7              ; flip velx
+        st r7, (r6)             ; write back
+        br r30                  ; ret
+        
+; func draw_ball(x, y)
+DRWB_F: ld r1, (r31)            ; x
+        ld r2, 4(r31)           ; y
+        la r3, 79               ; char O
+        la r4, 16384            ; beg of framestore
+        shl r1, r1, 2           ; *4
+        shl r2, r2, 9           ; 128*4
+        add r4, r4, r1
+        add r4, r4, r2          ; addr to draw
+        st r3, (r4)             ; write O to screen
+        br r30                  ; ret
+
+; func draw_paddle (x, y, len)  
+DRWP_F: ld r1, (r31)            ; x
+        shl r1, r1, 2           ; *4 to get addr
+        ld r2, 4(r31)           ; y
+        ld r3, 8(r31)           ; len
+        la r7, 16384            ; beg of framestore
+        la r8, 32767            ; end of framestore
+        la r9, 35               ; pipe character
+        la r10, DRWP_1          ; store loop ptr
+        shl r4, r2, 9           ; mul y by 128 * 4 to get addr
+        addi r5, r7, 0          ; framestore base addr
+        add r5, r5, r4          ; get address of what we want to draw
+        add r5, r5, r1
+        addi r3, r3, -1
+DRWP_1: addi r3, r3, -1         ; dec len
+        sub r6, r8, r5          ; are we within framestore
+        brmi r30, r6            ; ret if out of bounds
+        sub r6, r5, r7
+        brmi r30, r6
+        st r9, (r5)             ; write a | to the framestore
+        addi r5, r5, 512        ; go to next line
+        brpl r10, r3            ; go to draw next char
+        br r30                  ; ret
+        
+; func delay(loops)
+DLY_F:  ld r1, (r31)            ; clock ticks to wait
+        la r2, DLY_1
+DLY_1:  addi r1, r1, -1         ; dec counter
+        brpl r2, r1
+        br r30
+        
+; func clear(p1x, p2x, p3x)
+CLR_F:  la r1, 16384            ; beg of framestore
+        ld r2, (r31)            ; p1x
+        shl r2, r2, 2
+        ld r3, 4(r31)           ; p2x
+        shl r3, r3, 2
+        ld r4, 8(r31)           ; p3x
+        shl r4, r4, 2
+        la r5, 32               ; space char
+        la r6, CLR_1            ; loop pointer
+        la r7, 30
+        add r8, r1, r2
+CLR_1:  st r5, (r8)
+        addi r8, r8, 512        ; go to next line
+        addi r7, r7, -1
+        brpl r6, r7
+        la r6, CLR_2
+        la r7, 30
+        add r8, r1, r3
+CLR_2:  st r5, (r8)
+        addi r8, r8, 512        ; go to next line
+        addi r7, r7, -1
+        brpl r6, r7
+        la r6, CLR_3
+        la r7, 30
+        add r8, r1, r4
+CLR_3:  st r5, (r8)
+        addi r8, r8, 512        ; go to next line
+        addi r7, r7, -1
+        brpl r6, r7
+        br r30                  ; ret

@@ -48,9 +48,9 @@ def openFile():
 def sendText():
     sendData = textBox.get(1.0, 'end')
     textBox.delete(1.0, 'end')
-    ep.write(bytes([1]))        # Clear the display
-    ep.write(sendData[:-1])     # Get rid of newline at end
-    ep.write(bytes([7]))        # Buzz so we know we sent
+    ep.write(bytes([1, 17]))        # Clear the display and turn led on
+    ep.write(sendData[:-1])         # Get rid of newline at end
+    ep.write(bytes([7, 18, 29]))    # Buzz so we know we sent, turn led off, turn cursor on
     msgText.set('Text sent')
     print("Data sent:")
     print(bytes(sendData[:-1], 'utf-8'))
