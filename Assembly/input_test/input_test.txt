@@ -1,0 +1,3 @@
+        .org 4096
+        la r31, -1      ; top of memory
+        

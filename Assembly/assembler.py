@@ -210,8 +210,11 @@ try:
 	saveBinaryFileName = root.filename.replace(".txt", "Binary.txt")
 	saveHexFile = open(saveHexFileName, 'w')
 	saveBinaryFile = open(saveBinaryFileName, 'wb')
-except ValueError as err:
-	print ("An Error Occurred: " + err)
+except FileNotFoundError:
+	print ("File Not Found")
+	quit()
+except Exception:
+	print("An Error Occured While Handling Files")
 	quit()
 pc = 0
 tags = {}
@@ -233,12 +236,11 @@ try:
 		if(not checkOrg(line)):
 			pc += 4
 			getHex(line)
-
 	saveHexFile.close()
 	saveBinaryFile.close()
 
-except ValueError as err:
-    print ("Could not assemble code due to error: " + err + "\n" + errLine)
+except Exception:
+    print ("Could not assemble code due to error: " + errLine)
     quit()
 
 print("**Program assembled**")

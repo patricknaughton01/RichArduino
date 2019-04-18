@@ -45,6 +45,12 @@
         st r8, 4(r31)
         st r9, (r31)
         st r0, 4(r31)           ; debug
+        la r20, 4294967274      ; d0
+        st r0, 2(r20)           ; make d2 an input
+        st r0, 3(r20)           ; make d3 an input
+        st r0, 4(r20)           ; make d4 an input
+        st r0, 5(r20)           ; make d5 an input
+        
                                 ; Data is stored on the stack
 MAIN_L: la r20, CLR_F           ; Begin the main function
         ld r21, 36(r31)         ; p1x
@@ -56,6 +62,34 @@ MAIN_L: la r20, CLR_F           ; Begin the main function
         st r21, (r31)
         brl r30, r20            ; call clear(p1x, p2x, p3x)
         addi r31, r31, 12
+        
+        la r20, MP_F            ; move paddle 1
+        ld r21, 32(r31)         ; p1y
+        ld r22, 40(r31)         ; len
+        la r23, 2               ; off up
+        la r24, 3               ; off dn
+        addi r31, r31, -16
+        st r24, 12(r31)
+        st r23, 8(r31)
+        st r22, 4(r31)
+        st r21, (r31)
+        brl r30, r20            ; call move_paddle(y, len, up, dn)
+        addi r31, r31, 16       ; restore main stack frame
+        st r19, 32(r31)         ; write the new y back
+        
+        la r20, MP_F            ; move paddle 2
+        ld r21, 24(r31)         ; p1y
+        ld r22, 40(r31)         ; len
+        la r23, 4               ; off up
+        la r24, 5               ; off dn
+        addi r31, r31, -16
+        st r24, 12(r31)
+        st r23, 8(r31)
+        st r22, 4(r31)
+        st r21, (r31)
+        brl r30, r20            ; call move_paddle(y, len, up, dn)
+        addi r31, r31, 16       ; restore main stack frame
+        st r19, 32(r31)         ; write the new y back
         
         la r20, DRWP_F          ; draw paddle 1
         ld r21, 40(r31)         ; push p1len
@@ -169,6 +203,80 @@ MB_F:   ld r1, (r31)            ; *x
         st r5, (r1)             ; write x back
         st r6, (r2)             ; write y back
         br r30                  ; ret
+
+; func move_paddle(y, len, off_up, off_dn)
+MP_F:   ld r1, (r31)            ; y
+        ld r2, 4(r31)           ; len
+        ld r3, 8(r31)           ; off_up
+        ld r4, 12(r31)          ; off_dn
+        
+        addi r31, r31, -16      ; push caller save registers
+        st r1, 12(r31)
+        st r2, 8(r31)
+        st r3, 4(r31)
+        st r4, (r31)
+        
+        la r5, CHK_B_F
+        addi r31, r31, -4
+        st r3, (r31)
+        brl r30, r5             ; call check_button(off_up)
+        addi r31, r31, 4        ; restore move_paddle's stack frame
+        
+        ld r1, 12(r31)          ; restore caller save registers
+        ld r2, 8(r31)
+        ld r3, 4(r31)
+        ld r4, (r31)
+        addi r31, r31, 16
+        
+        addi r3, r19, 0         ; put state of up button in r3
+        la r5, CHK_B_F
+        
+        
+        
+        addi r31, r31, -4
+        st r4, (r31)
+;        brl r30, r5             ; call check_button(off_up)
+        addi r31, r31, 4        ; restore move_paddle's stack frame
+        addi r4, r19, 0         ; put state of dn button in r4
+        la r5, MP_1
+        brnz r5, r3
+        addi r1, r1, -1         ; move up
+MP_1:   la r5, MP_2
+        brnz r5, r4
+        addi r1, r1, 1          ; move down
+MP_2:   la r5, CPP_F            ; check paddle position
+        addi r31, r31, -8
+        st r2, 4(r31)
+        st r1, (r31)
+        ;brl r30, r5             ; call check_paddle_position(y, len)
+        addi r31, r31, 8        ; restore move_paddle's stack frame
+        la r19, (r1)
+        br r30                  ; ret
+        
+; func check_paddle_position(y, len) -- return corrected y
+CPP_F:  ld r1, (r31)            ; y
+        ld r2, 4(r31)           ; len
+        la r19, 0               ; default to top of screen
+        brmi r30, r1            ; above top of screen
+        add r4, r1, r2          ; get bottom of paddle
+        addi r4, r4, -1
+        addi r4, r4, -30
+        la r19, 29
+        neg r2, r2              ; flip r2
+        add r19, r19, r2        ; get top of paddle
+        addi r19, r19, 1
+        brpl r30, r4
+        addi r19, r1, 0         ; output same y we got
+        br r30                  ; ret
+        
+; func check_button(off)
+CHK_B_F:ld r1, (r31)            ; off
+        ;la r2, 4294967274       ; base of io
+        ;add r1, r1, r2          ; get actual addr
+        ;ld r19, (r1)            ; read state
+        la r19, 0               ; debug
+        br r30                  ; ret
+        
         
 ; func collide_ball_y(y, *vely)
 CBY_F:  ld r1, (r31)            ; y
