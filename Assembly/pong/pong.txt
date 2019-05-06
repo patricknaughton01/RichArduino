@@ -44,12 +44,14 @@
         st r8, 8(r31)
         st r8, 4(r31)
         st r9, (r31)
-        st r0, 4(r31)           ; debug
         la r20, 4294967274      ; d0
         st r0, 2(r20)           ; make d2 an input
         st r0, 3(r20)           ; make d3 an input
         st r0, 4(r20)           ; make d4 an input
         st r0, 5(r20)           ; make d5 an input
+        
+        la r20, CLRA_F          ; clear the screen before we start
+        brl r30, r20
         
                                 ; Data is stored on the stack
 MAIN_L: la r20, CLR_F           ; Begin the main function
@@ -61,7 +63,14 @@ MAIN_L: la r20, CLR_F           ; Begin the main function
         st r22, 4(r31)
         st r21, (r31)
         brl r30, r20            ; call clear(p1x, p2x, p3x)
-        addi r31, r31, 12
+        addi r31, r31, 12       ; restore main stack frame
+        
+        la r20, CHKW_F          ; check for win
+        ld r21, 16(r31)         ; ball x
+        addi r31, r31, -4
+        st r21, (r31)
+        brl r30, r20            ; call check_win(ball x)
+        addi r31, r31, 4        ; restore main stack frame
         
         la r20, MP_F            ; move paddle 1
         ld r21, 32(r31)         ; p1y
@@ -78,7 +87,7 @@ MAIN_L: la r20, CLR_F           ; Begin the main function
         st r19, 32(r31)         ; write the new y back
         
         la r20, MP_F            ; move paddle 2
-        ld r21, 24(r31)         ; p1y
+        ld r21, 24(r31)         ; p2y
         ld r22, 40(r31)         ; len
         la r23, 4               ; off up
         la r24, 5               ; off dn
@@ -89,7 +98,7 @@ MAIN_L: la r20, CLR_F           ; Begin the main function
         st r21, (r31)
         brl r30, r20            ; call move_paddle(y, len, up, dn)
         addi r31, r31, 16       ; restore main stack frame
-        st r19, 32(r31)         ; write the new y back
+        st r19, 24(r31)         ; write the new y back
         
         la r20, DRWP_F          ; draw paddle 1
         ld r21, 40(r31)         ; push p1len
@@ -222,14 +231,15 @@ MP_F:   addi r31, r31, -20       ; push callee save registers and return addr
         st r23, (r31)
         brl r30, r5             ; call check_button(off_up)
         addi r31, r31, 4        ; restore move_paddle's stack frame
-        
         addi r23, r19, 0        ; put state of up button in r23
+        
         la r5, CHK_B_F
         addi r31, r31, -4
         st r24, (r31)
         brl r30, r5             ; call check_button(off_up)
         addi r31, r31, 4        ; restore move_paddle's stack frame
         addi r24, r19, 0        ; put state of dn button in r4
+        
         la r5, MP_1
         brnz r5, r23
         addi r21, r21, -1       ; move up
@@ -353,6 +363,38 @@ DLY_1:  addi r1, r1, -1         ; dec counter
         brpl r2, r1
         br r30
         
+; func check_win(ball x);
+CHKW_F: ld r1, (r31)            ; ball x
+        addi r2, r1, -1         ; p2 wins
+        addi r3, r1, -79        ; p1 wins
+        la r4, CHKW_1           ; p1 won
+        la r5, CHKW_2           ; p2 won
+        brpl r4, r3
+        brmi r5, r2
+        br r30                  ; ret
+CHKW_1: la r6, 1                ; p1 label
+        la r7, CHKW_3
+        br r7
+CHKW_2: la r6, 2                ; p2 label
+CHKW_3: addi r7, r6, 48         ; convert to ascii
+        la r6, CLRA_F           ; clear the screen
+        brl r30, r6
+        la r6, 16384            ; beg of framestore
+        la r8, 80               ; 'P'
+        st r8, (r6)
+        st r7, 4(r6)            ; player num
+        la r8, 87               ; 'W'
+        st r8, 12(r6)
+        la r8, 73               ; 'I'
+        st r8, 16(r6)
+        la r8, 78               ; 'N'
+        st r8, 20(r6)
+        la r8, 83               ; 'S'
+        st r8, 24(r6)
+        la r8, 33               ; '!'
+        st r8, 28(r6)
+        br r0                   ; return to monitor program
+        
 ; func clear(p1x, p2x, p3x)
 CLR_F:  la r1, 16384            ; beg of framestore
         ld r2, (r31)            ; p1x
@@ -383,4 +425,15 @@ CLR_3:  st r5, (r8)
         addi r8, r8, 512        ; go to next line
         addi r7, r7, -1
         brpl r6, r7
+        br r30                  ; ret
+        
+; clear_all()
+CLRA_F: la r1, 16384            ; beg of framestore
+        la r2, 4095             ; clear 4096 values
+        la r3, 32               ; store spaces
+        la r4, CLRA_1           ; loop addr
+CLRA_1: st r3, (r1)             ; write space
+        addi r1, r1, 4          ; next char
+        addi r2, r2, -1         ; dec counter
+        brpl r4, r2             ; loop
         br r30                  ; ret
